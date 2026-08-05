@@ -20,7 +20,7 @@ export default function WhatsAppButton() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-5 right-5 z-[60] flex flex-col items-end gap-3">
+    <div className="fixed bottom-24 lg:bottom-5 right-5 z-[60] flex flex-col items-end gap-3">
       <AnimatePresence>
         {open && (
           <motion.div
