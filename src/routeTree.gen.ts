@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BookAVisitRouteImport } from './routes/book-a-visit'
 import { Route as InvestmentRouteImport } from './routes/investment'
+import { Route as RoiCalculatorRouteImport } from './routes/roi-calculator'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +29,44 @@ const InvestmentRoute = InvestmentRouteImport.update({
   path: '/investment',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RoiCalculatorRoute = RoiCalculatorRouteImport.update({
+  id: '/roi-calculator',
+  path: '/roi-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/book-a-visit': typeof BookAVisitRoute
   '/investment': typeof InvestmentRoute
+  '/roi-calculator': typeof RoiCalculatorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/book-a-visit': typeof BookAVisitRoute
   '/investment': typeof InvestmentRoute
+  '/roi-calculator': typeof RoiCalculatorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/book-a-visit': typeof BookAVisitRoute
   '/investment': typeof InvestmentRoute
+  '/roi-calculator': typeof RoiCalculatorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/book-a-visit' | '/investment'
+  fullPaths: '/' | '/book-a-visit' | '/investment' | '/roi-calculator'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/book-a-visit' | '/investment'
-  id: '__root__' | '/' | '/book-a-visit' | '/investment'
+  to: '/' | '/book-a-visit' | '/investment' | '/roi-calculator'
+  id: '__root__' | '/' | '/book-a-visit' | '/investment' | '/roi-calculator'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BookAVisitRoute: typeof BookAVisitRoute
   InvestmentRoute: typeof InvestmentRoute
+  RoiCalculatorRoute: typeof RoiCalculatorRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InvestmentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/roi-calculator': {
+      id: '/roi-calculator'
+      path: '/roi-calculator'
+      fullPath: '/roi-calculator'
+      preLoaderRoute: typeof RoiCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BookAVisitRoute: BookAVisitRoute,
   InvestmentRoute: InvestmentRoute,
+  RoiCalculatorRoute: RoiCalculatorRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

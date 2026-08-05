@@ -31,7 +31,7 @@ const ksh = (value: number) =>
   );
 
 function RoiCalculatorPage() {
-  const [price, setPrice] = useState(PRICING.fromPrice);
+  const [price, setPrice] = useState<number>(PRICING.fromPrice);
   const [monthlyRent, setMonthlyRent] = useState(150_000);
   const [appreciation, setAppreciation] = useState(12);
   const [years, setYears] = useState(5);
