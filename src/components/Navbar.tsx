@@ -47,7 +47,7 @@ export default function Navbar() {
       if (!el) return;
       const observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) {
+          if (entry?.isIntersecting) {
             setActiveSection(`#${id}`);
           }
         },
