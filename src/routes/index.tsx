@@ -3,6 +3,7 @@ import { lazy, Suspense } from "react";
 
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import PersonaSelector from "@/components/PersonaSelector";
 import UnitAvailability from "@/components/UnitAvailability";
 
 const WhyKikuyuSection = lazy(() => import("@/components/WhyKikuyuSection"));
@@ -12,6 +13,7 @@ const TimelineSection = lazy(() => import("@/components/TimelineSection"));
 const LeadCaptureSection = lazy(() => import("@/components/LeadCaptureSection"));
 const Footer = lazy(() => import("@/components/Footer"));
 const FloatingCTA = lazy(() => import("@/components/FloatingCTA"));
+const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton"));
 
 const title = "Cedar Homes Kikuyu — Modern 4-Bedroom Homes";
 const description =
