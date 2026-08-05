@@ -15,6 +15,7 @@ import { Route as InvestmentRouteImport } from './routes/investment'
 import { Route as PaymentPlansRouteImport } from './routes/payment-plans'
 import { Route as RoiCalculatorRouteImport } from './routes/roi-calculator'
 import { Route as VirtualTourRouteImport } from './routes/virtual-tour'
+import { Route as WhyTrustUsRouteImport } from './routes/why-trust-us'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +47,11 @@ const VirtualTourRoute = VirtualTourRouteImport.update({
   path: '/virtual-tour',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WhyTrustUsRoute = WhyTrustUsRouteImport.update({
+  id: '/why-trust-us',
+  path: '/why-trust-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/payment-plans': typeof PaymentPlansRoute
   '/roi-calculator': typeof RoiCalculatorRoute
   '/virtual-tour': typeof VirtualTourRoute
+  '/why-trust-us': typeof WhyTrustUsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/payment-plans': typeof PaymentPlansRoute
   '/roi-calculator': typeof RoiCalculatorRoute
   '/virtual-tour': typeof VirtualTourRoute
+  '/why-trust-us': typeof WhyTrustUsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/payment-plans': typeof PaymentPlansRoute
   '/roi-calculator': typeof RoiCalculatorRoute
   '/virtual-tour': typeof VirtualTourRoute
+  '/why-trust-us': typeof WhyTrustUsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,6 +90,7 @@ export interface FileRouteTypes {
     | '/payment-plans'
     | '/roi-calculator'
     | '/virtual-tour'
+    | '/why-trust-us'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -89,6 +99,7 @@ export interface FileRouteTypes {
     | '/payment-plans'
     | '/roi-calculator'
     | '/virtual-tour'
+    | '/why-trust-us'
   id:
     | '__root__'
     | '/'
@@ -97,6 +108,7 @@ export interface FileRouteTypes {
     | '/payment-plans'
     | '/roi-calculator'
     | '/virtual-tour'
+    | '/why-trust-us'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -106,6 +118,7 @@ export interface RootRouteChildren {
   PaymentPlansRoute: typeof PaymentPlansRoute
   RoiCalculatorRoute: typeof RoiCalculatorRoute
   VirtualTourRoute: typeof VirtualTourRoute
+  WhyTrustUsRoute: typeof WhyTrustUsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -152,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VirtualTourRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/why-trust-us': {
+      id: '/why-trust-us'
+      path: '/why-trust-us'
+      fullPath: '/why-trust-us'
+      preLoaderRoute: typeof WhyTrustUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -162,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   PaymentPlansRoute: PaymentPlansRoute,
   RoiCalculatorRoute: RoiCalculatorRoute,
   VirtualTourRoute: VirtualTourRoute,
+  WhyTrustUsRoute: WhyTrustUsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
