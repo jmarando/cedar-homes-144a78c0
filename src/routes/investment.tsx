@@ -43,7 +43,7 @@ const drivers = [
   {
     icon: Coins,
     title: "Entry before completion pricing",
-    body: `Pre-order pricing starts at ${PRICING.fromLabel}. Buyers entering now hold the unit at today's price while the remaining units are completed.`,
+    body: `Pre-order pricing starts at ${PRICING.fromPriceLabel}. Buyers entering now hold the unit at today's price while the remaining units are completed.`,
   },
 ];
 
