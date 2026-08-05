@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BookAVisitRouteImport } from './routes/book-a-visit'
 import { Route as InvestmentRouteImport } from './routes/investment'
+import { Route as PaymentPlansRouteImport } from './routes/payment-plans'
 import { Route as RoiCalculatorRouteImport } from './routes/roi-calculator'
 import { Route as VirtualTourRouteImport } from './routes/virtual-tour'
 
@@ -30,6 +31,11 @@ const InvestmentRoute = InvestmentRouteImport.update({
   path: '/investment',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PaymentPlansRoute = PaymentPlansRouteImport.update({
+  id: '/payment-plans',
+  path: '/payment-plans',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RoiCalculatorRoute = RoiCalculatorRouteImport.update({
   id: '/roi-calculator',
   path: '/roi-calculator',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/book-a-visit': typeof BookAVisitRoute
   '/investment': typeof InvestmentRoute
+  '/payment-plans': typeof PaymentPlansRoute
   '/roi-calculator': typeof RoiCalculatorRoute
   '/virtual-tour': typeof VirtualTourRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/book-a-visit': typeof BookAVisitRoute
   '/investment': typeof InvestmentRoute
+  '/payment-plans': typeof PaymentPlansRoute
   '/roi-calculator': typeof RoiCalculatorRoute
   '/virtual-tour': typeof VirtualTourRoute
 }
@@ -60,21 +68,33 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/book-a-visit': typeof BookAVisitRoute
   '/investment': typeof InvestmentRoute
+  '/payment-plans': typeof PaymentPlansRoute
   '/roi-calculator': typeof RoiCalculatorRoute
   '/virtual-tour': typeof VirtualTourRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/book-a-visit' | '/investment' | '/roi-calculator' | '/virtual-tour'
+    | '/'
+    | '/book-a-visit'
+    | '/investment'
+    | '/payment-plans'
+    | '/roi-calculator'
+    | '/virtual-tour'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/book-a-visit' | '/investment' | '/roi-calculator' | '/virtual-tour'
+    | '/'
+    | '/book-a-visit'
+    | '/investment'
+    | '/payment-plans'
+    | '/roi-calculator'
+    | '/virtual-tour'
   id:
     | '__root__'
     | '/'
     | '/book-a-visit'
     | '/investment'
+    | '/payment-plans'
     | '/roi-calculator'
     | '/virtual-tour'
   fileRoutesById: FileRoutesById
@@ -83,6 +103,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BookAVisitRoute: typeof BookAVisitRoute
   InvestmentRoute: typeof InvestmentRoute
+  PaymentPlansRoute: typeof PaymentPlansRoute
   RoiCalculatorRoute: typeof RoiCalculatorRoute
   VirtualTourRoute: typeof VirtualTourRoute
 }
@@ -110,6 +131,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InvestmentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/payment-plans': {
+      id: '/payment-plans'
+      path: '/payment-plans'
+      fullPath: '/payment-plans'
+      preLoaderRoute: typeof PaymentPlansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/roi-calculator': {
       id: '/roi-calculator'
       path: '/roi-calculator'
@@ -131,6 +159,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BookAVisitRoute: BookAVisitRoute,
   InvestmentRoute: InvestmentRoute,
+  PaymentPlansRoute: PaymentPlansRoute,
   RoiCalculatorRoute: RoiCalculatorRoute,
   VirtualTourRoute: VirtualTourRoute,
 }
