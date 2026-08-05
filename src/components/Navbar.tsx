@@ -1,27 +1,34 @@
 /*
  * Navbar — Cedar Homes "Kenyan Earth Modernism"
- * Sticky nav with top utility bar, scroll-aware background, mobile drawer
+ * Sticky nav with top utility bar, scroll-aware background, mobile drawer.
+ * Mixes home-page section anchors with the standalone content pages.
  */
 import { useState, useEffect, useCallback } from "react";
 import { Phone, Mail, Menu, X, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 
-const navLinks = [
-  { label: "Home", href: "#hero" },
-  { label: "Units", href: "#units" },
-  { label: "Why Kikuyu", href: "#why-kikuyu" },
-  { label: "Specs", href: "#specs" },
-  { label: "Trust", href: "#trust" },
-  { label: "Progress", href: "#timeline" },
-  { label: "Contact", href: "#contact" },
+import { CONTACT } from "@/lib/site-config";
+import { trackEvent } from "@/lib/analytics";
+
+type NavLink =
+  | { label: string; kind: "hash"; hash: string }
+  | { label: string; kind: "page"; to: string };
+
+const navLinks: NavLink[] = [
+  { label: "Units", kind: "hash", hash: "units" },
+  { label: "Why Kikuyu", kind: "hash", hash: "why-kikuyu" },
+  { label: "Specs", kind: "hash", hash: "specs" },
+  { label: "Investment", kind: "page", to: "/investment" },
+  { label: "ROI Calculator", kind: "page", to: "/roi-calculator" },
+  { label: "Payment Plans", kind: "page", to: "/payment-plans" },
+  { label: "Why Trust Us", kind: "page", to: "/why-trust-us" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("#hero");
 
-  // Scroll detection with throttling
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
@@ -37,40 +44,25 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Active section tracking via IntersectionObserver
   useEffect(() => {
-    const sectionIds = navLinks.map((l) => l.href.replace("#", ""));
-    const observers: IntersectionObserver[] = [];
-
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry?.isIntersecting) {
-            setActiveSection(`#${id}`);
-          }
-        },
-        { rootMargin: "-30% 0px -60% 0px", threshold: 0 }
-      );
-      observer.observe(el);
-      observers.push(observer);
-    });
-
-    return () => observers.forEach((o) => o.disconnect());
-  }, []);
-
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
       document.body.style.overflow = "";
-    }
-    return () => { document.body.style.overflow = ""; };
+    };
   }, [mobileOpen]);
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
+
+  const renderLink = (link: NavLink, className: string, onClick?: () => void) =>
+    link.kind === "page" ? (
+      <Link key={link.label} to={link.to} onClick={onClick} className={className}>
+        {link.label}
+      </Link>
+    ) : (
+      <Link key={link.label} to="/" hash={link.hash} onClick={onClick} className={className}>
+        {link.label}
+      </Link>
+    );
 
   return (
     <>
@@ -79,20 +71,21 @@ export default function Navbar() {
         <div className="container flex justify-between items-center py-2">
           <div className="flex items-center gap-6">
             <a
-              href="tel:+254797964858"
+              href={`tel:${CONTACT.phone}`}
+              onClick={() => trackEvent("phone_click", { location: "utility_bar" })}
               className="flex items-center gap-1.5 hover:text-cedar-gold transition-colors duration-200"
               aria-label="Call us"
             >
               <Phone size={12} strokeWidth={2.5} />
-              <span>+254 797 964 858</span>
+              <span>{CONTACT.phoneDisplay}</span>
             </a>
             <a
-              href="mailto:info@gapdevelopers.co.ke"
+              href={`mailto:${CONTACT.email}`}
               className="flex items-center gap-1.5 hover:text-cedar-gold transition-colors duration-200"
               aria-label="Email us"
             >
               <Mail size={12} strokeWidth={2.5} />
-              <span>info@gapdevelopers.co.ke</span>
+              <span>{CONTACT.email}</span>
             </a>
           </div>
           <span className="text-cedar-gold/90 font-semibold tracking-wide text-[11px] uppercase">
@@ -113,7 +106,7 @@ export default function Navbar() {
       >
         <div className="container flex items-center justify-between h-[68px]">
           {/* Logo */}
-          <a href="#hero" className="flex items-center gap-3 group shrink-0" aria-label="Cedar Homes - Home">
+          <Link to="/" className="flex items-center gap-3 group shrink-0" aria-label="Cedar Homes - Home">
             <div className="w-9 h-9 bg-cedar-forest flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
               <span className="text-cedar-gold font-serif text-base font-bold leading-none">G</span>
             </div>
@@ -123,39 +116,22 @@ export default function Navbar() {
                 by GAP Developers
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop links */}
-          <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.href;
-              return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={`relative px-3.5 py-2 text-[13px] font-medium transition-colors duration-200 ${
-                    isActive
-                      ? "text-cedar-forest"
-                      : "text-cedar-charcoal/60 hover:text-cedar-forest"
-                  }`}
-                >
-                  {link.label}
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-indicator"
-                      className="absolute bottom-0 left-3.5 right-3.5 h-[2px] bg-cedar-terracotta"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </a>
-              );
-            })}
-            <a
-              href="#contact"
-              className="ml-4 bg-cedar-terracotta text-white px-5 py-2 text-[13px] font-semibold tracking-wide hover:bg-cedar-terracotta-dark transition-colors duration-200 shadow-sm shadow-cedar-terracotta/15"
+          <div className="hidden lg:flex items-center gap-0.5">
+            {navLinks.map((link) =>
+              renderLink(
+                link,
+                "px-3 py-2 text-[13px] font-medium text-cedar-charcoal/60 hover:text-cedar-forest transition-colors duration-200"
+              )
+            )}
+            <Link
+              to="/book-a-visit"
+              className="ml-3 bg-cedar-terracotta text-white px-5 py-2 text-[13px] font-semibold tracking-wide hover:bg-cedar-terracotta-dark transition-colors duration-200 shadow-sm shadow-cedar-terracotta/15"
             >
               Book a Visit
-            </a>
+            </Link>
           </div>
 
           {/* Mobile toggle */}
@@ -174,7 +150,6 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -185,13 +160,12 @@ export default function Navbar() {
               aria-hidden="true"
             />
 
-            {/* Drawer */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed top-0 right-0 bottom-0 w-[280px] bg-white z-50 lg:hidden shadow-2xl"
+              className="fixed top-0 right-0 bottom-0 w-[280px] bg-white z-50 lg:hidden shadow-2xl overflow-y-auto"
             >
               <div className="flex items-center justify-between p-5 border-b border-cedar-forest/5">
                 <span className="font-serif text-cedar-forest text-lg">Menu</span>
@@ -205,36 +179,44 @@ export default function Navbar() {
               </div>
 
               <div className="p-5 flex flex-col gap-1">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={closeMobile}
-                    className={`flex items-center justify-between py-3 px-3 text-[15px] font-medium transition-colors ${
-                      activeSection === link.href
-                        ? "text-cedar-forest bg-cedar-cream"
-                        : "text-cedar-charcoal/70 hover:text-cedar-forest hover:bg-cedar-cream/50"
-                    }`}
-                  >
-                    {link.label}
-                    <ChevronRight size={14} className="text-cedar-warm-gray/40" />
-                  </a>
-                ))}
+                {navLinks.map((link) =>
+                  renderLink(
+                    link,
+                    "flex items-center justify-between py-3 px-3 text-[15px] font-medium text-cedar-charcoal/70 hover:text-cedar-forest hover:bg-cedar-cream/50 transition-colors",
+                    closeMobile
+                  )
+                )}
 
-                <a
-                  href="#contact"
+                <Link
+                  to="/virtual-tour"
+                  onClick={closeMobile}
+                  className="flex items-center justify-between py-3 px-3 text-[15px] font-medium text-cedar-charcoal/70 hover:text-cedar-forest hover:bg-cedar-cream/50 transition-colors"
+                >
+                  Virtual Tour
+                  <ChevronRight size={14} className="text-cedar-warm-gray/40" />
+                </Link>
+
+                <Link
+                  to="/book-a-visit"
                   onClick={closeMobile}
                   className="bg-cedar-terracotta text-white px-5 py-3.5 text-center font-semibold mt-4 text-[15px]"
                 >
                   Book a Showhouse Visit
-                </a>
+                </Link>
 
                 <div className="flex flex-col gap-3 mt-6 pt-6 border-t border-cedar-forest/5">
-                  <a href="tel:+254797964858" className="flex items-center gap-2.5 text-sm text-cedar-warm-gray hover:text-cedar-forest">
-                    <Phone size={14} /> +254 797 964 858
+                  <a
+                    href={`tel:${CONTACT.phone}`}
+                    onClick={() => trackEvent("phone_click", { location: "mobile_menu" })}
+                    className="flex items-center gap-2.5 text-sm text-cedar-warm-gray hover:text-cedar-forest"
+                  >
+                    <Phone size={14} /> {CONTACT.phoneDisplay}
                   </a>
-                  <a href="mailto:info@gapdevelopers.co.ke" className="flex items-center gap-2.5 text-sm text-cedar-warm-gray hover:text-cedar-forest">
-                    <Mail size={14} /> info@gapdevelopers.co.ke
+                  <a
+                    href={`mailto:${CONTACT.email}`}
+                    className="flex items-center gap-2.5 text-sm text-cedar-warm-gray hover:text-cedar-forest"
+                  >
+                    <Mail size={14} /> {CONTACT.email}
                   </a>
                 </div>
               </div>

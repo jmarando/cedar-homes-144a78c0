@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BookAVisitRouteImport } from './routes/book-a-visit'
+import { Route as InvestmentRouteImport } from './routes/investment'
+import { Route as PaymentPlansRouteImport } from './routes/payment-plans'
+import { Route as RoiCalculatorRouteImport } from './routes/roi-calculator'
+import { Route as VirtualTourRouteImport } from './routes/virtual-tour'
+import { Route as WhyTrustUsRouteImport } from './routes/why-trust-us'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BookAVisitRoute = BookAVisitRouteImport.update({
+  id: '/book-a-visit',
+  path: '/book-a-visit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestmentRoute = InvestmentRouteImport.update({
+  id: '/investment',
+  path: '/investment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentPlansRoute = PaymentPlansRouteImport.update({
+  id: '/payment-plans',
+  path: '/payment-plans',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoiCalculatorRoute = RoiCalculatorRouteImport.update({
+  id: '/roi-calculator',
+  path: '/roi-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VirtualTourRoute = VirtualTourRouteImport.update({
+  id: '/virtual-tour',
+  path: '/virtual-tour',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhyTrustUsRoute = WhyTrustUsRouteImport.update({
+  id: '/why-trust-us',
+  path: '/why-trust-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/book-a-visit': typeof BookAVisitRoute
+  '/investment': typeof InvestmentRoute
+  '/payment-plans': typeof PaymentPlansRoute
+  '/roi-calculator': typeof RoiCalculatorRoute
+  '/virtual-tour': typeof VirtualTourRoute
+  '/why-trust-us': typeof WhyTrustUsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/book-a-visit': typeof BookAVisitRoute
+  '/investment': typeof InvestmentRoute
+  '/payment-plans': typeof PaymentPlansRoute
+  '/roi-calculator': typeof RoiCalculatorRoute
+  '/virtual-tour': typeof VirtualTourRoute
+  '/why-trust-us': typeof WhyTrustUsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/book-a-visit': typeof BookAVisitRoute
+  '/investment': typeof InvestmentRoute
+  '/payment-plans': typeof PaymentPlansRoute
+  '/roi-calculator': typeof RoiCalculatorRoute
+  '/virtual-tour': typeof VirtualTourRoute
+  '/why-trust-us': typeof WhyTrustUsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/book-a-visit'
+    | '/investment'
+    | '/payment-plans'
+    | '/roi-calculator'
+    | '/virtual-tour'
+    | '/why-trust-us'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/book-a-visit'
+    | '/investment'
+    | '/payment-plans'
+    | '/roi-calculator'
+    | '/virtual-tour'
+    | '/why-trust-us'
+  id:
+    | '__root__'
+    | '/'
+    | '/book-a-visit'
+    | '/investment'
+    | '/payment-plans'
+    | '/roi-calculator'
+    | '/virtual-tour'
+    | '/why-trust-us'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BookAVisitRoute: typeof BookAVisitRoute
+  InvestmentRoute: typeof InvestmentRoute
+  PaymentPlansRoute: typeof PaymentPlansRoute
+  RoiCalculatorRoute: typeof RoiCalculatorRoute
+  VirtualTourRoute: typeof VirtualTourRoute
+  WhyTrustUsRoute: typeof WhyTrustUsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/book-a-visit': {
+      id: '/book-a-visit'
+      path: '/book-a-visit'
+      fullPath: '/book-a-visit'
+      preLoaderRoute: typeof BookAVisitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investment': {
+      id: '/investment'
+      path: '/investment'
+      fullPath: '/investment'
+      preLoaderRoute: typeof InvestmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payment-plans': {
+      id: '/payment-plans'
+      path: '/payment-plans'
+      fullPath: '/payment-plans'
+      preLoaderRoute: typeof PaymentPlansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roi-calculator': {
+      id: '/roi-calculator'
+      path: '/roi-calculator'
+      fullPath: '/roi-calculator'
+      preLoaderRoute: typeof RoiCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/virtual-tour': {
+      id: '/virtual-tour'
+      path: '/virtual-tour'
+      fullPath: '/virtual-tour'
+      preLoaderRoute: typeof VirtualTourRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/why-trust-us': {
+      id: '/why-trust-us'
+      path: '/why-trust-us'
+      fullPath: '/why-trust-us'
+      preLoaderRoute: typeof WhyTrustUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BookAVisitRoute: BookAVisitRoute,
+  InvestmentRoute: InvestmentRoute,
+  PaymentPlansRoute: PaymentPlansRoute,
+  RoiCalculatorRoute: RoiCalculatorRoute,
+  VirtualTourRoute: VirtualTourRoute,
+  WhyTrustUsRoute: WhyTrustUsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
