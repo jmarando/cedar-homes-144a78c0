@@ -92,7 +92,7 @@ function InvestmentPage() {
           <div className="lg:sticky lg:top-24">
             <LeadForm
               variant="light"
-              defaultInterest="investment-info"
+              defaultInterest="investment-brief"
               persona="investor"
               source="investment"
               extended

@@ -166,7 +166,7 @@ function RoiCalculatorPage() {
 
             <LeadForm
               variant="light"
-              defaultInterest="investment-info"
+              defaultInterest="roi-calculator"
               persona="diaspora-investor"
               source="roi-calculator"
               extended

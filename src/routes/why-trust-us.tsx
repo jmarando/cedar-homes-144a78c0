@@ -102,7 +102,7 @@ function TrustPage() {
           <div className="lg:sticky lg:top-24">
             <LeadForm
               variant="light"
-              defaultInterest="documentation"
+              defaultInterest="general"
               persona="diaspora-first-time"
               source="why-trust-us"
               extended
