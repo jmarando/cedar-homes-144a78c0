@@ -10,16 +10,34 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BookAVisitRouteImport } from './routes/book-a-visit'
 import { Route as InvestmentRouteImport } from './routes/investment'
 import { Route as PaymentPlansRouteImport } from './routes/payment-plans'
 import { Route as RoiCalculatorRouteImport } from './routes/roi-calculator'
 import { Route as VirtualTourRouteImport } from './routes/virtual-tour'
 import { Route as WhyTrustUsRouteImport } from './routes/why-trust-us'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
+import { Route as AuthenticatedAdminInboxRouteImport } from './routes/_authenticated/admin/inbox'
+import { Route as AuthenticatedAdminLeadsRouteImport } from './routes/_authenticated/admin/leads'
+import { Route as AuthenticatedAdminTeamRouteImport } from './routes/_authenticated/admin/team'
+import { Route as ApiPublicWhatsappRouteImport } from './routes/api/public/whatsapp'
+import { Route as AuthenticatedAdminLeadsIdRouteImport } from './routes/_authenticated/admin/leads.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BookAVisitRoute = BookAVisitRouteImport.update({
@@ -52,73 +70,160 @@ const WhyTrustUsRoute = WhyTrustUsRouteImport.update({
   path: '/why-trust-us',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminInboxRoute = AuthenticatedAdminInboxRouteImport.update({
+  id: '/inbox',
+  path: '/inbox',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminLeadsRoute = AuthenticatedAdminLeadsRouteImport.update({
+  id: '/leads',
+  path: '/leads',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminTeamRoute = AuthenticatedAdminTeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const ApiPublicWhatsappRoute = ApiPublicWhatsappRouteImport.update({
+  id: '/api/public/whatsapp',
+  path: '/api/public/whatsapp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminLeadsIdRoute =
+  AuthenticatedAdminLeadsIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => AuthenticatedAdminLeadsRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/book-a-visit': typeof BookAVisitRoute
   '/investment': typeof InvestmentRoute
   '/payment-plans': typeof PaymentPlansRoute
   '/roi-calculator': typeof RoiCalculatorRoute
   '/virtual-tour': typeof VirtualTourRoute
   '/why-trust-us': typeof WhyTrustUsRoute
+  '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/admin/inbox': typeof AuthenticatedAdminInboxRoute
+  '/admin/leads': typeof AuthenticatedAdminLeadsRouteWithChildren
+  '/admin/team': typeof AuthenticatedAdminTeamRoute
+  '/api/public/whatsapp': typeof ApiPublicWhatsappRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/admin/leads/$id': typeof AuthenticatedAdminLeadsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/book-a-visit': typeof BookAVisitRoute
   '/investment': typeof InvestmentRoute
   '/payment-plans': typeof PaymentPlansRoute
   '/roi-calculator': typeof RoiCalculatorRoute
   '/virtual-tour': typeof VirtualTourRoute
   '/why-trust-us': typeof WhyTrustUsRoute
+  '/admin/inbox': typeof AuthenticatedAdminInboxRoute
+  '/admin/leads': typeof AuthenticatedAdminLeadsRouteWithChildren
+  '/admin/team': typeof AuthenticatedAdminTeamRoute
+  '/api/public/whatsapp': typeof ApiPublicWhatsappRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
+  '/admin/leads/$id': typeof AuthenticatedAdminLeadsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
   '/book-a-visit': typeof BookAVisitRoute
   '/investment': typeof InvestmentRoute
   '/payment-plans': typeof PaymentPlansRoute
   '/roi-calculator': typeof RoiCalculatorRoute
   '/virtual-tour': typeof VirtualTourRoute
   '/why-trust-us': typeof WhyTrustUsRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/_authenticated/admin/inbox': typeof AuthenticatedAdminInboxRoute
+  '/_authenticated/admin/leads': typeof AuthenticatedAdminLeadsRouteWithChildren
+  '/_authenticated/admin/team': typeof AuthenticatedAdminTeamRoute
+  '/api/public/whatsapp': typeof ApiPublicWhatsappRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/admin/leads/$id': typeof AuthenticatedAdminLeadsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
     | '/book-a-visit'
     | '/investment'
     | '/payment-plans'
     | '/roi-calculator'
     | '/virtual-tour'
     | '/why-trust-us'
+    | '/admin'
+    | '/admin/inbox'
+    | '/admin/leads'
+    | '/admin/team'
+    | '/api/public/whatsapp'
+    | '/admin/'
+    | '/admin/leads/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/auth'
     | '/book-a-visit'
     | '/investment'
     | '/payment-plans'
     | '/roi-calculator'
     | '/virtual-tour'
     | '/why-trust-us'
+    | '/admin/inbox'
+    | '/admin/leads'
+    | '/admin/team'
+    | '/api/public/whatsapp'
+    | '/admin'
+    | '/admin/leads/$id'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
+    | '/auth'
     | '/book-a-visit'
     | '/investment'
     | '/payment-plans'
     | '/roi-calculator'
     | '/virtual-tour'
     | '/why-trust-us'
+    | '/_authenticated/admin'
+    | '/_authenticated/admin/inbox'
+    | '/_authenticated/admin/leads'
+    | '/_authenticated/admin/team'
+    | '/api/public/whatsapp'
+    | '/_authenticated/admin/'
+    | '/_authenticated/admin/leads/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
   BookAVisitRoute: typeof BookAVisitRoute
   InvestmentRoute: typeof InvestmentRoute
   PaymentPlansRoute: typeof PaymentPlansRoute
   RoiCalculatorRoute: typeof RoiCalculatorRoute
   VirtualTourRoute: typeof VirtualTourRoute
   WhyTrustUsRoute: typeof WhyTrustUsRoute
+  ApiPublicWhatsappRoute: typeof ApiPublicWhatsappRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -128,6 +233,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/book-a-visit': {
@@ -172,17 +291,111 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WhyTrustUsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/inbox': {
+      id: '/_authenticated/admin/inbox'
+      path: '/inbox'
+      fullPath: '/admin/inbox'
+      preLoaderRoute: typeof AuthenticatedAdminInboxRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/leads': {
+      id: '/_authenticated/admin/leads'
+      path: '/leads'
+      fullPath: '/admin/leads'
+      preLoaderRoute: typeof AuthenticatedAdminLeadsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/team': {
+      id: '/_authenticated/admin/team'
+      path: '/team'
+      fullPath: '/admin/team'
+      preLoaderRoute: typeof AuthenticatedAdminTeamRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/api/public/whatsapp': {
+      id: '/api/public/whatsapp'
+      path: '/api/public/whatsapp'
+      fullPath: '/api/public/whatsapp'
+      preLoaderRoute: typeof ApiPublicWhatsappRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/admin/leads/$id': {
+      id: '/_authenticated/admin/leads/$id'
+      path: '/$id'
+      fullPath: '/admin/leads/$id'
+      preLoaderRoute: typeof AuthenticatedAdminLeadsIdRouteImport
+      parentRoute: typeof AuthenticatedAdminLeadsRoute
+    }
   }
 }
 
+interface AuthenticatedAdminLeadsRouteChildren {
+  AuthenticatedAdminLeadsIdRoute: typeof AuthenticatedAdminLeadsIdRoute
+}
+
+const AuthenticatedAdminLeadsRouteChildren: AuthenticatedAdminLeadsRouteChildren =
+  {
+    AuthenticatedAdminLeadsIdRoute: AuthenticatedAdminLeadsIdRoute,
+  }
+
+const AuthenticatedAdminLeadsRouteWithChildren =
+  AuthenticatedAdminLeadsRoute._addFileChildren(
+    AuthenticatedAdminLeadsRouteChildren,
+  )
+
+interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminInboxRoute: typeof AuthenticatedAdminInboxRoute
+  AuthenticatedAdminLeadsRoute: typeof AuthenticatedAdminLeadsRouteWithChildren
+  AuthenticatedAdminTeamRoute: typeof AuthenticatedAdminTeamRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+}
+
+const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminInboxRoute: AuthenticatedAdminInboxRoute,
+  AuthenticatedAdminLeadsRoute: AuthenticatedAdminLeadsRouteWithChildren,
+  AuthenticatedAdminTeamRoute: AuthenticatedAdminTeamRoute,
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+}
+
+const AuthenticatedAdminRouteWithChildren =
+  AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
   BookAVisitRoute: BookAVisitRoute,
   InvestmentRoute: InvestmentRoute,
   PaymentPlansRoute: PaymentPlansRoute,
   RoiCalculatorRoute: RoiCalculatorRoute,
   VirtualTourRoute: VirtualTourRoute,
   WhyTrustUsRoute: WhyTrustUsRoute,
+  ApiPublicWhatsappRoute: ApiPublicWhatsappRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
