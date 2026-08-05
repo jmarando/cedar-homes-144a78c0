@@ -42,6 +42,7 @@ function Index() {
     <div className="min-h-screen bg-cedar-cream">
       <Navbar />
       <HeroSection />
+      <PersonaSelector />
       <UnitAvailability />
       <Suspense fallback={<SectionFallback />}>
         <WhyKikuyuSection />
@@ -51,6 +52,7 @@ function Index() {
         <LeadCaptureSection />
         <Footer />
         <FloatingCTA />
+        <WhatsAppButton />
       </Suspense>
     </div>
   );
