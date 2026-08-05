@@ -14,8 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
+      lead_activities: {
+        Row: {
+          body: string | null
+          channel: Database["public"]["Enums"]["activity_channel"]
+          contact_handle: string | null
+          created_at: string
+          created_by: string | null
+          direction: Database["public"]["Enums"]["activity_direction"]
+          external_id: string | null
+          id: string
+          lead_id: string | null
+          occurred_at: string
+          status: string | null
+          subject: string | null
+        }
+        Insert: {
+          body?: string | null
+          channel?: Database["public"]["Enums"]["activity_channel"]
+          contact_handle?: string | null
+          created_at?: string
+          created_by?: string | null
+          direction?: Database["public"]["Enums"]["activity_direction"]
+          external_id?: string | null
+          id?: string
+          lead_id?: string | null
+          occurred_at?: string
+          status?: string | null
+          subject?: string | null
+        }
+        Update: {
+          body?: string | null
+          channel?: Database["public"]["Enums"]["activity_channel"]
+          contact_handle?: string | null
+          created_at?: string
+          created_by?: string | null
+          direction?: Database["public"]["Enums"]["activity_direction"]
+          external_id?: string | null
+          id?: string
+          lead_id?: string | null
+          occurred_at?: string
+          status?: string | null
+          subject?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lead_activities_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       leads: {
         Row: {
+          assigned_at: string | null
+          assigned_to: string | null
           budget: string | null
           country: string | null
           created_at: string
@@ -44,6 +99,8 @@ export type Database = {
           utm_term: string | null
         }
         Insert: {
+          assigned_at?: string | null
+          assigned_to?: string | null
           budget?: string | null
           country?: string | null
           created_at?: string
@@ -72,6 +129,8 @@ export type Database = {
           utm_term?: string | null
         }
         Update: {
+          assigned_at?: string | null
+          assigned_to?: string | null
           budget?: string | null
           country?: string | null
           created_at?: string
@@ -98,6 +157,33 @@ export type Database = {
           utm_medium?: string | null
           utm_source?: string | null
           utm_term?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
         }
         Relationships: []
       }
@@ -136,6 +222,15 @@ export type Database = {
       }
     }
     Enums: {
+      activity_channel:
+        | "whatsapp"
+        | "email"
+        | "call"
+        | "sms"
+        | "note"
+        | "system"
+        | "form"
+      activity_direction: "inbound" | "outbound" | "internal"
       app_role: "admin" | "sales" | "user"
       lead_stage:
         | "new"
@@ -273,6 +368,16 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      activity_channel: [
+        "whatsapp",
+        "email",
+        "call",
+        "sms",
+        "note",
+        "system",
+        "form",
+      ],
+      activity_direction: ["inbound", "outbound", "internal"],
       app_role: ["admin", "sales", "user"],
       lead_stage: [
         "new",
