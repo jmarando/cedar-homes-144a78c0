@@ -1,24 +1,55 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import UnitAvailability from "@/components/UnitAvailability";
+
+const WhyKikuyuSection = lazy(() => import("@/components/WhyKikuyuSection"));
+const PropertySpecs = lazy(() => import("@/components/PropertySpecs"));
+const TrustSection = lazy(() => import("@/components/TrustSection"));
+const TimelineSection = lazy(() => import("@/components/TimelineSection"));
+const LeadCaptureSection = lazy(() => import("@/components/LeadCaptureSection"));
+const Footer = lazy(() => import("@/components/Footer"));
+const FloatingCTA = lazy(() => import("@/components/FloatingCTA"));
+
+const title = "Cedar Homes Kikuyu — Modern 4-Bedroom Homes";
+const description =
+  "Five modern family homes in Kikuyu, Kiambu. Tour the completed showhouse or pre-order one of the remaining units.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+function SectionFallback() {
+  return <div className="min-h-[200px]" />;
+}
+
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-cedar-cream">
+      <Navbar />
+      <HeroSection />
+      <UnitAvailability />
+      <Suspense fallback={<SectionFallback />}>
+        <WhyKikuyuSection />
+        <PropertySpecs />
+        <TrustSection />
+        <TimelineSection />
+        <LeadCaptureSection />
+        <Footer />
+        <FloatingCTA />
+      </Suspense>
     </div>
   );
 }
