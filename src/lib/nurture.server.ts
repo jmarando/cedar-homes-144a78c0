@@ -109,11 +109,20 @@ export async function runDueNurtureTasks(): Promise<NurtureRunResult> {
         }
         await sendWhatsAppText(lead.phone, message);
       } else if (task.channel === "email") {
-        // Email sending needs a verified sender domain. Until then the step
-        // waits rather than being lost.
-        await deferTask(task, "Email sending is not set up for this project yet");
-        result.deferred += 1;
-        continue;
+        const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
+        const outcome = await sendTemplateEmail("nurture-step", lead.email, {
+          templateData: {
+            subject: template.subject ?? template.title,
+            headline: template.title,
+            message,
+          },
+          idempotencyKey: `nurture-${task.id}`,
+        });
+        if (!outcome.sent) {
+          await markTask(task.id, "skipped", "Recipient is unsubscribed or undeliverable");
+          result.skipped += 1;
+          continue;
+        }
       } else {
         await markTask(task.id, "skipped", `Unknown channel: ${task.channel}`);
         result.skipped += 1;
