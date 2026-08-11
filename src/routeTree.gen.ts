@@ -25,6 +25,7 @@ import { Route as AuthenticatedAdminLeadsRouteImport } from './routes/_authentic
 import { Route as AuthenticatedAdminTeamRouteImport } from './routes/_authenticated/admin/team'
 import { Route as ApiPublicWhatsappRouteImport } from './routes/api/public/whatsapp'
 import { Route as AuthenticatedAdminLeadsIdRouteImport } from './routes/_authenticated/admin/leads.$id'
+import { Route as ApiPublicHooksNurtureRouteImport } from './routes/api/public/hooks/nurture'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -106,6 +107,11 @@ const AuthenticatedAdminLeadsIdRoute =
     path: '/$id',
     getParentRoute: () => AuthenticatedAdminLeadsRoute,
   } as any)
+const ApiPublicHooksNurtureRoute = ApiPublicHooksNurtureRouteImport.update({
+  id: '/api/public/hooks/nurture',
+  path: '/api/public/hooks/nurture',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -123,6 +129,7 @@ export interface FileRoutesByFullPath {
   '/api/public/whatsapp': typeof ApiPublicWhatsappRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/admin/leads/$id': typeof AuthenticatedAdminLeadsIdRoute
+  '/api/public/hooks/nurture': typeof ApiPublicHooksNurtureRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -139,6 +146,7 @@ export interface FileRoutesByTo {
   '/api/public/whatsapp': typeof ApiPublicWhatsappRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/admin/leads/$id': typeof AuthenticatedAdminLeadsIdRoute
+  '/api/public/hooks/nurture': typeof ApiPublicHooksNurtureRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -158,6 +166,7 @@ export interface FileRoutesById {
   '/api/public/whatsapp': typeof ApiPublicWhatsappRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/admin/leads/$id': typeof AuthenticatedAdminLeadsIdRoute
+  '/api/public/hooks/nurture': typeof ApiPublicHooksNurtureRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -177,6 +186,7 @@ export interface FileRouteTypes {
     | '/api/public/whatsapp'
     | '/admin/'
     | '/admin/leads/$id'
+    | '/api/public/hooks/nurture'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -193,6 +203,7 @@ export interface FileRouteTypes {
     | '/api/public/whatsapp'
     | '/admin'
     | '/admin/leads/$id'
+    | '/api/public/hooks/nurture'
   id:
     | '__root__'
     | '/'
@@ -211,6 +222,7 @@ export interface FileRouteTypes {
     | '/api/public/whatsapp'
     | '/_authenticated/admin/'
     | '/_authenticated/admin/leads/$id'
+    | '/api/public/hooks/nurture'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -224,6 +236,7 @@ export interface RootRouteChildren {
   VirtualTourRoute: typeof VirtualTourRoute
   WhyTrustUsRoute: typeof WhyTrustUsRoute
   ApiPublicWhatsappRoute: typeof ApiPublicWhatsappRoute
+  ApiPublicHooksNurtureRoute: typeof ApiPublicHooksNurtureRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -340,6 +353,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminLeadsIdRouteImport
       parentRoute: typeof AuthenticatedAdminLeadsRoute
     }
+    '/api/public/hooks/nurture': {
+      id: '/api/public/hooks/nurture'
+      path: '/api/public/hooks/nurture'
+      fullPath: '/api/public/hooks/nurture'
+      preLoaderRoute: typeof ApiPublicHooksNurtureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -396,6 +416,7 @@ const rootRouteChildren: RootRouteChildren = {
   VirtualTourRoute: VirtualTourRoute,
   WhyTrustUsRoute: WhyTrustUsRoute,
   ApiPublicWhatsappRoute: ApiPublicWhatsappRoute,
+  ApiPublicHooksNurtureRoute: ApiPublicHooksNurtureRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
