@@ -160,6 +160,105 @@ export type Database = {
         }
         Relationships: []
       }
+      nurture_tasks: {
+        Row: {
+          attempts: number
+          channel: string
+          created_at: string
+          id: string
+          last_error: string | null
+          lead_id: string
+          scheduled_for: string
+          sent_at: string | null
+          status: string
+          template_id: string
+          updated_at: string
+        }
+        Insert: {
+          attempts?: number
+          channel: string
+          created_at?: string
+          id?: string
+          last_error?: string | null
+          lead_id: string
+          scheduled_for: string
+          sent_at?: string | null
+          status?: string
+          template_id: string
+          updated_at?: string
+        }
+        Update: {
+          attempts?: number
+          channel?: string
+          created_at?: string
+          id?: string
+          last_error?: string | null
+          lead_id?: string
+          scheduled_for?: string
+          sent_at?: string | null
+          status?: string
+          template_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "nurture_tasks_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "nurture_tasks_template_id_fkey"
+            columns: ["template_id"]
+            isOneToOne: false
+            referencedRelation: "nurture_templates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      nurture_templates: {
+        Row: {
+          body: string
+          channel: string
+          created_at: string
+          day_offset: number
+          id: string
+          is_active: boolean
+          sort_order: number
+          step_key: string
+          subject: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          body: string
+          channel: string
+          created_at?: string
+          day_offset: number
+          id?: string
+          is_active?: boolean
+          sort_order?: number
+          step_key: string
+          subject?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          body?: string
+          channel?: string
+          created_at?: string
+          day_offset?: number
+          id?: string
+          is_active?: boolean
+          sort_order?: number
+          step_key?: string
+          subject?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null

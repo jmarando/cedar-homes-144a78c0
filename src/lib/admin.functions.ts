@@ -224,3 +224,57 @@ export const setTeamRole = createServerFn({ method: "POST" })
     }
     return { ok: true as const };
   });
+
+export const listNurture = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const { requireStaff } = await import("./admin.server");
+    await requireStaff(context.supabase, context.userId);
+
+    const [templates, tasks] = await Promise.all([
+      context.supabase
+        .from("nurture_templates")
+        .select("*")
+        .order("day_offset", { ascending: true }),
+      context.supabase
+        .from("nurture_tasks")
+        .select(
+          "id, status, channel, scheduled_for, sent_at, last_error, leads(first_name, last_name, phone), nurture_templates(title, day_offset)",
+        )
+        .order("scheduled_for", { ascending: true })
+        .limit(200),
+    ]);
+
+    if (templates.error) throw new Error(templates.error.message);
+    if (tasks.error) throw new Error(tasks.error.message);
+    return { templates: templates.data ?? [], tasks: tasks.data ?? [] };
+  });
+
+export const updateNurtureTemplate = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator(
+    (data: { id: string; body?: string; subject?: string | null; isActive?: boolean }) => data,
+  )
+  .handler(async ({ data, context }) => {
+    const { requireAdmin } = await import("./admin.server");
+    await requireAdmin(context.supabase, context.userId);
+    const patch: Record<string, unknown> = {};
+    if (data.body !== undefined) patch["body"] = data.body;
+    if (data.subject !== undefined) patch["subject"] = data.subject;
+    if (data.isActive !== undefined) patch["is_active"] = data.isActive;
+    const { error } = await context.supabase
+      .from("nurture_templates")
+      .update(patch as never)
+      .eq("id", data.id);
+    if (error) throw new Error(error.message);
+    return { ok: true as const };
+  });
+
+export const runNurtureNow = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const { requireStaff } = await import("./admin.server");
+    await requireStaff(context.supabase, context.userId);
+    const { runDueNurtureTasks } = await import("./nurture.server");
+    return runDueNurtureTasks();
+  });
