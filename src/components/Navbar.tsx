@@ -66,36 +66,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Utility bar */}
-      <div className="bg-cedar-forest text-cedar-cream text-[11px] font-medium uppercase tracking-widest hidden md:block">
-        <div className="container flex justify-between items-center py-2">
-          <div className="flex items-center gap-6">
-            <a
-              href={`tel:${CONTACT.phone}`}
-              onClick={() => trackEvent("phone_click", { location: "utility_bar" })}
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-200"
-              aria-label="Call us"
-            >
-              <Phone size={12} strokeWidth={2} />
-              <span>{CONTACT.phoneDisplay}</span>
-            </a>
-            <a
-              href={`mailto:${CONTACT.email}`}
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-200"
-              aria-label="Email us"
-            >
-              <Mail size={12} strokeWidth={2} />
-              <span>{CONTACT.email}</span>
-            </a>
-          </div>
-          <div className="hidden lg:block">
-            <span className="opacity-70">Showhouse open for viewing — </span>
-            <span className="text-cedar-terracotta-light font-bold">4 units left</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main nav */}
       <nav
         role="navigation"
         aria-label="Main navigation"
