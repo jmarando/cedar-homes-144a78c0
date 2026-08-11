@@ -1,6 +1,6 @@
 /*
  * Navbar — Cedar Homes "Kenyan Earth Modernism"
- * Sticky nav with top utility bar, scroll-aware background, mobile drawer.
+ * Sticky nav with scroll-aware background, mobile drawer.
  * Mixes home-page section anchors with the standalone content pages.
  */
 import { useState, useEffect, useCallback } from "react";
