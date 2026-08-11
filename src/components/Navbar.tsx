@@ -67,30 +67,31 @@ export default function Navbar() {
   return (
     <>
       {/* Utility bar */}
-      <div className="bg-cedar-forest text-cedar-cream/80 text-[13px] hidden md:block">
+      <div className="bg-cedar-forest text-cedar-cream text-[11px] font-medium uppercase tracking-widest hidden md:block">
         <div className="container flex justify-between items-center py-2">
           <div className="flex items-center gap-6">
             <a
               href={`tel:${CONTACT.phone}`}
               onClick={() => trackEvent("phone_click", { location: "utility_bar" })}
-              className="flex items-center gap-1.5 hover:text-cedar-gold transition-colors duration-200"
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-200"
               aria-label="Call us"
             >
-              <Phone size={12} strokeWidth={2.5} />
+              <Phone size={12} strokeWidth={2} />
               <span>{CONTACT.phoneDisplay}</span>
             </a>
             <a
               href={`mailto:${CONTACT.email}`}
-              className="flex items-center gap-1.5 hover:text-cedar-gold transition-colors duration-200"
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-200"
               aria-label="Email us"
             >
-              <Mail size={12} strokeWidth={2.5} />
+              <Mail size={12} strokeWidth={2} />
               <span>{CONTACT.email}</span>
             </a>
           </div>
-          <span className="text-cedar-gold/90 font-semibold tracking-wide text-[11px] uppercase">
-            Showhouse Open for Viewing — 4 Units for Pre-Order
-          </span>
+          <div className="hidden lg:block">
+            <span className="opacity-70">Showhouse open for viewing — </span>
+            <span className="text-cedar-terracotta-light font-bold">4 units left</span>
+          </div>
         </div>
       </div>
 
@@ -98,41 +99,41 @@ export default function Navbar() {
       <nav
         role="navigation"
         aria-label="Main navigation"
-        className={`sticky top-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-white/97 backdrop-blur-lg shadow-[0_1px_3px_0_rgba(27,58,45,0.08)]"
-            : "bg-white/80 backdrop-blur-sm"
+        className={`sticky top-0 z-50 transition-all duration-300 border-b border-cedar-forest/5 ${
+          scrolled ? "bg-white/95 backdrop-blur-lg" : "bg-white"
         }`}
       >
-        <div className="container flex items-center justify-between h-[68px]">
+        <div className="container flex items-center justify-between py-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group shrink-0" aria-label="Cedar Homes - Home">
-            <div className="w-9 h-9 bg-cedar-forest flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-              <span className="text-cedar-gold font-serif text-base font-bold leading-none">G</span>
+          <Link to="/" className="flex items-center gap-4 group shrink-0" aria-label="Cedar Homes - Home">
+            <div className="w-10 h-10 bg-cedar-forest flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+              <span className="text-cedar-cream font-serif text-xl leading-none">G</span>
             </div>
-            <div className="leading-tight">
-              <span className="font-serif text-cedar-forest text-lg tracking-tight block">Cedar Homes</span>
-              <span className="text-[9px] uppercase tracking-[0.2em] text-cedar-warm-gray font-semibold">
+            <div className="flex flex-col leading-tight">
+              <span className="font-serif text-cedar-forest text-2xl leading-tight">Cedar Homes</span>
+              <span className="text-[9px] uppercase tracking-[0.2em] text-cedar-light-gray font-semibold">
                 by GAP Developers
               </span>
             </div>
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden lg:flex items-center gap-0.5">
+          <div className="hidden lg:flex items-center gap-x-6 xl:gap-x-8">
             {navLinks.map((link) =>
               renderLink(
                 link,
-                "px-3 py-2 text-[13px] font-medium text-cedar-charcoal/60 hover:text-cedar-forest transition-colors duration-200"
+                "text-xs font-semibold uppercase tracking-wider text-cedar-warm-gray hover:text-cedar-forest transition-colors duration-200 whitespace-nowrap"
               )
             )}
-            <Link
-              to="/book-a-visit"
-              className="ml-3 bg-cedar-terracotta text-white px-5 py-2 text-[13px] font-semibold tracking-wide hover:bg-cedar-terracotta-dark transition-colors duration-200 shadow-sm shadow-cedar-terracotta/15"
-            >
-              Book a Visit
-            </Link>
           </div>
+
+          <Link
+            to="/book-a-visit"
+            className="hidden lg:inline-block bg-cedar-terracotta text-white px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-cedar-terracotta-dark transition-colors duration-200 active:scale-[0.96]"
+          >
+            Book a Visit
+          </Link>
+
 
           {/* Mobile toggle */}
           <button
