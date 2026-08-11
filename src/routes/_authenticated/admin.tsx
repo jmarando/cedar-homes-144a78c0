@@ -17,6 +17,7 @@ const NAV: Array<{ to: string; label: string; exact?: boolean }> = [
   { to: "/admin", label: "Overview", exact: true },
   { to: "/admin/leads", label: "Leads" },
   { to: "/admin/inbox", label: "Inbox" },
+  { to: "/admin/nurture", label: "Follow-ups" },
   { to: "/admin/team", label: "Team" },
 ];
 

@@ -22,6 +22,7 @@ import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
 import { Route as AuthenticatedAdminInboxRouteImport } from './routes/_authenticated/admin/inbox'
 import { Route as AuthenticatedAdminLeadsRouteImport } from './routes/_authenticated/admin/leads'
+import { Route as AuthenticatedAdminNurtureRouteImport } from './routes/_authenticated/admin/nurture'
 import { Route as AuthenticatedAdminTeamRouteImport } from './routes/_authenticated/admin/team'
 import { Route as ApiPublicWhatsappRouteImport } from './routes/api/public/whatsapp'
 import { Route as AuthenticatedAdminLeadsIdRouteImport } from './routes/_authenticated/admin/leads.$id'
@@ -91,6 +92,12 @@ const AuthenticatedAdminLeadsRoute = AuthenticatedAdminLeadsRouteImport.update({
   path: '/leads',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
+const AuthenticatedAdminNurtureRoute =
+  AuthenticatedAdminNurtureRouteImport.update({
+    id: '/nurture',
+    path: '/nurture',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedAdminTeamRoute = AuthenticatedAdminTeamRouteImport.update({
   id: '/team',
   path: '/team',
@@ -125,6 +132,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/admin/inbox': typeof AuthenticatedAdminInboxRoute
   '/admin/leads': typeof AuthenticatedAdminLeadsRouteWithChildren
+  '/admin/nurture': typeof AuthenticatedAdminNurtureRoute
   '/admin/team': typeof AuthenticatedAdminTeamRoute
   '/api/public/whatsapp': typeof ApiPublicWhatsappRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
@@ -142,6 +150,7 @@ export interface FileRoutesByTo {
   '/why-trust-us': typeof WhyTrustUsRoute
   '/admin/inbox': typeof AuthenticatedAdminInboxRoute
   '/admin/leads': typeof AuthenticatedAdminLeadsRouteWithChildren
+  '/admin/nurture': typeof AuthenticatedAdminNurtureRoute
   '/admin/team': typeof AuthenticatedAdminTeamRoute
   '/api/public/whatsapp': typeof ApiPublicWhatsappRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
@@ -162,6 +171,7 @@ export interface FileRoutesById {
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/_authenticated/admin/inbox': typeof AuthenticatedAdminInboxRoute
   '/_authenticated/admin/leads': typeof AuthenticatedAdminLeadsRouteWithChildren
+  '/_authenticated/admin/nurture': typeof AuthenticatedAdminNurtureRoute
   '/_authenticated/admin/team': typeof AuthenticatedAdminTeamRoute
   '/api/public/whatsapp': typeof ApiPublicWhatsappRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
@@ -182,6 +192,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin/inbox'
     | '/admin/leads'
+    | '/admin/nurture'
     | '/admin/team'
     | '/api/public/whatsapp'
     | '/admin/'
@@ -199,6 +210,7 @@ export interface FileRouteTypes {
     | '/why-trust-us'
     | '/admin/inbox'
     | '/admin/leads'
+    | '/admin/nurture'
     | '/admin/team'
     | '/api/public/whatsapp'
     | '/admin'
@@ -218,6 +230,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin'
     | '/_authenticated/admin/inbox'
     | '/_authenticated/admin/leads'
+    | '/_authenticated/admin/nurture'
     | '/_authenticated/admin/team'
     | '/api/public/whatsapp'
     | '/_authenticated/admin/'
@@ -332,6 +345,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminLeadsRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/nurture': {
+      id: '/_authenticated/admin/nurture'
+      path: '/nurture'
+      fullPath: '/admin/nurture'
+      preLoaderRoute: typeof AuthenticatedAdminNurtureRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/team': {
       id: '/_authenticated/admin/team'
       path: '/team'
@@ -380,6 +400,7 @@ const AuthenticatedAdminLeadsRouteWithChildren =
 interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminInboxRoute: typeof AuthenticatedAdminInboxRoute
   AuthenticatedAdminLeadsRoute: typeof AuthenticatedAdminLeadsRouteWithChildren
+  AuthenticatedAdminNurtureRoute: typeof AuthenticatedAdminNurtureRoute
   AuthenticatedAdminTeamRoute: typeof AuthenticatedAdminTeamRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
 }
@@ -387,6 +408,7 @@ interface AuthenticatedAdminRouteChildren {
 const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminInboxRoute: AuthenticatedAdminInboxRoute,
   AuthenticatedAdminLeadsRoute: AuthenticatedAdminLeadsRouteWithChildren,
+  AuthenticatedAdminNurtureRoute: AuthenticatedAdminNurtureRoute,
   AuthenticatedAdminTeamRoute: AuthenticatedAdminTeamRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
 }
