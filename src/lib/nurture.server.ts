@@ -127,7 +127,7 @@ export async function runDueNurtureTasks(): Promise<NurtureRunResult> {
         direction: "outbound",
         subject: template.subject ?? template.title,
         body: message,
-        contact_handle: task.channel === "email" ? lead.email : lead.phone,
+        contact_handle: String(task.channel) === "email" ? lead.email : lead.phone,
         metadata: { automated: true, step: template.step_key },
       } as never);
       result.sent += 1;
