@@ -110,95 +110,15 @@ export default function UnitAvailability() {
           </div>
         </motion.div>
 
-        {/* Pre-order units header */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mb-8"
-        >
-          <div className="flex items-center gap-3 mb-3">
-            <ShoppingBag size={16} className="text-cedar-terracotta" />
-            <h3 className="font-serif text-xl text-cedar-forest">Pre-Order Units 2–5</h3>
-            <div className="flex-1 h-px bg-cedar-forest/[0.08]" />
-          </div>
-          <p className="text-cedar-warm-gray text-[15px] max-w-xl">
-            Every pre-order unit is built to the exact same specification as the showhouse.
-            Lock in today's price and choose your preferred delivery window.
-          </p>
-        </motion.div>
-
-        {/* Pre-order cards grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {units.filter(u => u.status !== "showhouse").map((unit, i) => (
-            <motion.div
-              key={unit.number}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.45, delay: 0.4 + i * 0.08 }}
-              className="group border border-cedar-terracotta/[0.12] hover:border-cedar-terracotta/30 transition-all duration-300 hover:shadow-lg hover:shadow-cedar-terracotta/[0.06] bg-white"
-            >
-              {/* Unit image */}
-              <div className="relative h-40 overflow-hidden">
-                <img
-                  src={EXTERIOR_IMAGE}
-                  alt={`Cedar Homes Unit ${unit.number}`}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent" />
-                <div className="absolute top-3 left-3">
-                  <span className="bg-cedar-terracotta/90 text-white text-[10px] font-bold px-2.5 py-1 uppercase tracking-wider backdrop-blur-sm">
-                    Pre-Order
-                  </span>
-                </div>
-                <div className="absolute top-3 right-3">
-                  <span className="font-serif text-2xl text-white drop-shadow-lg">0{unit.number}</span>
-                </div>
-              </div>
-
-              {/* Details */}
-              <div className="p-5">
-                <div className="space-y-2.5 mb-4">
-                  {[
-                    { label: "Price", value: unit.price },
-                    { label: "Delivery", value: unit.delivery },
-                    { label: "Deposit", value: "Ksh 500K" },
-                  ].map((row) => (
-                    <div key={row.label} className="flex justify-between text-[13px]">
-                      <span className="text-cedar-warm-gray">{row.label}</span>
-                      <span className="text-cedar-charcoal font-semibold">{row.value}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {unit.highlight && (
-                  <div className="bg-cedar-gold/[0.08] text-cedar-gold-dark text-[11px] font-semibold px-3 py-1.5 text-center mb-4 tracking-wide uppercase">
-                    {unit.highlight}
-                  </div>
-                )}
-
-                <a
-                  href="#contact"
-                  className="flex items-center justify-center gap-2 bg-cedar-terracotta/[0.07] hover:bg-cedar-terracotta text-cedar-terracotta hover:text-white text-center py-2.5 text-[13px] font-semibold transition-all duration-200 tracking-wide group/btn"
-                >
-                  Pre-Order Unit {unit.number}
-                  <ArrowRight size={13} className="transition-transform duration-200 group-hover/btn:translate-x-0.5" />
-                </a>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
         {/* Bottom note */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-10 text-center text-cedar-warm-gray text-[13px] max-w-2xl mx-auto"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center text-cedar-warm-gray text-[13px] max-w-2xl mx-auto"
         >
-          All units are 4-bedroom en-suite maisonettes on 1/8 acre plots with freehold title.
-          Prices are subject to change — pre-order now to lock in current rates.
+          All homes are 4-bedroom en-suite maisonettes on 1/8 acre plots with freehold title,
+          built to the exact standard of the showhouse.
         </motion.p>
       </div>
     </section>
