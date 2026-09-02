@@ -17,7 +17,7 @@ type NavLink =
 
 const navLinks: NavLink[] = [
   { label: "Units", kind: "hash", hash: "units" },
-  { label: "Why Kikuyu", kind: "hash", hash: "why-kikuyu" },
+  { label: "Why Lusegetti", kind: "hash", hash: "why-kikuyu" },
   { label: "Specs", kind: "hash", hash: "specs" },
   { label: "Investment", kind: "page", to: "/investment" },
   { label: "ROI Calculator", kind: "page", to: "/roi-calculator" },

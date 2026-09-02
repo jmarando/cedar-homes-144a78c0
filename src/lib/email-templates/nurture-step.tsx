@@ -23,7 +23,7 @@ interface NurtureStepProps {
 
 const NurtureStepEmail = ({
   message = '',
-  headline = 'Cedar Homes, Kikuyu',
+  headline = 'Cedar Homes, Lusegetti',
   ctaLabel = 'Book a showhouse visit',
   ctaUrl = 'https://gapdevelopers.co.ke/cedar-homes/',
 }: NurtureStepProps) => (
@@ -47,7 +47,7 @@ const NurtureStepEmail = ({
         </Button>
         <Hr style={hr} />
         <Text style={footer}>
-          Cedar Homes · 4-bedroom homes in Kikuyu · Reply to this email or WhatsApp us on
+          Cedar Homes · 4-bedroom homes at Lusegetti, Kikuyu · Reply to this email or WhatsApp us on
           +254 797 964 858.
         </Text>
       </Container>
@@ -64,7 +64,7 @@ export const template = {
     subject: 'Your Cedar Homes information pack',
     headline: 'Thanks for your interest in Cedar Homes',
     message:
-      'Hi Grace,\n\nThanks for reaching out about Cedar Homes in Kikuyu. Our 4-bedroom homes start at Ksh 23.8M, with the showhouse open for viewing daily.\n\nWould you like to book a visit this week?',
+      'Hi Grace,\n\nThanks for reaching out about Cedar Homes at Lusegetti. Our 4-bedroom homes start at Ksh 23.5M, with the showhouse open for viewing daily.\n\nWould you like to book a visit this week?',
   },
 } satisfies TemplateEntry
 

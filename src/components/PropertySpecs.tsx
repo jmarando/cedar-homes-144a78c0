@@ -3,10 +3,11 @@
  * Spec grid + room list + pricing card
  */
 import { motion } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 import { useInView } from "@/hooks/useInView";
 import {
   Maximize2, BedDouble, Bath, Car, Layers, TreePine,
-  Droplets, Zap, Wifi, Lock
+  Zap, Lock
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -20,13 +21,11 @@ const specs: Spec[] = [
   { icon: Maximize2, label: "Built-Up Area", value: "266 SQM" },
   { icon: BedDouble, label: "Bedrooms", value: "4 En-Suite" },
   { icon: Bath, label: "Bathrooms", value: "4 + Guest WC" },
-  { icon: Car, label: "Parking", value: "2 Covered Bays" },
+  { icon: Car, label: "Parking", value: "Parking for 2" },
   { icon: Layers, label: "Floors", value: "2 Storeys" },
   { icon: TreePine, label: "Plot Size", value: "1/8 Acre" },
-  { icon: Droplets, label: "Water", value: "Borehole + Tank" },
   { icon: Zap, label: "Power", value: "KPLC + Solar Ready" },
-  { icon: Wifi, label: "Internet", value: "Fibre-Ready" },
-  { icon: Lock, label: "Security", value: "Gated + CCTV" },
+  { icon: Lock, label: "Security", value: "Gated Community" },
 ];
 
 const rooms = [
@@ -36,9 +35,9 @@ const rooms = [
   "Family room / TV lounge",
   "Separate laundry area",
   "Staff quarter with bathroom",
-  "Private garden per unit",
-  "Rooftop terrace option",
+  "Private garden per home",
 ];
+
 
 export default function PropertySpecs() {
   const [ref, inView] = useInView({ threshold: 0.08 });
@@ -127,9 +126,11 @@ export default function PropertySpecs() {
                 Starting From
               </span>
               <span className="font-serif text-[2.5rem] lg:text-[2.75rem] text-cedar-forest block leading-none mb-1">
-                Ksh 23.8M
+                Ksh 23.5M
               </span>
-              <span className="text-cedar-warm-gray text-[13px] block mb-6">Flexible payment plans available</span>
+              <span className="text-cedar-warm-gray text-[13px] block mb-6">
+                Flexible payment schedule available
+              </span>
 
               <div className="w-10 h-[1px] bg-cedar-gold mb-6" />
 
@@ -137,8 +138,7 @@ export default function PropertySpecs() {
                 {[
                   { label: "Booking Deposit", value: "Ksh 500,000" },
                   { label: "Title Type", value: "Freehold" },
-                  { label: "Showhouse", value: "Ready Now" },
-                  { label: "Pre-Orders", value: "Q4 2026 – Q3 2027" },
+                  { label: "Show House", value: "Ready Now" },
                 ].map((row) => (
                   <div key={row.label} className="flex justify-between text-[13px]">
                     <span className="text-cedar-warm-gray">{row.label}</span>
@@ -147,12 +147,12 @@ export default function PropertySpecs() {
                 ))}
               </div>
 
-              <a
-                href="#contact"
+              <Link
+                to="/payment-plans"
                 className="block bg-cedar-terracotta hover:bg-cedar-terracotta-dark text-white px-6 py-3 font-semibold tracking-wide transition-colors duration-200 w-full text-[13px] text-center mt-8"
               >
-                Request Payment Plan
-              </a>
+                View Flexible Payment Schedule
+              </Link>
             </div>
           </motion.div>
         </div>

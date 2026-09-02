@@ -9,9 +9,9 @@ const HERO_IMAGE = "https://private-us-east-1.manuscdn.com/sessionFile/uY8owBdGq
 
 const stats = [
   { icon: Eye, value: "1", label: "Showhouse Ready" },
-  { icon: Home, value: "4", label: "Pre-Order Units" },
+  { icon: Home, value: "5", label: "Units Only Available" },
   { icon: Ruler, value: "266", label: "SQM Per Home" },
-  { icon: MapPin, value: "Kikuyu", label: "Off Dagoretti Rd" },
+  { icon: MapPin, value: "Lusegetti", label: "Off Dagoretti Rd" },
 ];
 
 const fadeUp = (delay: number) => ({
@@ -27,7 +27,7 @@ export default function HeroSection() {
       <div className="absolute inset-0">
         <img
           src={HERO_IMAGE}
-          alt="Cedar Homes luxury gated estate in Kikuyu, Kenya"
+          alt="Cedar Homes gated estate at Lusegetti, Kikuyu, Kenya"
           className="w-full h-full object-cover"
           loading="eager"
           fetchPriority="high"
@@ -50,7 +50,7 @@ export default function HeroSection() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C4703F]" />
               </span>
               <span className="text-white/85 text-[13px] font-medium tracking-wide">
-                Showhouse Open — 4 Units for Pre-Order
+                Show House Ready
               </span>
             </span>
           </motion.div>
@@ -70,8 +70,8 @@ export default function HeroSection() {
             className="text-white/75 text-[17px] lg:text-lg leading-[1.7] mb-10 max-w-[540px]"
           >
             Our showhouse is complete and ready for viewing. Experience the quality first-hand,
-            then secure one of only 4 remaining units at pre-order pricing — starting from{" "}
-            <span className="text-[#B8944F] font-semibold">Ksh 23.8 Million</span>.
+            then secure one of only 4 remaining homes — starting from{" "}
+            <span className="text-[#B8944F] font-semibold">Ksh 23.5 Million</span>.
           </motion.p>
 
           {/* CTAs */}
@@ -88,7 +88,7 @@ export default function HeroSection() {
               className="border border-white/25 hover:border-white/50 text-white px-7 py-3.5 text-center font-semibold tracking-wide transition-all duration-200 backdrop-blur-sm hover:bg-white/[0.06] text-[15px] flex items-center justify-center gap-2.5"
             >
               <ShoppingBag size={17} />
-              Pre-Order a Unit
+              Book Your House
             </a>
           </motion.div>
         </div>

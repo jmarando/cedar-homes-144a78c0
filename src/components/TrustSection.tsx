@@ -49,7 +49,6 @@ const trustSignals = [
   "NCA-registered contractor and architect",
   "Sample sale agreements available on request",
   "Physical site visits available weekly",
-  "Transparent construction cost breakdown",
   "Independent valuation reports",
 ];
 

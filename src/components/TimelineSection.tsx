@@ -32,7 +32,7 @@ const milestones: Milestone[] = [
     icon: HardHat,
     date: "Q3 2026",
     title: "Units 2 & 3 — Foundation & Structure",
-    desc: "Construction begins on Units 2 and 3 upon pre-order confirmation. Foundation, columns, and beams.",
+    desc: "Construction begins on Units 2 and 3 upon booking confirmation. Foundation, columns, and beams.",
     status: "upcoming",
     unitLabel: "Units 2–3",
   },
@@ -108,10 +108,10 @@ function CountdownBanner() {
 
 const unitStatuses = [
   { unit: "Unit 1", status: "Showhouse", active: true },
-  { unit: "Unit 2", status: "Pre-Order", active: false },
-  { unit: "Unit 3", status: "Pre-Order", active: false },
-  { unit: "Unit 4", status: "Pre-Order", active: false },
-  { unit: "Unit 5", status: "Pre-Order", active: false },
+  { unit: "Unit 2", status: "Available", active: false },
+  { unit: "Unit 3", status: "Available", active: false },
+  { unit: "Unit 4", status: "Available", active: false },
+  { unit: "Unit 5", status: "Available", active: false },
 ];
 
 export default function TimelineSection() {
@@ -140,7 +140,7 @@ export default function TimelineSection() {
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-white leading-tight mb-3 max-w-xl">
                 Showhouse Ready.{" "}
-                <span className="text-cedar-gold">Pre-Orders Building.</span>
+                <span className="text-cedar-gold">Remaining Homes Building.</span>
               </h2>
               <p className="text-white/60 text-[15px] mb-6 max-w-md">
                 Full estate completion by Q3 2027. Pre-order now to secure your preferred unit.

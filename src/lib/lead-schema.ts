@@ -6,8 +6,8 @@ import { z } from "zod";
 
 export const INTEREST_OPTIONS = [
   { value: "showhouse-visit", label: "Visiting the showhouse" },
-  { value: "pre-order", label: "Pre-ordering a unit" },
-  { value: "buy-showhouse", label: "Buying the showhouse (Unit 1)" },
+  { value: "pre-order", label: "Booking one of the available homes" },
+  { value: "buy-showhouse", label: "Buying the show house" },
   { value: "virtual-tour", label: "Virtual tour (from abroad)" },
   { value: "investment-brief", label: "The investment brief" },
   { value: "roi-calculator", label: "ROI and rental projections" },

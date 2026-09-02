@@ -84,8 +84,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Cedar Homes Kikuyu" },
-      { name: "description", content: "Modern family homes in Kikuyu, Kiambu." },
+      { title: "Cedar Homes Lusegetti" },
+      { name: "description", content: "Modern family homes at Lusegetti, Kikuyu, Kiambu." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

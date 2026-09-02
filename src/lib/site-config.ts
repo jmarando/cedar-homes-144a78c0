@@ -8,16 +8,16 @@ export const CONTACT = {
   phoneDisplay: "+254 797 964 858",
   whatsapp: "254797964858",
   email: "info@gapdevelopers.co.ke",
-  address: "Cedar Homes, Off Dagoretti Road, Kikuyu, Kiambu County, Kenya",
-  mapsUrl: "https://maps.google.com/?q=Kikuyu+Dagoretti+Road+Kiambu+Kenya",
+  address: "Cedar Homes, Lusegetti, Off Dagoretti Road, Kikuyu, Kiambu County, Kenya",
+  mapsUrl: "https://maps.google.com/?q=Lusegetti+Dagoretti+Road+Kikuyu+Kiambu+Kenya",
 } as const;
 
 export const PRICING = {
-  fromPrice: 23_800_000,
+  fromPrice: 23_500_000,
   toPrice: 25_000_000,
-  fromPriceLabel: "Ksh 23.8M",
+  fromPriceLabel: "Ksh 23.5M",
   toPriceLabel: "Ksh 25M",
-  rangeLabel: "Ksh 23.8M – 25M",
+  rangeLabel: "from Ksh 23.5M",
   reservationDeposit: 500_000,
   reservationDepositLabel: "Ksh 500,000",
 } as const;
@@ -26,10 +26,10 @@ export const PROJECT = {
   name: "Cedar Homes",
   developer: "GAP Developers",
   totalUnits: 5,
-  availableUnits: 4,
+  availableUnits: 5,
   sqm: 266,
   bedrooms: 4,
-  location: "Kikuyu, Kiambu County",
+  location: "Lusegetti (Kikuyu), Kiambu County",
   appreciationRate: "15–20%",
 } as const;
 
@@ -40,19 +40,20 @@ export function whatsappLink(message: string): string {
 
 /** Pre-written WhatsApp openers, one per intent. */
 export const WHATSAPP_MESSAGES = {
-  general: "Hi Cedar Homes, I'd like more information about the Kikuyu development.",
+  general: "Hi Cedar Homes, I'd like more information about the Lusegetti development.",
   showhouseVisit:
-    "Hi Cedar Homes, I'd like to book a visit to the showhouse in Kikuyu. When are you available?",
-  preOrder:
-    "Hi Cedar Homes, I'm interested in pre-ordering one of the remaining units. Could you send me the details?",
+    "Hi Cedar Homes, I'd like to book a visit to the showhouse at Lusegetti. When are you available?",
+  bookHouse:
+    "Hi Cedar Homes, I'd like to book one of the available houses. Could you send me the details?",
   virtualTour:
     "Hi Cedar Homes, I'm based abroad and would like to schedule a live virtual tour of the showhouse.",
   paymentPlan:
-    "Hi Cedar Homes, could you share the available payment plans for the Cedar Homes units?",
+    "Hi Cedar Homes, could you share the flexible payment schedule for the Cedar Homes units?",
   investment:
-    "Hi Cedar Homes, I'd like the investment brief with appreciation and rental yield figures for Kikuyu.",
+    "Hi Cedar Homes, I'd like the investment brief with appreciation and rental yield figures for the area.",
   roi: "Hi Cedar Homes, I've used the ROI calculator and would like to discuss the numbers with your team.",
 } as const;
+
 
 export const PERSONAS = [
   {

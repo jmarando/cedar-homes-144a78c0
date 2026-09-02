@@ -5,8 +5,8 @@ import PageShell from "@/components/PageShell";
 import LeadForm from "@/components/LeadForm";
 import { PRICING } from "@/lib/site-config";
 
-const title = "Payment Plans & Reservation — Cedar Homes Kikuyu";
-const description = `Reserve a Cedar Homes unit from ${PRICING.reservationDepositLabel}. Instalment plans, mortgage routes and cash terms for the remaining Kikuyu units explained.`;
+const title = "Payment Plans & Reservation — Cedar Homes Lusegetti";
+const description = `Reserve a Cedar Homes house from ${PRICING.reservationDepositLabel}. Instalment plans, mortgage routes and cash terms for the remaining Cedar Homes units explained.`;
 
 export const Route = createFileRoute("/payment-plans")({
   head: () => ({
@@ -38,7 +38,7 @@ const routes = [
     name: "Instalment plan",
     summary: `From ${PRICING.reservationDepositLabel} reservation`,
     points: [
-      `${PRICING.reservationDepositLabel} reservation holds the unit at today's price`,
+      `${PRICING.reservationDepositLabel} reservation holds your home at today's price`,
       "Balance spread across staged payments through to completion",
       "Schedule agreed in writing before any funds move",
     ],
@@ -55,10 +55,10 @@ const routes = [
   },
   {
     icon: KeyRound,
-    name: "Showhouse purchase",
+    name: "Show house purchase",
     summary: "Move in immediately",
     points: [
-      "Unit 1 is complete, furnished and available to buy",
+      "The show house is complete, furnished and available to buy",
       "No construction wait — handover on completion of transfer",
       "Ideal for buyers who need occupancy now",
     ],

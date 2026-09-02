@@ -13,7 +13,7 @@ interface Testimonial {
 const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "Placeholder — a local family buyer's story about choosing Kikuyu and how the build progressed.",
+      "Placeholder — a local family buyer's story about choosing Lusegetti and how the build progressed.",
     name: "Buyer name",
     detail: "Family buyer, Nairobi",
   },
@@ -25,7 +25,7 @@ const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "Placeholder — an investor's note on rental demand in Kikuyu and pre-completion pricing.",
+      "Placeholder — an investor's note on rental demand in the area and pre-completion pricing.",
     name: "Buyer name",
     detail: "Investor, Nairobi",
   },

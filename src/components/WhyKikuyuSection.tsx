@@ -30,7 +30,7 @@ const familyFeatures: Feature[] = [
 ];
 
 const investorFeatures: Feature[] = [
-  { icon: TrendingUp, title: "9% Rental Yield", desc: "Kikuyu's booming rental market delivers consistent, high-return income." },
+  { icon: TrendingUp, title: "9% Rental Yield", desc: "The area's booming rental market delivers consistent, high-return income." },
   { icon: Users, title: "High Tenant Demand", desc: "Southern Bypass and Waiyaki Way expansion drive massive housing demand." },
   { icon: Briefcase, title: "Hands-Off Management", desc: "GAP Developers offers full property management — earn from anywhere." },
 ];
@@ -58,7 +58,7 @@ export default function WhyKikuyuSection() {
   const [ref, inView] = useInView({ threshold: 0.08 });
 
   return (
-    <section id="why-kikuyu" className="relative" aria-label="Why Kikuyu">
+    <section id="why-kikuyu" className="relative" aria-label="Why Lusegetti">
       {/* Diagonal divider */}
       <div className="relative -mt-px">
         <svg viewBox="0 0 1440 60" className="w-full block" preserveAspectRatio="none">
@@ -76,7 +76,7 @@ export default function WhyKikuyuSection() {
             className="max-w-2xl"
           >
             <span className="text-cedar-terracotta font-semibold text-[12px] tracking-[0.18em] uppercase mb-4 block">
-              Why Kikuyu
+              Why Lusegetti
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-cedar-forest leading-tight mb-5">
               Whether You're Building a Home{" "}
@@ -152,7 +152,7 @@ export default function WhyKikuyuSection() {
                 Smart Investment, Proven Returns
               </h3>
               <p className="text-cedar-warm-gray text-[15px] mb-8 leading-relaxed max-w-md">
-                Kikuyu is one of Nairobi's fastest-growing suburbs. Cedar Homes offers a rare opportunity
+                Lusegetti, Kikuyu is one of Nairobi's fastest-growing suburbs. Cedar Homes offers a rare opportunity
                 to own freehold property with proven rental demand.
               </p>
 
@@ -186,7 +186,7 @@ export default function WhyKikuyuSection() {
                     <span className="text-white/70 text-base font-medium">Projected Rental Yield</span>
                   </div>
                   <p className="text-white/50 text-[13px] leading-relaxed max-w-sm">
-                    Based on current Kikuyu rental market data, Southern Bypass corridor demand,
+                    Based on current local rental market data, Southern Bypass corridor demand,
                     and comparable property performance in the area.
                   </p>
                 </div>
