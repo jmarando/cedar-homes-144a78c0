@@ -9,9 +9,9 @@ const HERO_IMAGE = "https://private-us-east-1.manuscdn.com/sessionFile/uY8owBdGq
 
 const stats = [
   { icon: Eye, value: "1", label: "Showhouse Ready" },
-  { icon: Home, value: "4", label: "Pre-Order Units" },
+  { icon: Home, value: "5", label: "Units Only Available" },
   { icon: Ruler, value: "266", label: "SQM Per Home" },
-  { icon: MapPin, value: "Kikuyu", label: "Off Dagoretti Rd" },
+  { icon: MapPin, value: "Lusegetti", label: "Off Dagoretti Rd" },
 ];
 
 const fadeUp = (delay: number) => ({
