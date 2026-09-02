@@ -3,10 +3,11 @@
  * Spec grid + room list + pricing card
  */
 import { motion } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 import { useInView } from "@/hooks/useInView";
 import {
   Maximize2, BedDouble, Bath, Car, Layers, TreePine,
-  Droplets, Zap, Wifi, Lock
+  Zap, Lock
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -20,13 +21,11 @@ const specs: Spec[] = [
   { icon: Maximize2, label: "Built-Up Area", value: "266 SQM" },
   { icon: BedDouble, label: "Bedrooms", value: "4 En-Suite" },
   { icon: Bath, label: "Bathrooms", value: "4 + Guest WC" },
-  { icon: Car, label: "Parking", value: "2 Covered Bays" },
+  { icon: Car, label: "Parking", value: "Parking for 2" },
   { icon: Layers, label: "Floors", value: "2 Storeys" },
   { icon: TreePine, label: "Plot Size", value: "1/8 Acre" },
-  { icon: Droplets, label: "Water", value: "Borehole + Tank" },
   { icon: Zap, label: "Power", value: "KPLC + Solar Ready" },
-  { icon: Wifi, label: "Internet", value: "Fibre-Ready" },
-  { icon: Lock, label: "Security", value: "Gated + CCTV" },
+  { icon: Lock, label: "Security", value: "Gated Community" },
 ];
 
 const rooms = [
@@ -36,9 +35,9 @@ const rooms = [
   "Family room / TV lounge",
   "Separate laundry area",
   "Staff quarter with bathroom",
-  "Private garden per unit",
-  "Rooftop terrace option",
+  "Private garden per home",
 ];
+
 
 export default function PropertySpecs() {
   const [ref, inView] = useInView({ threshold: 0.08 });
