@@ -70,8 +70,8 @@ export default function HeroSection() {
             className="text-white/75 text-[17px] lg:text-lg leading-[1.7] mb-10 max-w-[540px]"
           >
             Our showhouse is complete and ready for viewing. Experience the quality first-hand,
-            then secure one of only 4 remaining units at pre-order pricing — starting from{" "}
-            <span className="text-[#B8944F] font-semibold">Ksh 23.8 Million</span>.
+            then secure one of only 4 remaining homes — starting from{" "}
+            <span className="text-[#B8944F] font-semibold">Ksh 23.5 Million</span>.
           </motion.p>
 
           {/* CTAs */}
@@ -88,7 +88,7 @@ export default function HeroSection() {
               className="border border-white/25 hover:border-white/50 text-white px-7 py-3.5 text-center font-semibold tracking-wide transition-all duration-200 backdrop-blur-sm hover:bg-white/[0.06] text-[15px] flex items-center justify-center gap-2.5"
             >
               <ShoppingBag size={17} />
-              Pre-Order a Unit
+              Book Your House
             </a>
           </motion.div>
         </div>
