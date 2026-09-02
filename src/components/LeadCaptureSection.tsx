@@ -13,12 +13,12 @@ const valueProps = [
   {
     icon: Eye,
     title: "Visit the Showhouse",
-    desc: "Walk through Unit 1 and see the quality of finishes, layout, and space in person.",
+    desc: "Walk through the show house and see the quality of finishes, layout, and space in person.",
   },
   {
     icon: ShoppingBag,
-    title: "Pre-Order at Today's Price",
-    desc: `Lock in current pricing with a ${PRICING.reservationDepositLabel} deposit. Flexible payment plans available.`,
+    title: "Start Your Purchase Journey",
+    desc: `Reserve your home with a ${PRICING.reservationDepositLabel} deposit and a flexible payment schedule.`,
   },
   {
     icon: Video,
@@ -61,7 +61,7 @@ export default function LeadCaptureSection() {
                 <span className="text-cedar-gold italic">Then Decide</span>
               </h2>
               <p className="text-white/60 text-[16px] leading-relaxed mb-10 max-w-md">
-                Whether you want to walk through the showhouse, pre-order your dream home,
+                Whether you want to walk through the show house, book your home,
                 or explore the investment opportunity — our team is ready to guide you.
               </p>
 
