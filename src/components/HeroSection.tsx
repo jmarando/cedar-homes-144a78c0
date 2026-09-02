@@ -27,7 +27,7 @@ export default function HeroSection() {
       <div className="absolute inset-0">
         <img
           src={HERO_IMAGE}
-          alt="Cedar Homes luxury gated estate in Kikuyu, Kenya"
+          alt="Cedar Homes gated estate at Lusegetti, Kikuyu, Kenya"
           className="w-full h-full object-cover"
           loading="eager"
           fetchPriority="high"
