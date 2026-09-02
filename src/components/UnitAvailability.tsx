@@ -24,15 +24,15 @@ export default function UnitAvailability() {
           className="text-center max-w-2xl mx-auto mb-14"
         >
           <span className="text-cedar-terracotta font-semibold text-[12px] tracking-[0.18em] uppercase mb-4 block">
-            Unit Availability
+            Availability
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-cedar-forest leading-tight mb-4">
             See It. Love It.{" "}
             <span className="text-cedar-terracotta">Secure It.</span>
           </h2>
           <p className="text-cedar-warm-gray text-[16px] leading-relaxed">
-            Unit 1 is our completed showhouse — walk through, touch the finishes, feel the space.
-            Then pre-order your own unit at today's price.
+            The showhouse is complete — walk through, touch the finishes, feel the space.
+            Only 4 homes remain available.
           </p>
           <div className="w-14 h-[2px] bg-cedar-gold mx-auto mt-6" />
         </motion.div>
