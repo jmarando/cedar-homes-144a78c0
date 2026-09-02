@@ -135,7 +135,7 @@
   }
   /* Focus visible for accessibility */
   :focus-visible {
-    outline: 2px solid oklch(0.62 0.14 55);
+    outline: 2px solid oklch(0.64 0.10 66);
     outline-offset: 2px;
   }
 }
@@ -178,7 +178,7 @@ html {
 
 /* Text selection */
 ::selection {
-  background: oklch(0.62 0.14 55 / 0.2);
+  background: oklch(0.64 0.10 66 / 0.2);
   color: oklch(0.25 0.01 80);
 }
 
@@ -194,7 +194,7 @@ html {
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.62 0.14 55);
+  background: oklch(0.64 0.10 66);
 }
 
 /* Image loading placeholder */
