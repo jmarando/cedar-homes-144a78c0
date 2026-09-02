@@ -57,12 +57,12 @@ export default function UnitAvailability() {
               <div className="absolute top-5 left-5">
                 <span className="bg-cedar-forest text-white text-[11px] font-bold px-3.5 py-1.5 uppercase tracking-wider inline-flex items-center gap-1.5 shadow-lg">
                   <Eye size={11} />
-                  Showhouse — Unit 1
+                  Show House
                 </span>
               </div>
               <div className="absolute bottom-5 left-5">
                 <span className="bg-white/90 backdrop-blur-sm text-cedar-forest text-[13px] font-bold px-4 py-2 shadow-lg">
-                  Ksh 23.8M
+                  Starting from Ksh 23.5M
                 </span>
               </div>
             </div>
@@ -78,7 +78,7 @@ export default function UnitAvailability() {
               </h3>
               <p className="text-cedar-warm-gray text-[15px] leading-relaxed mb-6">
                 Walk through every room, inspect the premium finishes, and feel the spacious 266 SQM layout.
-                This is the exact standard every pre-order unit will be built to.
+                This is the exact standard every home is built to.
               </p>
 
               <div className="grid grid-cols-2 gap-3 mb-8">
@@ -91,19 +91,19 @@ export default function UnitAvailability() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-2.5">
-                <a
-                  href="#contact"
+                <Link
+                  to="/book-a-visit"
                   className="bg-cedar-forest hover:bg-cedar-forest-light text-white px-5 py-2.5 text-[13px] font-semibold tracking-wide transition-colors text-center inline-flex items-center justify-center gap-2"
                 >
                   <Eye size={14} />
                   Book a Visit
-                </a>
+                </Link>
                 <a
                   href="#contact"
                   className="border border-cedar-forest/15 text-cedar-forest hover:bg-cedar-forest/[0.04] px-5 py-2.5 text-[13px] font-semibold tracking-wide transition-colors text-center inline-flex items-center justify-center gap-2"
                 >
                   <Home size={14} />
-                  Buy Showhouse
+                  Book Your House
                 </a>
               </div>
             </div>
