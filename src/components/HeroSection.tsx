@@ -50,7 +50,7 @@ export default function HeroSection() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C4703F]" />
               </span>
               <span className="text-white/85 text-[13px] font-medium tracking-wide">
-                Showhouse Open — 4 Units for Pre-Order
+                Show House Ready
               </span>
             </span>
           </motion.div>
