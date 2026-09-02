@@ -11,7 +11,7 @@ import { trackEvent } from "@/lib/analytics";
 
 const shortcuts = [
   { icon: Eye, label: "Book a showhouse visit", message: WHATSAPP_MESSAGES.showhouseVisit, intent: "showhouse_visit" },
-  { icon: ShoppingBag, label: "Pre-order a unit", message: WHATSAPP_MESSAGES.preOrder, intent: "pre_order" },
+  { icon: ShoppingBag, label: "Book your house", message: WHATSAPP_MESSAGES.bookHouse, intent: "book_house" },
   { icon: Video, label: "Virtual tour from abroad", message: WHATSAPP_MESSAGES.virtualTour, intent: "virtual_tour" },
   { icon: Wallet, label: "Payment plans", message: WHATSAPP_MESSAGES.paymentPlan, intent: "payment_plan" },
 ];
