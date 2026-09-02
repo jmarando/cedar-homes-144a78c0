@@ -43,19 +43,6 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative container flex flex-col justify-center min-h-[92vh] lg:min-h-screen pt-24 pb-36 lg:pt-0 lg:pb-32">
         <div className="max-w-[620px]">
-          {/* Status badge */}
-          <motion.div {...fadeUp(0.15)} className="mb-8">
-            <span className="inline-flex items-center gap-2.5 bg-white/[0.08] backdrop-blur-sm border border-white/[0.12] px-4 py-2">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C4703F] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C4703F]" />
-              </span>
-              <span className="text-white/85 text-[13px] font-medium tracking-wide">
-                Show House Ready
-              </span>
-            </span>
-          </motion.div>
-
           {/* Headline */}
           <motion.h1
             {...fadeUp(0.3)}
