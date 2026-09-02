@@ -18,8 +18,8 @@ interface Spec {
 }
 
 const specs: Spec[] = [
-  { icon: Maximize2, label: "Built-Up Area", value: "266 SQM" },
-  { icon: BedDouble, label: "Bedrooms", value: "4 En-Suite" },
+  { icon: Maximize2, label: "Built-Up Area", value: "266.7 SQM" },
+  { icon: BedDouble, label: "Bedrooms", value: "4 All En-Suite" },
   { icon: Bath, label: "Bathrooms", value: "4 + Guest WC" },
   { icon: Car, label: "Parking", value: "Parking for 2" },
   { icon: Layers, label: "Floors", value: "2 Storeys" },
@@ -32,9 +32,9 @@ const rooms = [
   "Open-plan living & dining",
   "Fitted kitchen with pantry",
   "Master bedroom with walk-in closet",
-  "Family room / TV lounge",
+  "Family room / TV lounge upstairs",
   "Separate laundry area",
-  "Staff quarter with bathroom",
+  "DSQ with its own bathroom",
   "Private garden per home",
 ];
 
@@ -136,9 +136,9 @@ export default function PropertySpecs() {
 
               <div className="space-y-3">
                 {[
-                  { label: "Booking Deposit", value: "Ksh 500,000" },
+                  { label: "Cash Price", value: "Ksh 23.5M" },
                   { label: "Title Type", value: "Freehold" },
-                  { label: "Show House", value: "Ready Now" },
+                  { label: "Show House", value: "Ksh 23.8M" },
                 ].map((row) => (
                   <div key={row.label} className="flex justify-between text-[13px]">
                     <span className="text-cedar-warm-gray">{row.label}</span>

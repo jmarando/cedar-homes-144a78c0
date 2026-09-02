@@ -19,6 +19,7 @@ const navLinks: NavLink[] = [
   { label: "Units", kind: "hash", hash: "units" },
   { label: "Why Lusegetti", kind: "hash", hash: "why-kikuyu" },
   { label: "Specs", kind: "hash", hash: "specs" },
+  { label: "Floor Plans", kind: "page", to: "/floor-plans" },
   { label: "Investment", kind: "page", to: "/investment" },
   { label: "ROI Calculator", kind: "page", to: "/roi-calculator" },
   { label: "Payment Plans", kind: "page", to: "/payment-plans" },
