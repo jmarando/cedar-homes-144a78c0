@@ -5,7 +5,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Home, Eye, ShoppingBag, MapPin, Ruler } from "lucide-react";
 
-const HERO_IMAGE = "https://private-us-east-1.manuscdn.com/sessionFile/uY8owBdGqa0R9hrRGziEvd/sandbox/JuAC9xZ8UtXXeObEka0BWw-img-1_1771587240000_na1fn_aGVyby1lc3RhdGU.jpg?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvdVk4b3dCZEdxYTBSOWhyUkd6aUV2ZC9zYW5kYm94L0p1QUM5eFo4VXRYWGVPYkVrYTBCV3ctaW1nLTFfMTc3MTU4NzI0MDAwMF9uYTFmbl9hR1Z5YnkxbGMzUmhkR1UuanBnP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=tfqWvfTlxuTIay7wHR2VjtAiTBFsOIZ1aaWcKfDRVYL98VCbyNBsmeSfYYM0pG~VYb8TuyunSxzmHLjk7ZL8KEO5FB89b7Akg8GoDfCCtcBRKWLjy5PLr7oUFJcull~oyn4RRfmL4~dUf0RzDzeziKzJ9IfWVZCTiO4tDstFidDUOGbBrxkl4ghOsJjO3hDpShW5fxQiFndNvxvitUI5fTF8e~y~mtmW6~Nt7hhqIGp2dVhm1~nQyOB3Fc81kcSi2La8dCOAUd8wYfLs5qIKbisUgCjrGnTYibhrI2RkGv3bTE5DrLDRCanAFw0qaTRUMlGqx4~XYWZzrxklcGGqTQ__";
+const HERO_IMAGE = heroRender.url;
 
 const stats = [
   { icon: Eye, value: "1", label: "Showhouse Ready" },
