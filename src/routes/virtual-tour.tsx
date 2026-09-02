@@ -4,9 +4,9 @@ import { Video, Globe2, Clock3, FileCheck2, Handshake } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import LeadForm from "@/components/LeadForm";
 
-const title = "Virtual Tour for Diaspora Buyers — Cedar Homes Kikuyu";
+const title = "Virtual Tour for Diaspora Buyers — Cedar Homes Lusegetti";
 const description =
-  "Buying from abroad? Book a live video walkthrough of the Cedar Homes showhouse in Kikuyu, with a Q&A on title, payments and handover.";
+  "Buying from abroad? Book a live video walkthrough of the Cedar Homes showhouse at Lusegetti, Kikuyu, with a Q&A on title, payments and handover.";
 
 export const Route = createFileRoute("/virtual-tour")({
   head: () => ({

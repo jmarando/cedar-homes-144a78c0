@@ -6,9 +6,9 @@ import PageShell from "@/components/PageShell";
 import LeadForm from "@/components/LeadForm";
 import { PRICING } from "@/lib/site-config";
 
-const title = "Cedar Homes Investment Brief — Kikuyu Property Returns";
+const title = "Cedar Homes Investment Brief — Lusegetti Property Returns";
 const description =
-  "Rental yields, capital growth drivers and payment structures for Cedar Homes Kikuyu. Built for local and diaspora investors weighing a Kiambu property purchase.";
+  "Rental yields, capital growth drivers and payment structures for Cedar Homes at Lusegetti, Kikuyu. Built for local and diaspora investors weighing a Kiambu property purchase.";
 
 export const Route = createFileRoute("/investment")({
   head: () => ({
@@ -43,7 +43,7 @@ const drivers = [
   {
     icon: Coins,
     title: "Entry before completion pricing",
-    body: `Pre-order pricing starts at ${PRICING.fromPriceLabel}. Buyers entering now hold the unit at today's price while the remaining units are completed.`,
+    body: `Pricing starts at ${PRICING.fromPriceLabel}. Buyers entering now hold their home at today's price while the remaining homes are completed.`,
   },
 ];
 
@@ -52,7 +52,7 @@ function InvestmentPage() {
     <PageShell
       eyebrow="For Investors"
       title={<>The numbers behind <span className="text-cedar-gold italic">Cedar Homes</span></>}
-      intro="A straight look at what drives value in Kikuyu, how the payment structure works, and what to expect from the units as rental or hold assets."
+      intro="A straight look at what drives value in the area, how the payment structure works, and what to expect from the units as rental or hold assets."
     >
       <div className="container">
         <div className="grid lg:grid-cols-[1fr_440px] gap-14 items-start">

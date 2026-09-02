@@ -16,9 +16,9 @@ const Footer = lazy(() => import("@/components/Footer"));
 const FloatingCTA = lazy(() => import("@/components/FloatingCTA"));
 const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton"));
 
-const title = "Cedar Homes Kikuyu — Modern 4-Bedroom Homes";
+const title = "Cedar Homes Lusegetti — Modern 4-Bedroom Homes";
 const description =
-  "Five modern family homes in Kikuyu, Kiambu. Tour the completed showhouse or pre-order one of the remaining units.";
+  "Five modern 4-bedroom family homes at Lusegetti, Kikuyu. Tour the completed show house and book one of the remaining homes from Ksh 23.5M.";
 
 export const Route = createFileRoute("/")({
   head: () => ({

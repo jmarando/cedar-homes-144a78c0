@@ -5,9 +5,9 @@ import PageShell from "@/components/PageShell";
 import LeadForm from "@/components/LeadForm";
 import { CONTACT, PROJECT } from "@/lib/site-config";
 
-const title = "Book a Showhouse Visit — Cedar Homes Kikuyu";
+const title = "Book a Showhouse Visit — Cedar Homes Lusegetti";
 const description =
-  "Walk through the completed Cedar Homes showhouse in Kikuyu. Book a viewing slot with our team and see the finishes, layout and space before you commit.";
+  "Walk through the completed Cedar Homes showhouse at Lusegetti, Kikuyu. Book a viewing slot with our team and see the finishes, layout and space before you commit.";
 
 export const Route = createFileRoute("/book-a-visit")({
   head: () => ({
@@ -27,7 +27,7 @@ const practicalities = [
   { icon: Clock, title: "Viewing hours", desc: "Monday to Saturday, 9:00am – 5:00pm. Sunday viewings by arrangement." },
   { icon: Car, title: "Getting there", desc: `${PROJECT.location}, off Dagoretti Road. Roughly 25 minutes from Westlands via the Southern Bypass.` },
   { icon: Calendar, title: "How long it takes", desc: "Allow 45 minutes for a full walkthrough plus time to talk through pricing and payment plans." },
-  { icon: Sparkles, title: "What you'll see", desc: "The finished Unit 1 showhouse — real finishes, real room sizes, and the gated estate as it stands today." },
+  { icon: Sparkles, title: "What you'll see", desc: "The finished show house — real finishes, real room sizes, and the gated estate as it stands today." },
 ];
 
 function BookAVisitPage() {

@@ -7,9 +7,9 @@ import LeadForm from "@/components/LeadForm";
 import { PRICING, PROJECT } from "@/lib/site-config";
 import { trackEvent } from "@/lib/analytics";
 
-const title = "Cedar Homes ROI Calculator — Kikuyu Rental Yield & Growth";
+const title = "Cedar Homes ROI Calculator — Rental Yield & Growth";
 const description =
-  "Estimate rental yield, capital appreciation and total return on a Cedar Homes unit in Kikuyu. Adjust price, rent and holding period to model your own numbers.";
+  "Estimate rental yield, capital appreciation and total return on a Cedar Homes home at Lusegetti, Kikuyu. Adjust price, rent and holding period to model your own numbers.";
 
 export const Route = createFileRoute("/roi-calculator")({
   head: () => ({

@@ -7,7 +7,7 @@ import { Phone, Mail, MapPin, Clock, Globe } from "lucide-react";
 const quickLinks = [
   { label: "Home", href: "#hero" },
   { label: "Unit Availability", href: "#units" },
-  { label: "Why Kikuyu", href: "#why-kikuyu" },
+  { label: "Why Lusegetti", href: "#why-kikuyu" },
   { label: "Property Specs", href: "#specs" },
   { label: "Trust & Transparency", href: "#trust" },
   { label: "Construction Timeline", href: "#timeline" },
@@ -33,7 +33,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-white/40 text-[13px] leading-relaxed max-w-[240px]">
-              Five exclusive 4-bedroom maisonettes in Kikuyu's premier gated community.
+              Five exclusive 4-bedroom maisonettes at Lusegetti, Kikuyu — a premier gated community.
               Showhouse ready for viewing.
             </p>
           </div>
