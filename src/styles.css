@@ -43,19 +43,25 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Cedar Homes Design System */
-  --color-cedar-forest: oklch(0.30 0.05 160);
-  --color-cedar-forest-light: oklch(0.35 0.05 160);
-  --color-cedar-forest-dark: oklch(0.22 0.04 160);
-  --color-cedar-terracotta: oklch(0.62 0.14 55);
-  --color-cedar-terracotta-light: oklch(0.72 0.12 55);
-  --color-cedar-terracotta-dark: oklch(0.52 0.14 55);
+  /* Cedar Homes Design System — navy + gold (brand), green reserved for GAP */
+  /* "forest" is the primary dark surface: deep navy from the Cedar Homes collateral */
+  --color-cedar-forest: oklch(0.28 0.045 265);
+  --color-cedar-forest-light: oklch(0.34 0.045 265);
+  --color-cedar-forest-dark: oklch(0.20 0.04 265);
+  /* "terracotta" is the primary accent: bronze-gold from the Cedar Homes mark */
+  --color-cedar-terracotta: oklch(0.64 0.10 66);
+  --color-cedar-terracotta-light: oklch(0.75 0.08 70);
+  --color-cedar-terracotta-dark: oklch(0.55 0.10 64);
   --color-cedar-cream: oklch(0.97 0.01 80);
   --color-cedar-cream-dark: oklch(0.94 0.01 80);
-  --color-cedar-gold: oklch(0.68 0.10 80);
-  --color-cedar-gold-light: oklch(0.78 0.08 80);
-  --color-cedar-gold-dark: oklch(0.58 0.10 80);
-  --color-cedar-charcoal: oklch(0.25 0.01 80);
+  --color-cedar-gold: oklch(0.76 0.09 86);
+  --color-cedar-gold-light: oklch(0.84 0.07 88);
+  --color-cedar-gold-dark: oklch(0.64 0.10 82);
+  /* GAP Developers parent-brand green — use only where GAP itself is referenced */
+  --color-cedar-green: oklch(0.34 0.06 160);
+  --color-cedar-green-light: oklch(0.42 0.08 150);
+  --color-cedar-green-dark: oklch(0.26 0.05 160);
+  --color-cedar-charcoal: oklch(0.23 0.015 265);
   --color-cedar-warm-gray: oklch(0.55 0.02 80);
   --color-cedar-light-gray: oklch(0.75 0.01 80);
 
@@ -71,31 +77,31 @@
   --card-foreground: oklch(0.25 0.01 80);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.25 0.01 80);
-  --primary: oklch(0.30 0.05 160);
+  --primary: oklch(0.28 0.045 265);
   --primary-foreground: oklch(0.97 0.01 80);
   --secondary: oklch(0.95 0.01 80);
   --secondary-foreground: oklch(0.35 0.02 80);
   --muted: oklch(0.93 0.01 80);
   --muted-foreground: oklch(0.55 0.02 80);
-  --accent: oklch(0.62 0.14 55);
+  --accent: oklch(0.64 0.10 66);
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(0.90 0.01 80);
   --input: oklch(0.90 0.01 80);
-  --ring: oklch(0.62 0.14 55);
-  --chart-1: oklch(0.30 0.05 160);
-  --chart-2: oklch(0.62 0.14 55);
-  --chart-3: oklch(0.68 0.10 80);
-  --chart-4: oklch(0.35 0.05 160);
-  --chart-5: oklch(0.72 0.12 55);
+  --ring: oklch(0.64 0.10 66);
+  --chart-1: oklch(0.28 0.045 265);
+  --chart-2: oklch(0.64 0.10 66);
+  --chart-3: oklch(0.76 0.09 86);
+  --chart-4: oklch(0.34 0.06 160);
+  --chart-5: oklch(0.75 0.08 70);
   --sidebar: oklch(0.97 0.01 80);
   --sidebar-foreground: oklch(0.25 0.01 80);
   --sidebar-accent: oklch(0.93 0.01 80);
   --sidebar-accent-foreground: oklch(0.25 0.01 80);
   --sidebar-border: oklch(0.90 0.01 80);
-  --sidebar-ring: oklch(0.62 0.14 55);
-  --sidebar-primary: oklch(0.30 0.05 160);
+  --sidebar-ring: oklch(0.64 0.10 66);
+  --sidebar-primary: oklch(0.28 0.045 265);
   --sidebar-primary-foreground: oklch(0.97 0.01 80);
 }
 
@@ -129,7 +135,7 @@
   }
   /* Focus visible for accessibility */
   :focus-visible {
-    outline: 2px solid oklch(0.62 0.14 55);
+    outline: 2px solid oklch(0.64 0.10 66);
     outline-offset: 2px;
   }
 }
@@ -172,7 +178,7 @@ html {
 
 /* Text selection */
 ::selection {
-  background: oklch(0.62 0.14 55 / 0.2);
+  background: oklch(0.64 0.10 66 / 0.2);
   color: oklch(0.25 0.01 80);
 }
 
@@ -188,7 +194,7 @@ html {
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.62 0.14 55);
+  background: oklch(0.64 0.10 66);
 }
 
 /* Image loading placeholder */

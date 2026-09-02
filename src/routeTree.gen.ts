@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BookAVisitRouteImport } from './routes/book-a-visit'
+import { Route as FloorPlansRouteImport } from './routes/floor-plans'
 import { Route as InvestmentRouteImport } from './routes/investment'
 import { Route as PaymentPlansRouteImport } from './routes/payment-plans'
 import { Route as RoiCalculatorRouteImport } from './routes/roi-calculator'
@@ -48,6 +49,11 @@ const AuthRoute = AuthRouteImport.update({
 const BookAVisitRoute = BookAVisitRouteImport.update({
   id: '/book-a-visit',
   path: '/book-a-visit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FloorPlansRoute = FloorPlansRouteImport.update({
+  id: '/floor-plans',
+  path: '/floor-plans',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InvestmentRoute = InvestmentRouteImport.update({
@@ -143,6 +149,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/book-a-visit': typeof BookAVisitRoute
+  '/floor-plans': typeof FloorPlansRoute
   '/investment': typeof InvestmentRoute
   '/payment-plans': typeof PaymentPlansRoute
   '/roi-calculator': typeof RoiCalculatorRoute
@@ -165,6 +172,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/book-a-visit': typeof BookAVisitRoute
+  '/floor-plans': typeof FloorPlansRoute
   '/investment': typeof InvestmentRoute
   '/payment-plans': typeof PaymentPlansRoute
   '/roi-calculator': typeof RoiCalculatorRoute
@@ -188,6 +196,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/book-a-visit': typeof BookAVisitRoute
+  '/floor-plans': typeof FloorPlansRoute
   '/investment': typeof InvestmentRoute
   '/payment-plans': typeof PaymentPlansRoute
   '/roi-calculator': typeof RoiCalculatorRoute
@@ -212,6 +221,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/book-a-visit'
+    | '/floor-plans'
     | '/investment'
     | '/payment-plans'
     | '/roi-calculator'
@@ -234,6 +244,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/book-a-visit'
+    | '/floor-plans'
     | '/investment'
     | '/payment-plans'
     | '/roi-calculator'
@@ -256,6 +267,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/book-a-visit'
+    | '/floor-plans'
     | '/investment'
     | '/payment-plans'
     | '/roi-calculator'
@@ -280,6 +292,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   BookAVisitRoute: typeof BookAVisitRoute
+  FloorPlansRoute: typeof FloorPlansRoute
   InvestmentRoute: typeof InvestmentRoute
   PaymentPlansRoute: typeof PaymentPlansRoute
   RoiCalculatorRoute: typeof RoiCalculatorRoute
@@ -320,6 +333,13 @@ declare module '@tanstack/react-router' {
       path: '/book-a-visit'
       fullPath: '/book-a-visit'
       preLoaderRoute: typeof BookAVisitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/floor-plans': {
+      id: '/floor-plans'
+      path: '/floor-plans'
+      fullPath: '/floor-plans'
+      preLoaderRoute: typeof FloorPlansRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/investment': {
@@ -493,6 +513,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   BookAVisitRoute: BookAVisitRoute,
+  FloorPlansRoute: FloorPlansRoute,
   InvestmentRoute: InvestmentRoute,
   PaymentPlansRoute: PaymentPlansRoute,
   RoiCalculatorRoute: RoiCalculatorRoute,

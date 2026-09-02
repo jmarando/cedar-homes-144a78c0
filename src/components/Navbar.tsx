@@ -18,7 +18,7 @@ type NavLink =
 const navLinks: NavLink[] = [
   { label: "Units", kind: "hash", hash: "units" },
   { label: "Why Lusegetti", kind: "hash", hash: "why-kikuyu" },
-  { label: "Specs", kind: "hash", hash: "specs" },
+  { label: "Floor Plans", kind: "page", to: "/floor-plans" },
   { label: "Investment", kind: "page", to: "/investment" },
   { label: "ROI Calculator", kind: "page", to: "/roi-calculator" },
   { label: "Payment Plans", kind: "page", to: "/payment-plans" },
@@ -88,7 +88,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden lg:flex items-center gap-x-6 xl:gap-x-8">
+          <div className="hidden lg:flex items-center gap-x-5 xl:gap-x-7">
             {navLinks.map((link) =>
               renderLink(
                 link,

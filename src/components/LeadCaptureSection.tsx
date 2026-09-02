@@ -18,7 +18,7 @@ const valueProps = [
   {
     icon: ShoppingBag,
     title: "Start Your Purchase Journey",
-    desc: `Reserve your home with a ${PRICING.reservationDepositLabel} deposit and a flexible payment schedule.`,
+    desc: `Homes ${PRICING.rangeLabel} with cash, instalment and mortgage payment routes.`,
   },
   {
     icon: Video,
