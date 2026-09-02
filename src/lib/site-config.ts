@@ -14,13 +14,63 @@ export const CONTACT = {
 
 export const PRICING = {
   fromPrice: 23_500_000,
-  toPrice: 25_000_000,
+  toPrice: 25_500_000,
   fromPriceLabel: "Ksh 23.5M",
-  toPriceLabel: "Ksh 25M",
+  toPriceLabel: "Ksh 25.5M",
   rangeLabel: "from Ksh 23.5M",
-  reservationDeposit: 500_000,
-  reservationDepositLabel: "Ksh 500,000",
+  showHousePrice: 23_800_000,
+  showHousePriceLabel: "Ksh 23.8M",
 } as const;
+
+/**
+ * Price depends on the payment route — figures per the Cedar Homes payment schedule.
+ */
+export const PAYMENT_PLANS = [
+  {
+    id: "show-house",
+    name: "Show House",
+    priceLabel: "Ksh 23.8M",
+    deposit: "30%",
+    plan: "Balance of 70% within 6 months",
+    duration: "6 months",
+    onCompletion: "N/A",
+    note: "The completed, furnished show house — move in without waiting for construction.",
+    featured: true,
+  },
+  {
+    id: "cash",
+    name: "Cash",
+    priceLabel: "Ksh 23.5M",
+    deposit: "Full payment",
+    plan: "Full payment",
+    duration: "Immediate",
+    onCompletion: "N/A",
+    note: "Lowest price and the fastest route to title transfer.",
+    featured: false,
+  },
+  {
+    id: "instalments",
+    name: "Instalments",
+    priceLabel: "Ksh 24.5M",
+    deposit: "20%",
+    plan: "60% quarterly over the construction period",
+    duration: "9 months",
+    onCompletion: "20% upon completion",
+    note: "Spread payments across the build, with the final 20% due at handover.",
+    featured: false,
+  },
+  {
+    id: "mortgage",
+    name: "Mortgage",
+    priceLabel: "Ksh 25.5M",
+    deposit: "10%",
+    plan: "As per lender requirements",
+    duration: "As per lender terms",
+    onCompletion: "As per lender terms",
+    note: "Bank or SACCO financing, including diaspora mortgage products.",
+    featured: false,
+  },
+] as const;
 
 export const PROJECT = {
   name: "Cedar Homes",
