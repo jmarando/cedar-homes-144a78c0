@@ -18,13 +18,13 @@ interface Spec {
 }
 
 const specs: Spec[] = [
-  { icon: Maximize2, label: "Built-Up Area", value: "266.7 SQM" },
+  { icon: Maximize2, label: "Built-Up Area", value: "266 SQM" },
   { icon: BedDouble, label: "Bedrooms", value: "4 All En-Suite" },
-  { icon: Bath, label: "Bathrooms", value: "4 + Guest WC" },
+  { icon: Bath, label: "Bathrooms", value: "4 En-Suite + DSQ" },
   { icon: Car, label: "Parking", value: "Parking for 2" },
   { icon: Layers, label: "Floors", value: "2 Storeys" },
   { icon: TreePine, label: "Plot Size", value: "1/8 Acre" },
-  { icon: Zap, label: "Power", value: "KPLC + Solar Ready" },
+  { icon: Zap, label: "Power", value: "KPLC Mains" },
   { icon: Lock, label: "Security", value: "Gated Community" },
 ];
 
@@ -35,7 +35,7 @@ const rooms = [
   "Family room / TV lounge upstairs",
   "Separate laundry area",
   "DSQ with its own bathroom",
-  "Private garden per home",
+  "Covered terrace and private garden",
 ];
 
 

@@ -9,7 +9,7 @@ import { PRICING } from "@/lib/site-config";
 
 const title = "Floor Plans — 4-Bedroom Maisonette at Cedar Homes, Lusegetti";
 const description =
-  "Architectural floor plans for the Cedar Homes 4-bedroom maisonette: 140.4 sqm ground floor, 126.3 sqm first floor, 266.7 sqm in total with DSQ, double-volume lobby and two balconies.";
+  "Architectural floor plans for the Cedar Homes 4-bedroom maisonette: 140.4 sqm ground floor, 126.3 sqm first floor, 266 sqm in total with DSQ, double-volume lobby and two balconies.";
 
 export const Route = createFileRoute("/floor-plans")({
   head: () => ({
@@ -63,26 +63,26 @@ const floors = [
 ];
 
 const finishes = [
-  "Ceramic floor tiles to architect's specification",
-  "Timber floor boards in the lounge and dining",
-  "Non-slip ceramic to terraces, balconies and porches",
+  "Ceramic floor tiles throughout, to architect's specification",
   "In-built wardrobes to all bedrooms",
-  "Vertical timber slats to the first-floor lobby",
-  "Choice of a fitted kitchen or fit your own",
+  "Non-slip ceramic to terraces, balconies and porches",
+  "Freehold title deed, transferred on completion",
+  "KPLC mains power connection",
+  "Take the fitted kitchen or fit your own",
 ];
 
 function FloorPlansPage() {
   return (
     <PageShell
       eyebrow="Floor Plans"
-      title={<>266.7 sqm, <span className="text-cedar-gold italic">planned properly</span></>}
+      title={<>266 sqm, <span className="text-cedar-gold italic">planned properly</span></>}
       intro={`Every Cedar Homes maisonette is a 4-bedroom, all en-suite home across two floors, with a DSQ, family room and private garden. Homes start ${PRICING.rangeLabel}.`}
     >
       <div className="container">
         {/* Summary strip */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-16">
           {[
-            { value: "266.7", label: "Total SQM" },
+            { value: "266", label: "Total SQM" },
             { value: "4", label: "Bedrooms, all en-suite" },
             { value: "2", label: "Storeys + DSQ" },
             { value: "1/8", label: "Acre plot" },

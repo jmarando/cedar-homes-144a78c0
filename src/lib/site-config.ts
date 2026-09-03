@@ -76,7 +76,7 @@ export const PROJECT = {
   name: "Cedar Homes",
   developer: "GAP Developers",
   totalUnits: 5,
-  availableUnits: 5,
+  availableUnits: 4,
   sqm: 266,
   bedrooms: 4,
   location: "Lusegetti (Kikuyu), Kiambu County",

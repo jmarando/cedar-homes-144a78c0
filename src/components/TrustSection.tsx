@@ -45,11 +45,12 @@ const partners: Partner[] = [
 ];
 
 const trustSignals = [
-  "Freehold Title Deed — verified and clean",
-  "NCA-registered contractor and architect",
-  "Sample sale agreements available on request",
-  "Physical site visits available weekly",
-  "Independent valuation reports",
+  "Freehold title deed — verified and clean",
+  "County-approved drawings",
+  "NEMA approval",
+  "NCA approval",
+  "Architect drawings and certifications",
+  "Sample sale agreement for your advocate to review",
 ];
 
 export default function TrustSection() {
