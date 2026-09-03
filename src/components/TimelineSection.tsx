@@ -56,7 +56,7 @@ const milestones: Milestone[] = [
     icon: Key,
     date: "Q3 2027",
     title: "Full Estate Completion",
-    desc: "All 5 units complete. Perimeter wall, communal landscaping, gate automation, and CCTV installed.",
+    desc: "All 5 homes complete, with the perimeter wall, gated compound and communal landscaping finished.",
     status: "upcoming",
     unitLabel: "All Units",
   },
