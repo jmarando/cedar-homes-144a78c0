@@ -9,8 +9,23 @@ import { CheckCircle2, Clock, HardHat, Hammer, PaintBucket, Key, Eye } from "luc
 import type { LucideIcon } from "lucide-react";
 
 import entranceRender from "@/assets/cedar-render-entrance.jpg.asset.json";
+import progress1 from "@/assets/cedar-progress-sept-1.jpg.asset.json";
+import progress2 from "@/assets/cedar-progress-sept-2.jpg.asset.json";
 
 const GARDEN_IMAGE = entranceRender.url;
+
+const progressPhotos = [
+  {
+    src: progress1.url,
+    alt: "Cedar Homes maisonette under construction with roofing complete and scaffolding in place, September 2026",
+    caption: "Roofing complete, external plastering underway.",
+  },
+  {
+    src: progress2.url,
+    alt: "Front elevation of a Cedar Homes maisonette with roof, columns and entrance steps built, September 2026",
+    caption: "Front elevation with entrance columns and steps in place.",
+  },
+];
 
 interface Milestone {
   icon: LucideIcon;
