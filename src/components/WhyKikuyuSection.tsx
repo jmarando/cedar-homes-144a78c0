@@ -5,7 +5,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "@/hooks/useInView";
 import {
-  TreePine, GraduationCap, Home, TrendingUp, Users, Briefcase,
+  TreePine, GraduationCap, Home, FileCheck, Users, Briefcase,
   Leaf, ShieldCheck, Car
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
