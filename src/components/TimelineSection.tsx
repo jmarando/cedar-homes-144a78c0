@@ -156,6 +156,37 @@ export default function TimelineSection() {
       {/* Timeline content */}
       <div className="bg-cedar-cream py-20 lg:py-28">
         <div className="container">
+          {/* Site progress photos */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mb-16"
+          >
+            <div className="flex flex-wrap items-end justify-between gap-3 mb-6">
+              <h3 className="font-serif text-2xl lg:text-[1.75rem] text-cedar-forest flex items-center gap-3">
+                <span className="w-5 h-[2px] bg-cedar-gold" />
+                On site right now
+              </h3>
+              <span className="text-cedar-warm-gray text-[12px] uppercase tracking-[0.15em] font-semibold">
+                Photographed September 2026
+              </span>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {progressPhotos.map((p) => (
+                <figure key={p.src} className="bg-white border border-cedar-forest/10 p-3">
+                  <img
+                    src={p.src}
+                    alt={p.alt}
+                    loading="lazy"
+                    className="w-full h-[260px] lg:h-[320px] object-cover"
+                  />
+                  <figcaption className="text-cedar-warm-gray text-[12px] mt-3">{p.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </motion.div>
+
           {/* Unit status pills */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
