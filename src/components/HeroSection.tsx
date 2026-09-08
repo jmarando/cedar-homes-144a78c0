@@ -49,7 +49,7 @@ export default function HeroSection() {
             className="font-serif text-[2.5rem] sm:text-5xl lg:text-[3.6rem] text-white leading-[1.08] mb-6 tracking-tight"
           >
             Walk Through Your Future Home{" "}
-            <span className="text-[#B8944F] italic">Today</span>
+            <span className="text-[#C9A44C] italic">Today</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -66,7 +66,7 @@ export default function HeroSection() {
           <motion.div {...fadeUp(0.6)} className="flex flex-col sm:flex-row gap-3.5">
             <a
               href="#contact"
-              className="group bg-[#C4703F] text-white px-7 py-3.5 text-center font-semibold tracking-wide transition-all duration-200 hover:bg-[#B8944F] shadow-lg shadow-[#C4703F]/25 hover:shadow-xl hover:shadow-[#B8944F]/25 text-[15px] flex items-center justify-center gap-2.5"
+              className="group bg-[#C4703F] text-white px-7 py-3.5 text-center font-semibold tracking-wide transition-all duration-200 hover:bg-[#C9A44C] shadow-lg shadow-[#C4703F]/25 hover:shadow-xl hover:shadow-[#C9A44C]/25 text-[15px] flex items-center justify-center gap-2.5"
             >
               <Eye size={17} />
               Book a Showhouse Visit
@@ -98,7 +98,7 @@ export default function HeroSection() {
                   i < stats.length - 1 ? "border-r border-white/[0.06]" : ""
                 } ${i === 1 ? "border-r-0 lg:border-r" : ""}`}
               >
-                <stat.icon className="text-[#B8944F] shrink-0" size={18} strokeWidth={2} />
+                <stat.icon className="text-[#C9A44C] shrink-0" size={18} strokeWidth={2} />
                 <div>
                   <span className="font-serif text-xl lg:text-2xl text-white leading-none">{stat.value}</span>
                   <span className="block text-white/50 text-[10px] lg:text-[11px] tracking-wider uppercase mt-0.5">
