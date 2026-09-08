@@ -181,18 +181,18 @@ export default function WhyKikuyuSection() {
                 ))}
               </div>
 
-              {/* ROI highlight */}
+              {/* Freehold highlight */}
               <div className="bg-cedar-forest p-7 lg:p-8 relative overflow-hidden">
                 <div className="absolute -top-8 -right-8 w-28 h-28 bg-cedar-gold/[0.08] rounded-full" />
                 <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-cedar-gold/[0.05] rounded-full" />
                 <div className="relative">
                   <div className="flex items-baseline gap-2 mb-3">
-                    <span className="font-serif text-[3rem] text-cedar-gold leading-none">9%</span>
-                    <span className="text-white/70 text-base font-medium">Projected Rental Yield</span>
+                    <span className="font-serif text-[2.5rem] text-cedar-gold leading-none">Freehold</span>
+                    <span className="text-white/70 text-base font-medium">title, per home</span>
                   </div>
                   <p className="text-white/50 text-[13px] leading-relaxed max-w-sm">
-                    Based on current local rental market data, Southern Bypass corridor demand,
-                    and comparable property performance in the area.
+                    Not leasehold, not a sectional share. Your own title deed, transferred on
+                    completion, with county-approved drawings, NEMA and NCA approvals on file.
                   </p>
                 </div>
               </div>
