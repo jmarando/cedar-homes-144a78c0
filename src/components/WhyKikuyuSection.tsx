@@ -33,9 +33,10 @@ const familyFeatures: Feature[] = [
 ];
 
 const investorFeatures: Feature[] = [
-  { icon: TrendingUp, title: "9% Rental Yield", desc: "The area's booming rental market delivers consistent, high-return income." },
-  { icon: Users, title: "High Tenant Demand", desc: "Southern Bypass and Waiyaki Way expansion drive massive housing demand." },
-  { icon: Briefcase, title: "Hands-Off Management", desc: "GAP Developers offers full property management — earn from anywhere." },
+  { icon: FileCheck, title: "Freehold Title, In Your Name", desc: "Each home has its own freehold title deed — not a share, not a lease." },
+  { icon: TreePine, title: "Land and a Private Garden", desc: "You own the plot and the garden around your home, not just the walls." },
+  { icon: Users, title: "Steady Family Demand", desc: "Kikuyu families consistently look for standalone homes in secure, gated compounds." },
+  { icon: Briefcase, title: "Managed From Anywhere", desc: "GAP Developers can handle letting and upkeep while you are abroad." },
 ];
 
 function FeatureItem({ feature, delay, inView }: { feature: Feature; delay: number; inView: boolean }) {
