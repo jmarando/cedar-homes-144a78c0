@@ -57,9 +57,10 @@ export default function HeroSection() {
             {...fadeUp(0.45)}
             className="text-white/75 text-[17px] lg:text-lg leading-[1.7] mb-10 max-w-[540px]"
           >
-            Five four-bedroom maisonettes on freehold title in a gated compound off Dagoretti
-            Road, Lusegetti — Kikuyu. The show house is complete and open daily, from{" "}
-            <span className="text-[#C9A44C] font-semibold">Ksh 23.5 Million</span>.
+            Five four-bedroom maisonettes, each on its own{" "}
+            <span className="text-[#C9A44C] font-semibold">freehold title</span> with a private
+            garden, in a gated compound off Dagoretti Road, Lusegetti — Kikuyu. The show house is
+            complete and open daily, from Ksh 23.5 Million.
           </motion.p>
 
           {/* CTAs */}
