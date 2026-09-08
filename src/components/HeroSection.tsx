@@ -48,8 +48,8 @@ export default function HeroSection() {
             {...fadeUp(0.3)}
             className="font-serif text-[2.5rem] sm:text-5xl lg:text-[3.6rem] text-white leading-[1.08] mb-6 tracking-tight"
           >
-            Walk Through Your Future Home{" "}
-            <span className="text-[#C9A44C] italic">Today</span>
+            Flexible options.{" "}
+            <span className="text-[#C9A44C] italic">Built for you.</span>
           </motion.h1>
 
           {/* Subheadline */}
