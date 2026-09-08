@@ -153,11 +153,12 @@ export default function WhyKikuyuSection() {
               </div>
 
               <h3 className="font-serif text-[1.5rem] text-cedar-forest mb-2">
-                Smart Investment, Proven Returns
+                Land You Actually Own
               </h3>
               <p className="text-cedar-warm-gray text-[15px] mb-8 leading-relaxed max-w-md">
-                Lusegetti, Kikuyu is one of Nairobi's fastest-growing suburbs. Cedar Homes offers a rare opportunity
-                to own freehold property with proven rental demand.
+                Each Cedar home comes with its own freehold title deed and a private garden on
+                approximately an eighth of an acre — the kind of ownership that is getting harder
+                to find this close to Nairobi.
               </p>
 
               <div className="space-y-5 mb-10">
