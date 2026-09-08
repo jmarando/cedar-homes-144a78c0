@@ -9,8 +9,23 @@ import { CheckCircle2, Clock, HardHat, Hammer, PaintBucket, Key, Eye } from "luc
 import type { LucideIcon } from "lucide-react";
 
 import entranceRender from "@/assets/cedar-render-entrance.jpg.asset.json";
+import progress1 from "@/assets/cedar-progress-sept-1.jpg.asset.json";
+import progress2 from "@/assets/cedar-progress-sept-2.jpg.asset.json";
 
 const GARDEN_IMAGE = entranceRender.url;
+
+const progressPhotos = [
+  {
+    src: progress1.url,
+    alt: "Cedar Homes maisonette under construction with roofing complete and scaffolding in place, September 2026",
+    caption: "Roofing complete, external plastering underway.",
+  },
+  {
+    src: progress2.url,
+    alt: "Front elevation of a Cedar Homes maisonette with roof, columns and entrance steps built, September 2026",
+    caption: "Front elevation with entrance columns and steps in place.",
+  },
+];
 
 interface Milestone {
   icon: LucideIcon;
@@ -32,17 +47,17 @@ const milestones: Milestone[] = [
   },
   {
     icon: HardHat,
-    date: "Q3 2026",
-    title: "Units 2 & 3 — Foundation & Structure",
-    desc: "Construction begins on Units 2 and 3 upon booking confirmation. Foundation, columns, and beams.",
-    status: "upcoming",
+    date: "September 2026",
+    title: "Units 2 & 3 — Structure & Roofing Up",
+    desc: "Walls, columns, staircases and roofing are in place on site, with plastering underway. See the site photos above.",
+    status: "complete",
     unitLabel: "Units 2–3",
   },
   {
     icon: Hammer,
     date: "Q1 2027",
-    title: "Units 2 & 3 — Walling, Roofing & Finishes",
-    desc: "Block work, roofing, interior finishes, and handover of Units 2 and 3 to owners.",
+    title: "Units 2 & 3 — Finishes & Handover",
+    desc: "Internal finishes, fittings and tiling completed, followed by handover of Units 2 and 3 to their owners.",
     status: "upcoming",
     unitLabel: "Units 2–3",
   },
@@ -50,7 +65,7 @@ const milestones: Milestone[] = [
     icon: PaintBucket,
     date: "Q2 2027",
     title: "Units 4 & 5 — Construction & Completion",
-    desc: "Full construction cycle for Units 4 and 5, from foundation to handover with premium finishes.",
+    desc: "Full construction cycle for Units 4 and 5, from foundation through to handover.",
     status: "upcoming",
     unitLabel: "Units 4–5",
   },
@@ -156,6 +171,37 @@ export default function TimelineSection() {
       {/* Timeline content */}
       <div className="bg-cedar-cream py-20 lg:py-28">
         <div className="container">
+          {/* Site progress photos */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mb-16"
+          >
+            <div className="flex flex-wrap items-end justify-between gap-3 mb-6">
+              <h3 className="font-serif text-2xl lg:text-[1.75rem] text-cedar-forest flex items-center gap-3">
+                <span className="w-5 h-[2px] bg-cedar-gold" />
+                On site right now
+              </h3>
+              <span className="text-cedar-warm-gray text-[12px] uppercase tracking-[0.15em] font-semibold">
+                Photographed September 2026
+              </span>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {progressPhotos.map((p) => (
+                <figure key={p.src} className="bg-white border border-cedar-forest/10 p-3">
+                  <img
+                    src={p.src}
+                    alt={p.alt}
+                    loading="lazy"
+                    className="w-full h-[260px] lg:h-[320px] object-cover"
+                  />
+                  <figcaption className="text-cedar-warm-gray text-[12px] mt-3">{p.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </motion.div>
+
           {/* Unit status pills */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
