@@ -66,17 +66,17 @@ export default function HeroSection() {
           <motion.div {...fadeUp(0.6)} className="flex flex-col sm:flex-row gap-3.5">
             <a
               href="#contact"
-              className="group bg-[#C4703F] text-white px-7 py-3.5 text-center font-semibold tracking-wide transition-all duration-200 hover:bg-[#C9A44C] shadow-lg shadow-[#C4703F]/25 hover:shadow-xl hover:shadow-[#C9A44C]/25 text-[15px] flex items-center justify-center gap-2.5"
+              className="group bg-[#C9A44C] text-[#16233A] px-7 py-3.5 text-center font-semibold tracking-wide transition-all duration-200 hover:bg-[#D8B463] text-[15px] flex items-center justify-center gap-2.5"
             >
               <Eye size={17} />
-              Book a Showhouse Visit
+              Book a show house visit
             </a>
             <a
               href="#units"
               className="border border-white/25 hover:border-white/50 text-white px-7 py-3.5 text-center font-semibold tracking-wide transition-all duration-200 backdrop-blur-sm hover:bg-white/[0.06] text-[15px] flex items-center justify-center gap-2.5"
             >
               <ShoppingBag size={17} />
-              Book Your House
+              See the homes
             </a>
           </motion.div>
         </div>
