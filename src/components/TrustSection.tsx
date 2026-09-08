@@ -10,13 +10,9 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-const KITCHEN_IMAGE = "https://private-us-east-1.manuscdn.com/sessionFile/uY8owBdGqa0R9hrRGziEvd/sandbox/JuAC9xZ8UtXXeObEka0BWw-img-5_1771587242000_na1fn_a2l0Y2hlbi1pbnRlcmlvcg.jpg?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvdVk4b3dCZEdxYTBSOWhyUkd6aUV2ZC9zYW5kYm94L0p1QUM5eFo4VXRYWGVPYkVrYTBCV3ctaW1nLTVfMTc3MTU4NzI0MjAwMF9uYTFmbl9hMmwwWTJobGJpMXBiblJsY21sdmNnLmpwZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=Q6IVL44eZyblh1oEIO2kVIJTkH2BBCK~yvbOZqmn4V44fbwKH1kkEN5nXg-Aj6kNfeNyGdjMLL4GWEWS38PKBI9giqq5VEdDmW5iiFGt73GXrGFcOXTQWeO6adruBXhfsgah7TDgMIa7a2yBNZzasQDCdsiveMbgDfZoZcwkzeTD6u-9afqshGIZpwjLMKZ1YONXMGbme7pwAB7hiUSlbK30ahTkzldQ2lJkN4erLoyk8Lxa1jnvS8tzv9B7exur4A8wKzH5gnTlHNvMToWnW86r2Td88HEaMSlcbLeT8wvchHSRsOd4SCDQrLVA2nB-tZXeq-O26J4NmK-x~qiurQ__";
+import aerialRender from "@/assets/cedar-render-aerial.jpg.asset.json";
 
-interface Director {
-  name: string;
-  role: string;
-  desc: string;
-}
+const KITCHEN_IMAGE = aerialRender.url;
 
 interface Partner {
   icon: LucideIcon;
@@ -24,24 +20,10 @@ interface Partner {
   desc: string;
 }
 
-const directors: Director[] = [
-  {
-    name: "Director 1",
-    role: "Managing Director",
-    desc: "Over 15 years in Kenyan real estate development with a track record of delivering premium residential projects on time.",
-  },
-  {
-    name: "Director 2",
-    role: "Technical Director",
-    desc: "Registered architect with extensive experience in contemporary residential design across East Africa.",
-  },
-];
-
 const partners: Partner[] = [
   { icon: Scale, title: "Legal Team", desc: "Licensed advocates handling all conveyancing, title verification, and sale agreements." },
   { icon: Building2, title: "Architects", desc: "NCA-registered architects ensuring structural integrity and modern design." },
   { icon: Landmark, title: "Banking Partners", desc: "Mortgage-ready with leading Kenyan banks for flexible financing." },
-  { icon: FileCheck, title: "Land Surveyors", desc: "Registered surveyors confirming plot boundaries and freehold title." },
 ];
 
 const trustSignals = [
@@ -62,7 +44,7 @@ export default function TrustSection() {
       <div className="relative h-56 lg:h-72 overflow-hidden">
         <img
           src={KITCHEN_IMAGE}
-          alt="Cedar Homes premium fitted kitchen interior"
+          alt="Aerial view of the five Cedar Homes maisonettes and their gardens"
           className="w-full h-full object-cover"
           loading="lazy"
         />
@@ -200,8 +182,8 @@ export default function TrustSection() {
                   <Download size={36} className="text-cedar-gold mx-auto mb-4" strokeWidth={1.5} />
                   <h4 className="font-serif text-xl text-white mb-2">Due Diligence Pack</h4>
                   <p className="text-white/60 text-[13px] mb-6 leading-relaxed max-w-xs mx-auto">
-                    Download our comprehensive pack containing sample sale agreements,
-                    title deed proofs, architect certifications, and project financials.
+                    Freehold title, county-approved drawings, NEMA approval, NCA approval, and
+                    architect drawings and certifications.
                   </p>
                   <a
                     href="#contact"
