@@ -57,9 +57,9 @@ export default function HeroSection() {
             {...fadeUp(0.45)}
             className="text-white/75 text-[17px] lg:text-lg leading-[1.7] mb-10 max-w-[540px]"
           >
-            Our showhouse is complete and ready for viewing. Experience the quality first-hand,
-            then secure one of only 4 remaining homes — starting from{" "}
-            <span className="text-[#B8944F] font-semibold">Ksh 23.5 Million</span>.
+            Five four-bedroom maisonettes on freehold title in a gated compound off Dagoretti
+            Road, Lusegetti — Kikuyu. The show house is complete and open daily, from{" "}
+            <span className="text-[#C9A44C] font-semibold">Ksh 23.5 Million</span>.
           </motion.p>
 
           {/* CTAs */}
