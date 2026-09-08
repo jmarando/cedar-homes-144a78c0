@@ -1,11 +1,11 @@
 /*
  * TrustSection — Cedar Homes "Kenyan Earth Modernism"
- * Directors, partners, due diligence checklist, and download pack
+ * Partners, due diligence checklist, and document pack
  */
 import { motion } from "framer-motion";
 import { useInView } from "@/hooks/useInView";
 import {
-  Scale, Building2, Landmark, FileCheck, Download, UserCircle,
+  Scale, Building2, Landmark, Download,
   CheckCircle2, Award
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
