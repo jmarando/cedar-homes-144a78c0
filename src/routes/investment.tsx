@@ -33,7 +33,7 @@ const drivers = [
   {
     icon: TrendingUp,
     title: "Under-supplied family housing",
-    body: "Demand in Kikuyu skews heavily toward standalone family homes in gated schemes, while most new supply is apartments. That gap supports both rental occupancy and resale pricing.",
+    body: "Standalone family homes on their own freehold title, with a private garden and a gated compound, are what families in Kikuyu look for — and what is hardest to find close to Nairobi.",
   },
   {
     icon: ShieldCheck,

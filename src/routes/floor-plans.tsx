@@ -55,7 +55,6 @@ const floors = [
       "Bedroom 02, en-suite with in-built wardrobe",
       "Bedroom 03, en-suite with in-built wardrobe",
       "Play area / family TV room",
-      "Lobby with book shelving and linen cabinet",
       "Two balconies with non-slip ceramic finish",
       "Void over the entry lobby",
     ],
@@ -85,7 +84,7 @@ function FloorPlansPage() {
             { value: "266", label: "Total SQM" },
             { value: "4", label: "Bedrooms, all en-suite" },
             { value: "2", label: "Storeys + DSQ" },
-            { value: "1/8", label: "Acre plot" },
+            { value: "~1/8", label: "Acre plot" },
           ].map((s) => (
             <div key={s.label} className="bg-white border border-cedar-forest/10 p-5 text-center">
               <span className="font-serif text-2xl text-cedar-forest block leading-none tabular-nums">
@@ -159,7 +158,7 @@ function FloorPlansPage() {
             <div className="bg-cedar-forest p-8">
               <h3 className="font-serif text-xl text-white mb-3">See it in person</h3>
               <p className="text-white/60 text-[14px] leading-relaxed mb-6">
-                The show house is complete and furnished — the fastest way to judge the layout is to
+                The show house is complete — the fastest way to judge the layout is to
                 walk it. Based abroad? We run live video walkthroughs instead.
               </p>
               <div className="flex flex-wrap gap-3">

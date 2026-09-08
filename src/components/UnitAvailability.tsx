@@ -7,7 +7,9 @@ import { Link } from "@tanstack/react-router";
 import { useInView } from "@/hooks/useInView";
 import { Eye, CheckCircle2, Home } from "lucide-react";
 
-const KITCHEN_IMAGE = "https://private-us-east-1.manuscdn.com/sessionFile/uY8owBdGqa0R9hrRGziEvd/sandbox/JuAC9xZ8UtXXeObEka0BWw-img-5_1771587242000_na1fn_a2l0Y2hlbi1pbnRlcmlvcg.jpg?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvdVk4b3dCZEdxYTBSOWhyUkd6aUV2ZC9zYW5kYm94L0p1QUM5eFo4VXRYWGVPYkVrYTBCV3ctaW1nLTVfMTc3MTU4NzI0MjAwMF9uYTFmbl9hMmwwWTJobGJpMXBiblJsY21sdmNnLmpwZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=Q6IVL44eZyblh1oEIO2kVIJTkH2BBCK~yvbOZqmn4V44fbwKH1kkEN5nXg-Aj6kNfeNyGdjMLL4GWEWS38PKBI9giqq5VEdDmW5iiFGt73GXrGFcOXTQWeO6adruBXhfsgah7TDgMIa7a2yBNZzasQDCdsiveMbgDfZoZcwkzeTD6u-9afqshGIZpwjLMKZ1YONXMGbme7pwAB7hiUSlbK30ahTkzldQ2lJkN4erLoyk8Lxa1jnvS8tzv9B7exur4A8wKzH5gnTlHNvMToWnW86r2Td88HEaMSlcbLeT8wvchHSRsOd4SCDQrLVA2nB-tZXeq-O26J4NmK-x~qiurQ__";
+import streetRender from "@/assets/cedar-render-street.jpg.asset.json";
+
+const KITCHEN_IMAGE = streetRender.url;
 
 
 export default function UnitAvailability() {
@@ -49,7 +51,7 @@ export default function UnitAvailability() {
             <div className="relative lg:col-span-3 h-72 lg:h-auto min-h-[320px]">
               <img
                 src={KITCHEN_IMAGE}
-                alt="Cedar Homes showhouse interior — premium kitchen finishes"
+                alt="Cedar Homes maisonettes seen from the internal driveway"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -74,15 +76,15 @@ export default function UnitAvailability() {
                 Ready for Viewing
               </span>
               <h3 className="font-serif text-2xl lg:text-[1.75rem] text-cedar-forest mb-4 leading-snug">
-                Don't Just Imagine It — Experience It
+                See the Finished Home
               </h3>
               <p className="text-cedar-warm-gray text-[15px] leading-relaxed mb-6">
-                Walk through every room, inspect the premium finishes, and feel the spacious 266 SQM layout.
-                This is the exact standard every home is built to.
+                Walk through every room and get a feel for the 266 sqm layout and the private
+                garden. This is the standard every home is built to.
               </p>
 
               <div className="grid grid-cols-2 gap-3 mb-8">
-                {["Fully finished", "Landscaped garden", "Premium fittings", "Move-in ready"].map((item) => (
+                {["Freehold title", "Private garden", "4 bedrooms en-suite", "DSQ"].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <CheckCircle2 size={14} className="text-cedar-forest shrink-0" />
                     <span className="text-[13px] text-cedar-charcoal">{item}</span>
@@ -117,8 +119,8 @@ export default function UnitAvailability() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center text-cedar-warm-gray text-[13px] max-w-2xl mx-auto"
         >
-          All homes are 4-bedroom en-suite maisonettes on 1/8 acre plots with freehold title,
-          built to the exact standard of the showhouse.
+          All homes are 4-bedroom en-suite maisonettes on plots of approximately 1/8 acre, each with its own freehold title,
+          built to the same standard as the show house.
         </motion.p>
       </div>
     </section>

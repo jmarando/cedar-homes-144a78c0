@@ -5,14 +5,17 @@
 import { motion } from "framer-motion";
 import { useInView } from "@/hooks/useInView";
 import {
-  TreePine, GraduationCap, Home, TrendingUp, Users, Briefcase,
+  TreePine, GraduationCap, Home, FileCheck, Users, Briefcase,
   Leaf, ShieldCheck, Car
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-const EXTERIOR_IMAGE = "https://private-us-east-1.manuscdn.com/sessionFile/uY8owBdGqa0R9hrRGziEvd/sandbox/JuAC9xZ8UtXXeObEka0BWw-img-2_1771587246000_na1fn_ZXh0ZXJpb3ItaG91c2U.jpg?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvdVk4b3dCZEdxYTBSOWhyUkd6aUV2ZC9zYW5kYm94L0p1QUM5eFo4VXRYWGVPYkVrYTBCV3ctaW1nLTJfMTc3MTU4NzI0NjAwMF9uYTFmbl9aWGgwWlhKcGIzSXRhRzkxYzJVLmpwZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=mmZgS6k3iAXzn6S4davgg0RFddWZ43eEZoSB3AGPSURGJ3lGQMZS-nhqcIDy8onn8VOrBfAoWY9DqFntd5GMY9ewH7tPfKcEEcO7VmmBdY9sMrcLqkXzM3z-ymyf7bTFteV6EpFNJZ96xuP~kbi8c6yJNlVXBSYCmgP~kGmXmjJz5GKJzcY9PhPfGNSqw1qZ49HYmU76eRMyDSwhn4kIyU08H0xo2JbJJGWq9dNDssxKT7umnjEUmkl76oO5YcCpIVIvpVKqOeQdsWdEV99DfexyaLCr29TJKd1vIhl8PQ4gJfnt540CdfVRY1B55wI4-UMbCFI7cQLeySS2iOLx6Q__";
+import facadeRender from "@/assets/cedar-render-facade.jpg.asset.json";
+import gardenRender from "@/assets/cedar-render-garden.jpg.asset.json";
 
-const LIVING_IMAGE = "https://private-us-east-1.manuscdn.com/sessionFile/uY8owBdGqa0R9hrRGziEvd/sandbox/JuAC9xZ8UtXXeObEka0BWw-img-3_1771587240000_na1fn_aW50ZXJpb3ItbGl2aW5n.jpg?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvdVk4b3dCZEdxYTBSOWhyUkd6aUV2ZC9zYW5kYm94L0p1QUM5eFo4VXRYWGVPYkVrYTBCV3ctaW1nLTNfMTc3MTU4NzI0MDAwMF9uYTFmbl9hVzUwWlhKcGIzSXRiR2wyYVc1bi5qcGc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=WKwFqXa8Pmdld6FH3qlbQPjxXG~V7Z2gjpvuqVyarGdFDEGnU8oV-mc0Lx9oJn3okwnjJqt1zX3Q2VtSFzgHhmWPXwdT8QNWpv5IRTk5dBKujGM9enf7f9vzpMIqJnvHJ3E1o5FtAHqs8cG3eI8pLAEzffjU9tMwc8kMgRzaiM9LeBSjCFv4OMoB2SL9-Pl-oYHaV9vjsBPW1paCkw5EPxwz35JsjoE4E0Cu8QZahlUEXDFSTxrrxq~-pytZMHeLc2Yzc7LItODb5z9SGN4pNvZyleJJYFNpcb53Vy6nQJWEDelVRrVN~2-vPbR1j10CCU1uO0svLpeBIu6TNC~N6g__";
+const EXTERIOR_IMAGE = facadeRender.url;
+
+const LIVING_IMAGE = gardenRender.url;
 
 interface Feature {
   icon: LucideIcon;
@@ -30,9 +33,10 @@ const familyFeatures: Feature[] = [
 ];
 
 const investorFeatures: Feature[] = [
-  { icon: TrendingUp, title: "9% Rental Yield", desc: "The area's booming rental market delivers consistent, high-return income." },
-  { icon: Users, title: "High Tenant Demand", desc: "Southern Bypass and Waiyaki Way expansion drive massive housing demand." },
-  { icon: Briefcase, title: "Hands-Off Management", desc: "GAP Developers offers full property management — earn from anywhere." },
+  { icon: FileCheck, title: "Freehold Title, In Your Name", desc: "Each home has its own freehold title deed — not a share, not a lease." },
+  { icon: TreePine, title: "Land and a Private Garden", desc: "You own the plot and the garden around your home, not just the walls." },
+  { icon: Users, title: "Steady Family Demand", desc: "Kikuyu families consistently look for standalone homes in secure, gated compounds." },
+  { icon: Briefcase, title: "Managed From Anywhere", desc: "GAP Developers can handle letting and upkeep while you are abroad." },
 ];
 
 function FeatureItem({ feature, delay, inView }: { feature: Feature; delay: number; inView: boolean }) {
@@ -99,7 +103,7 @@ export default function WhyKikuyuSection() {
               <div className="relative mb-8 overflow-hidden group">
                 <img
                   src={EXTERIOR_IMAGE}
-                  alt="Cedar Homes exterior with private garden"
+                  alt="Cedar Homes maisonette front elevation with stone-clad detailing"
                   className="w-full h-56 lg:h-72 object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
                 />
@@ -136,7 +140,7 @@ export default function WhyKikuyuSection() {
               <div className="relative mb-8 overflow-hidden group">
                 <img
                   src={LIVING_IMAGE}
-                  alt="Cedar Homes luxury interior living room"
+                  alt="Cedar Homes maisonette with its private garden"
                   className="w-full h-56 lg:h-72 object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
                 />
@@ -149,11 +153,12 @@ export default function WhyKikuyuSection() {
               </div>
 
               <h3 className="font-serif text-[1.5rem] text-cedar-forest mb-2">
-                Smart Investment, Proven Returns
+                Land You Actually Own
               </h3>
               <p className="text-cedar-warm-gray text-[15px] mb-8 leading-relaxed max-w-md">
-                Lusegetti, Kikuyu is one of Nairobi's fastest-growing suburbs. Cedar Homes offers a rare opportunity
-                to own freehold property with proven rental demand.
+                Each Cedar home comes with its own freehold title deed and a private garden on
+                approximately an eighth of an acre — the kind of ownership that is getting harder
+                to find this close to Nairobi.
               </p>
 
               <div className="space-y-5 mb-10">
@@ -176,18 +181,18 @@ export default function WhyKikuyuSection() {
                 ))}
               </div>
 
-              {/* ROI highlight */}
+              {/* Freehold highlight */}
               <div className="bg-cedar-forest p-7 lg:p-8 relative overflow-hidden">
                 <div className="absolute -top-8 -right-8 w-28 h-28 bg-cedar-gold/[0.08] rounded-full" />
                 <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-cedar-gold/[0.05] rounded-full" />
                 <div className="relative">
                   <div className="flex items-baseline gap-2 mb-3">
-                    <span className="font-serif text-[3rem] text-cedar-gold leading-none">9%</span>
-                    <span className="text-white/70 text-base font-medium">Projected Rental Yield</span>
+                    <span className="font-serif text-[2.5rem] text-cedar-gold leading-none">Freehold</span>
+                    <span className="text-white/70 text-base font-medium">title, per home</span>
                   </div>
                   <p className="text-white/50 text-[13px] leading-relaxed max-w-sm">
-                    Based on current local rental market data, Southern Bypass corridor demand,
-                    and comparable property performance in the area.
+                    Not leasehold, not a sectional share. Your own title deed, transferred on
+                    completion, with county-approved drawings, NEMA and NCA approvals on file.
                   </p>
                 </div>
               </div>

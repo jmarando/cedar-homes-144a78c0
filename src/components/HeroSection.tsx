@@ -9,9 +9,9 @@ import heroRender from "@/assets/cedar-hero-render.jpg.asset.json";
 const HERO_IMAGE = heroRender.url;
 
 const stats = [
-  { icon: Eye, value: "1", label: "Showhouse Ready" },
   { icon: Home, value: "4", label: "Homes Remaining" },
   { icon: Ruler, value: "266", label: "SQM Per Home" },
+  { icon: Eye, value: "Freehold", label: "Title Per Home" },
   { icon: MapPin, value: "Lusegetti", label: "Off Dagoretti Rd" },
 ];
 
@@ -48,8 +48,8 @@ export default function HeroSection() {
             {...fadeUp(0.3)}
             className="font-serif text-[2.5rem] sm:text-5xl lg:text-[3.6rem] text-white leading-[1.08] mb-6 tracking-tight"
           >
-            Walk Through Your Future Home{" "}
-            <span className="text-[#C9A44C] italic">Today</span>
+            Flexible options.{" "}
+            <span className="text-[#C9A44C] italic">Built for you.</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -57,9 +57,10 @@ export default function HeroSection() {
             {...fadeUp(0.45)}
             className="text-white/75 text-[17px] lg:text-lg leading-[1.7] mb-10 max-w-[540px]"
           >
-            Five four-bedroom maisonettes on freehold title in a gated compound off Dagoretti
-            Road, Lusegetti — Kikuyu. The show house is complete and open daily, from{" "}
-            <span className="text-[#C9A44C] font-semibold">Ksh 23.5 Million</span>.
+            Five four-bedroom maisonettes, each on its own{" "}
+            <span className="text-[#C9A44C] font-semibold">freehold title</span> with a private
+            garden, in a gated compound off Dagoretti Road, Lusegetti — Kikuyu. The show house is
+            complete and open daily, from Ksh 23.5 Million.
           </motion.p>
 
           {/* CTAs */}

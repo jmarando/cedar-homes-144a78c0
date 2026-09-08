@@ -23,7 +23,7 @@ const specs: Spec[] = [
   { icon: Bath, label: "Bathrooms", value: "4 En-Suite + DSQ" },
   { icon: Car, label: "Parking", value: "Parking for 2" },
   { icon: Layers, label: "Floors", value: "2 Storeys" },
-  { icon: TreePine, label: "Plot Size", value: "1/8 Acre" },
+  { icon: TreePine, label: "Plot Size", value: "Approx. 1/8 Acre" },
   { icon: Zap, label: "Power", value: "KPLC Mains" },
   { icon: Lock, label: "Security", value: "Gated Community" },
 ];
