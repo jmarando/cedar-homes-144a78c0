@@ -32,10 +32,10 @@ const milestones: Milestone[] = [
   },
   {
     icon: HardHat,
-    date: "Q3 2026",
-    title: "Units 2 & 3 — Foundation & Structure",
-    desc: "Construction begins on Units 2 and 3 upon booking confirmation. Foundation, columns, and beams.",
-    status: "upcoming",
+    date: "September 2026",
+    title: "Units 2 & 3 — Structure & Roofing Up",
+    desc: "Walls, columns, staircases and roofing are in place on site, with plastering underway. See the site photos above.",
+    status: "complete",
     unitLabel: "Units 2–3",
   },
   {
