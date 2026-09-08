@@ -34,7 +34,7 @@ export const PAYMENT_PLANS = [
     plan: "Balance of 70% within 6 months",
     duration: "6 months",
     onCompletion: "N/A",
-    note: "The completed, furnished show house — move in without waiting for construction.",
+    note: "The completed show house — move in without waiting for construction.",
     featured: true,
   },
   {

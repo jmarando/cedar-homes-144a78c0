@@ -142,7 +142,7 @@ export default function TimelineSection() {
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-white leading-tight mb-3 max-w-xl">
                 The show house is complete.{" "}
-                <span className="text-cedar-gold">Remaining Homes Building.</span>
+                <span className="text-cedar-gold">The rest are building.</span>
               </h2>
               <p className="text-white/60 text-[15px] mb-6 max-w-md">
                 The remaining homes are under construction, with full completion expected by Q3 2027.

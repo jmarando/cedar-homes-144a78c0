@@ -42,7 +42,7 @@ const proofs = [
   {
     icon: MapPinned,
     title: "A site you can visit unannounced",
-    body: `${CONTACT.address}. Come and see it, bring a surveyor, or send someone on your behalf.`,
+    body: `${CONTACT.address}. Come and see it, or send someone on your behalf.`,
   },
   {
     icon: Scale,
