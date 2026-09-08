@@ -10,7 +10,6 @@ const WhyKikuyuSection = lazy(() => import("@/components/WhyKikuyuSection"));
 const PropertySpecs = lazy(() => import("@/components/PropertySpecs"));
 const TrustSection = lazy(() => import("@/components/TrustSection"));
 const TimelineSection = lazy(() => import("@/components/TimelineSection"));
-const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 const LeadCaptureSection = lazy(() => import("@/components/LeadCaptureSection"));
 const Footer = lazy(() => import("@/components/Footer"));
 const FloatingCTA = lazy(() => import("@/components/FloatingCTA"));
@@ -50,7 +49,6 @@ function Index() {
         <PropertySpecs />
         <TrustSection />
         <TimelineSection />
-        <TestimonialsSection />
         <LeadCaptureSection />
         <Footer />
         <FloatingCTA />

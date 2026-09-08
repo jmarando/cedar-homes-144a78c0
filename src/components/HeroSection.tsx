@@ -34,8 +34,8 @@ export default function HeroSection() {
           fetchPriority="high"
         />
         {/* Layered gradients for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1B3A2D]/90 via-[#1B3A2D]/55 to-[#1B3A2D]/15" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1B3A2D]/70 via-transparent to-[#1B3A2D]/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#16233A]/85 via-[#16233A]/45 to-[#16233A]/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#16233A]/65 via-transparent to-[#16233A]/20" />
         {/* Subtle noise texture for depth */}
         <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")' }} />
       </div>
@@ -49,7 +49,7 @@ export default function HeroSection() {
             className="font-serif text-[2.5rem] sm:text-5xl lg:text-[3.6rem] text-white leading-[1.08] mb-6 tracking-tight"
           >
             Walk Through Your Future Home{" "}
-            <span className="text-[#B8944F] italic">Today</span>
+            <span className="text-[#C9A44C] italic">Today</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -57,26 +57,26 @@ export default function HeroSection() {
             {...fadeUp(0.45)}
             className="text-white/75 text-[17px] lg:text-lg leading-[1.7] mb-10 max-w-[540px]"
           >
-            Our showhouse is complete and ready for viewing. Experience the quality first-hand,
-            then secure one of only 4 remaining homes — starting from{" "}
-            <span className="text-[#B8944F] font-semibold">Ksh 23.5 Million</span>.
+            Five four-bedroom maisonettes on freehold title in a gated compound off Dagoretti
+            Road, Lusegetti — Kikuyu. The show house is complete and open daily, from{" "}
+            <span className="text-[#C9A44C] font-semibold">Ksh 23.5 Million</span>.
           </motion.p>
 
           {/* CTAs */}
           <motion.div {...fadeUp(0.6)} className="flex flex-col sm:flex-row gap-3.5">
             <a
               href="#contact"
-              className="group bg-[#C4703F] text-white px-7 py-3.5 text-center font-semibold tracking-wide transition-all duration-200 hover:bg-[#B8944F] shadow-lg shadow-[#C4703F]/25 hover:shadow-xl hover:shadow-[#B8944F]/25 text-[15px] flex items-center justify-center gap-2.5"
+              className="group bg-[#C9A44C] text-[#16233A] px-7 py-3.5 text-center font-semibold tracking-wide transition-all duration-200 hover:bg-[#D8B463] text-[15px] flex items-center justify-center gap-2.5"
             >
               <Eye size={17} />
-              Book a Showhouse Visit
+              Book a show house visit
             </a>
             <a
               href="#units"
               className="border border-white/25 hover:border-white/50 text-white px-7 py-3.5 text-center font-semibold tracking-wide transition-all duration-200 backdrop-blur-sm hover:bg-white/[0.06] text-[15px] flex items-center justify-center gap-2.5"
             >
               <ShoppingBag size={17} />
-              Book Your House
+              See the homes
             </a>
           </motion.div>
         </div>
@@ -98,7 +98,7 @@ export default function HeroSection() {
                   i < stats.length - 1 ? "border-r border-white/[0.06]" : ""
                 } ${i === 1 ? "border-r-0 lg:border-r" : ""}`}
               >
-                <stat.icon className="text-[#B8944F] shrink-0" size={18} strokeWidth={2} />
+                <stat.icon className="text-[#C9A44C] shrink-0" size={18} strokeWidth={2} />
                 <div>
                   <span className="font-serif text-xl lg:text-2xl text-white leading-none">{stat.value}</span>
                   <span className="block text-white/50 text-[10px] lg:text-[11px] tracking-wider uppercase mt-0.5">

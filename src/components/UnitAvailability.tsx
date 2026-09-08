@@ -27,12 +27,12 @@ export default function UnitAvailability() {
             Availability
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-cedar-forest leading-tight mb-4">
-            See It. Love It.{" "}
-            <span className="text-cedar-terracotta">Secure It.</span>
+            Visit the{" "}
+            <span className="text-cedar-terracotta">show house</span>
           </h2>
           <p className="text-cedar-warm-gray text-[16px] leading-relaxed">
-            The showhouse is complete — walk through, touch the finishes, feel the space.
-            Only 4 homes remain available.
+            The show house is complete and open daily. Four of the five homes are still
+            available.
           </p>
           <div className="w-14 h-[2px] bg-cedar-gold mx-auto mt-6" />
         </motion.div>
