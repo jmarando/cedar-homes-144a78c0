@@ -9,9 +9,9 @@ import heroRender from "@/assets/cedar-hero-render.jpg.asset.json";
 const HERO_IMAGE = heroRender.url;
 
 const stats = [
-  { icon: Eye, value: "1", label: "Showhouse Ready" },
   { icon: Home, value: "4", label: "Homes Remaining" },
   { icon: Ruler, value: "266", label: "SQM Per Home" },
+  { icon: Eye, value: "Freehold", label: "Title Per Home" },
   { icon: MapPin, value: "Lusegetti", label: "Off Dagoretti Rd" },
 ];
 
