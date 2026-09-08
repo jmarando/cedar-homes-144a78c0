@@ -34,8 +34,8 @@ export default function HeroSection() {
           fetchPriority="high"
         />
         {/* Layered gradients for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1B3A2D]/90 via-[#1B3A2D]/55 to-[#1B3A2D]/15" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1B3A2D]/70 via-transparent to-[#1B3A2D]/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#232F49]/90 via-[#232F49]/55 to-[#232F49]/15" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#232F49]/70 via-transparent to-[#232F49]/25" />
         {/* Subtle noise texture for depth */}
         <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")' }} />
       </div>

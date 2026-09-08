@@ -40,7 +40,7 @@ export default function LeadCaptureSection() {
       {/* Diagonal divider */}
       <div className="relative -mb-px">
         <svg viewBox="0 0 1440 60" className="w-full block" preserveAspectRatio="none">
-          <path d="M0,0 L1440,60 L0,60 L0,0 Z" fill="#1B3A2D" />
+          <path d="M0,0 L1440,60 L0,60 L0,0 Z" fill="#232F49" />
         </svg>
       </div>
 

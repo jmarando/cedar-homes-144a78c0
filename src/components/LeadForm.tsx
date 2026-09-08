@@ -126,7 +126,7 @@ export default function LeadForm({
   const inputCls = dark
     ? "w-full bg-white/[0.04] border border-white/[0.1] text-white px-4 py-3 text-[14px] placeholder:text-white/25 focus:border-cedar-gold/50 focus:outline-none focus:ring-1 focus:ring-cedar-gold/20 transition-all duration-200"
     : "w-full bg-cedar-cream/40 border border-cedar-forest/12 text-cedar-charcoal px-4 py-3 text-[14px] placeholder:text-cedar-warm-gray/60 focus:border-cedar-terracotta/50 focus:outline-none focus:ring-1 focus:ring-cedar-terracotta/15 transition-all duration-200";
-  const optionCls = dark ? "bg-[#1B3A2D]" : "bg-white";
+  const optionCls = dark ? "bg-[#232F49]" : "bg-white";
   const headingCls = dark ? "text-white" : "text-cedar-forest";
   const subCls = dark ? "text-white/40" : "text-cedar-warm-gray";
 
