@@ -4,7 +4,7 @@
  */
 import { motion } from "framer-motion";
 import { ArrowDown, Home, Eye, ShoppingBag, MapPin, Ruler } from "lucide-react";
-import heroRender from "@/assets/cedar-hero-render.jpg.asset.json";
+import heroRender from "@/assets/cedar-hero-render-clean.jpg.asset.json";
 
 const HERO_IMAGE = heroRender.url;
 
