@@ -103,7 +103,7 @@ export default function WhyKikuyuSection() {
               <div className="relative mb-8 overflow-hidden group">
                 <img
                   src={EXTERIOR_IMAGE}
-                  alt="Cedar Homes exterior with private garden"
+                  alt="Cedar Homes maisonette front elevation with stone-clad detailing"
                   className="w-full h-56 lg:h-72 object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
                 />
@@ -140,7 +140,7 @@ export default function WhyKikuyuSection() {
               <div className="relative mb-8 overflow-hidden group">
                 <img
                   src={LIVING_IMAGE}
-                  alt="Cedar Homes luxury interior living room"
+                  alt="Cedar Homes maisonette with its private garden"
                   className="w-full h-56 lg:h-72 object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
                 />
