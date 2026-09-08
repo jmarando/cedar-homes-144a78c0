@@ -70,44 +70,6 @@ export default function TrustSection() {
 
       <div className="bg-white py-20 lg:py-28">
         <div className="container">
-          {/* Directors */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-20"
-          >
-            <h3 className="font-serif text-2xl lg:text-[1.75rem] text-cedar-forest mb-2 flex items-center gap-3">
-              <span className="w-5 h-[2px] bg-cedar-gold" />
-              Meet the Directors
-            </h3>
-            <p className="text-cedar-warm-gray text-[15px] max-w-lg mb-8 leading-relaxed">
-              Real people, real accountability. The leadership behind Cedar Homes brings decades of combined
-              experience in Kenyan real estate.
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-5">
-              {directors.map((d, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.45, delay: 0.2 + i * 0.1 }}
-                  className="flex gap-5 p-5 lg:p-6 bg-cedar-cream/40 border border-cedar-gold/[0.08] hover:border-cedar-gold/20 transition-colors duration-200 group"
-                >
-                  <div className="w-14 h-14 bg-cedar-forest/[0.06] flex items-center justify-center shrink-0 group-hover:bg-cedar-forest/[0.1] transition-colors duration-200">
-                    <UserCircle size={28} className="text-cedar-forest" strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <h4 className="font-sans font-bold text-cedar-charcoal text-[15px]">{d.name}</h4>
-                    <span className="text-cedar-terracotta text-[13px] font-medium">{d.role}</span>
-                    <p className="text-cedar-warm-gray text-[13px] mt-2 leading-relaxed">{d.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
           {/* Partners */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
