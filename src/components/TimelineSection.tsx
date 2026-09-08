@@ -8,7 +8,9 @@ import { useInView } from "@/hooks/useInView";
 import { CheckCircle2, Clock, HardHat, Hammer, PaintBucket, Key, Eye } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-const GARDEN_IMAGE = "https://private-us-east-1.manuscdn.com/sessionFile/uY8owBdGqa0R9hrRGziEvd/sandbox/JuAC9xZ8UtXXeObEka0BWw-img-4_1771587232000_na1fn_Z2FyZGVuLWFlcmlhbA.jpg?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvdVk4b3dCZEdxYTBSOWhyUkd6aUV2ZC9zYW5kYm94L0p1QUM5eFo4VXRYWGVPYkVrYTBCV3ctaW1nLTRfMTc3MTU4NzIzMjAwMF9uYTFmbl9aMkZ5WkdWdUxXRmxjbWxoYkEuanBnP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=VQzE6GA9hP6v4H0YtiVK1jezrJVQEw6sELLZHMT9d0HJqXta~A9L45Zy6TozamxVjPGZepiedgubLALDWSspUeQ5LIDSbpdJ-AlBdr-SKZnhIhsLgCq8UH86uxc0yfKIT8ejgUUo3BRNU0UeYhej0OImzyYyGSW-paN5qlkMYI~4TvVomvpqb9n3h6JSaSKhyY5QGMB02WXr9ulgZ-4som1Wz6C1TxjiHKFDbcWPDixjokyo2BsUJ-cKFCiLVuhHAa2GwC~e3rEFl9jriKZSWHj~Ia4Fab52ouHehGUBpOcsIeFbkGqNEjpGVtKC6dnFI-ZSIzD1SIHGPbsGM2GZUw__";
+import entranceRender from "@/assets/cedar-render-entrance.jpg.asset.json";
+
+const GARDEN_IMAGE = entranceRender.url;
 
 interface Milestone {
   icon: LucideIcon;
@@ -123,7 +125,7 @@ export default function TimelineSection() {
       <div className="relative h-64 lg:h-80 overflow-hidden">
         <img
           src={GARDEN_IMAGE}
-          alt="Cedar Homes aerial view of gated community"
+          alt="Gated entrance to the Cedar Homes compound at Lusegetti"
           className="w-full h-full object-cover"
           loading="lazy"
         />
@@ -139,11 +141,11 @@ export default function TimelineSection() {
                 Development Timeline
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-white leading-tight mb-3 max-w-xl">
-                Showhouse Ready.{" "}
+                The show house is complete.{" "}
                 <span className="text-cedar-gold">Remaining Homes Building.</span>
               </h2>
               <p className="text-white/60 text-[15px] mb-6 max-w-md">
-                Full estate completion by Q3 2027. Pre-order now to secure your preferred unit.
+                The remaining homes are under construction, with full completion expected by Q3 2027.
               </p>
               <CountdownBanner />
             </motion.div>
