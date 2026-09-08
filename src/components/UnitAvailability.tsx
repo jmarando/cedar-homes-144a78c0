@@ -51,7 +51,7 @@ export default function UnitAvailability() {
             <div className="relative lg:col-span-3 h-72 lg:h-auto min-h-[320px]">
               <img
                 src={KITCHEN_IMAGE}
-                alt="Cedar Homes showhouse interior — premium kitchen finishes"
+                alt="Cedar Homes maisonettes seen from the internal driveway"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -76,15 +76,15 @@ export default function UnitAvailability() {
                 Ready for Viewing
               </span>
               <h3 className="font-serif text-2xl lg:text-[1.75rem] text-cedar-forest mb-4 leading-snug">
-                Don't Just Imagine It — Experience It
+                See the Finished Home
               </h3>
               <p className="text-cedar-warm-gray text-[15px] leading-relaxed mb-6">
-                Walk through every room, inspect the premium finishes, and feel the spacious 266 SQM layout.
-                This is the exact standard every home is built to.
+                Walk through every room and get a feel for the 266 sqm layout and the private
+                garden. This is the standard every home is built to.
               </p>
 
               <div className="grid grid-cols-2 gap-3 mb-8">
-                {["Fully finished", "Landscaped garden", "Premium fittings", "Move-in ready"].map((item) => (
+                {["Freehold title", "Private garden", "4 bedrooms en-suite", "DSQ"].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <CheckCircle2 size={14} className="text-cedar-forest shrink-0" />
                     <span className="text-[13px] text-cedar-charcoal">{item}</span>
@@ -119,8 +119,8 @@ export default function UnitAvailability() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center text-cedar-warm-gray text-[13px] max-w-2xl mx-auto"
         >
-          All homes are 4-bedroom en-suite maisonettes on 1/8 acre plots with freehold title,
-          built to the exact standard of the showhouse.
+          All homes are 4-bedroom en-suite maisonettes on plots of approximately 1/8 acre, each with its own freehold title,
+          built to the same standard as the show house.
         </motion.p>
       </div>
     </section>
