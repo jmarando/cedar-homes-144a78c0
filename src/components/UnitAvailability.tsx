@@ -7,7 +7,9 @@ import { Link } from "@tanstack/react-router";
 import { useInView } from "@/hooks/useInView";
 import { Eye, CheckCircle2, Home } from "lucide-react";
 
-const KITCHEN_IMAGE = "https://private-us-east-1.manuscdn.com/sessionFile/uY8owBdGqa0R9hrRGziEvd/sandbox/JuAC9xZ8UtXXeObEka0BWw-img-5_1771587242000_na1fn_a2l0Y2hlbi1pbnRlcmlvcg.jpg?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvdVk4b3dCZEdxYTBSOWhyUkd6aUV2ZC9zYW5kYm94L0p1QUM5eFo4VXRYWGVPYkVrYTBCV3ctaW1nLTVfMTc3MTU4NzI0MjAwMF9uYTFmbl9hMmwwWTJobGJpMXBiblJsY21sdmNnLmpwZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=Q6IVL44eZyblh1oEIO2kVIJTkH2BBCK~yvbOZqmn4V44fbwKH1kkEN5nXg-Aj6kNfeNyGdjMLL4GWEWS38PKBI9giqq5VEdDmW5iiFGt73GXrGFcOXTQWeO6adruBXhfsgah7TDgMIa7a2yBNZzasQDCdsiveMbgDfZoZcwkzeTD6u-9afqshGIZpwjLMKZ1YONXMGbme7pwAB7hiUSlbK30ahTkzldQ2lJkN4erLoyk8Lxa1jnvS8tzv9B7exur4A8wKzH5gnTlHNvMToWnW86r2Td88HEaMSlcbLeT8wvchHSRsOd4SCDQrLVA2nB-tZXeq-O26J4NmK-x~qiurQ__";
+import streetRender from "@/assets/cedar-render-street.jpg.asset.json";
+
+const KITCHEN_IMAGE = streetRender.url;
 
 
 export default function UnitAvailability() {
