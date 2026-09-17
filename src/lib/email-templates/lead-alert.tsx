@@ -72,7 +72,7 @@ export const template = {
   subject: (data: Record<string, any>) =>
     `New Cedar Homes enquiry: ${(data['name'] as string) || 'website form'}`,
   displayName: 'Internal new-lead alert',
-  to: 'justin@glab.africa',
+  to: 'info@gapdevelopers.co.ke',
   previewData: {
     name: 'Grace Wambui',
     email: 'grace@example.com',
