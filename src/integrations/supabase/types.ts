@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      ai_assistant_settings: {
+        Row: {
+          auto_reply: boolean
+          handoff_minutes: number
+          id: boolean
+          updated_at: string
+        }
+        Insert: {
+          auto_reply?: boolean
+          handoff_minutes?: number
+          id?: boolean
+          updated_at?: string
+        }
+        Update: {
+          auto_reply?: boolean
+          handoff_minutes?: number
+          id?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
       lead_activities: {
         Row: {
           body: string | null
@@ -309,6 +330,56 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      viewing_bookings: {
+        Row: {
+          created_at: string
+          full_name: string
+          id: string
+          lead_id: string | null
+          notes: string | null
+          phone: string
+          preferred_at: string | null
+          source: string
+          status: string
+          updated_at: string
+          visit_type: string
+        }
+        Insert: {
+          created_at?: string
+          full_name: string
+          id?: string
+          lead_id?: string | null
+          notes?: string | null
+          phone: string
+          preferred_at?: string | null
+          source?: string
+          status?: string
+          updated_at?: string
+          visit_type?: string
+        }
+        Update: {
+          created_at?: string
+          full_name?: string
+          id?: string
+          lead_id?: string | null
+          notes?: string | null
+          phone?: string
+          preferred_at?: string | null
+          source?: string
+          status?: string
+          updated_at?: string
+          visit_type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "viewing_bookings_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       whatsapp_webhook_events: {
         Row: {
