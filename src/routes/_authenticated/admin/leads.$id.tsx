@@ -15,7 +15,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { addActivity, getLead, sendWhatsApp, updateLead } from "@/lib/admin.functions";
+import { Input } from "@/components/ui/input";
+import { addActivity, getLead, sendEmail, sendWhatsApp, updateLead } from "@/lib/admin.functions";
 import { CHANNELS, STAGES, channelLabel, fullName, scoreTone, timeAgo } from "@/lib/admin-ui";
 import { whatsappLink } from "@/lib/site-config";
 
@@ -50,6 +51,8 @@ function LeadDetailPage() {
   const [note, setNote] = useState("");
   const [channel, setChannel] = useState("note");
   const [waText, setWaText] = useState("");
+  const [emailSubject, setEmailSubject] = useState("");
+  const [emailBody, setEmailBody] = useState("");
 
   const invalidate = () => {
     void queryClient.invalidateQueries({ queryKey: ["lead", id] });
@@ -242,6 +245,37 @@ function LeadDetailPage() {
               >
                 Or open in WhatsApp app
               </a>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base">Email</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <Input
+                placeholder="Subject"
+                value={emailSubject}
+                onChange={(e) => setEmailSubject(e.target.value)}
+              />
+              <Textarea
+                rows={5}
+                placeholder={`Hi ${lead.first_name}, following up on your Cedar Homes enquiry…`}
+                value={emailBody}
+                onChange={(e) => setEmailBody(e.target.value)}
+              />
+              <Button
+                size="sm"
+                variant="secondary"
+                className="w-full"
+                disabled={!emailBody.trim() || emailMutation.isPending}
+                onClick={() => emailMutation.mutate()}
+              >
+                Send email to {lead.email}
+              </Button>
+              <p className="text-xs text-muted-foreground">
+                Sent from the Cedar Homes sender address and logged to this timeline.
+              </p>
             </CardContent>
           </Card>
 
