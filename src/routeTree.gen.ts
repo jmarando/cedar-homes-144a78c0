@@ -25,6 +25,7 @@ import { Route as AuthenticatedAdminInboxRouteImport } from './routes/_authentic
 import { Route as AuthenticatedAdminLeadsRouteImport } from './routes/_authenticated/admin/leads'
 import { Route as AuthenticatedAdminNurtureRouteImport } from './routes/_authenticated/admin/nurture'
 import { Route as AuthenticatedAdminTeamRouteImport } from './routes/_authenticated/admin/team'
+import { Route as LovableEmailEventsRouteImport } from './routes/lovable/email/events'
 import { Route as AuthenticatedAdminLeadsIdRouteImport } from './routes/_authenticated/admin/leads.$id'
 import { Route as ApiPublicHooksNurtureRouteImport } from './routes/api/public/hooks/nurture'
 import { Route as ApiPublicWhatsappWebhookRouteImport } from './routes/api/public/whatsapp/webhook'
@@ -112,6 +113,11 @@ const AuthenticatedAdminTeamRoute = AuthenticatedAdminTeamRouteImport.update({
   path: '/team',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
+const LovableEmailEventsRoute = LovableEmailEventsRouteImport.update({
+  id: '/lovable/email/events',
+  path: '/lovable/email/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedAdminLeadsIdRoute =
   AuthenticatedAdminLeadsIdRouteImport.update({
     id: '/$id',
@@ -161,6 +167,7 @@ export interface FileRoutesByFullPath {
   '/admin/leads': typeof AuthenticatedAdminLeadsRouteWithChildren
   '/admin/nurture': typeof AuthenticatedAdminNurtureRoute
   '/admin/team': typeof AuthenticatedAdminTeamRoute
+  '/lovable/email/events': typeof LovableEmailEventsRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/admin/leads/$id': typeof AuthenticatedAdminLeadsIdRoute
   '/api/public/hooks/nurture': typeof ApiPublicHooksNurtureRoute
@@ -183,6 +190,7 @@ export interface FileRoutesByTo {
   '/admin/leads': typeof AuthenticatedAdminLeadsRouteWithChildren
   '/admin/nurture': typeof AuthenticatedAdminNurtureRoute
   '/admin/team': typeof AuthenticatedAdminTeamRoute
+  '/lovable/email/events': typeof LovableEmailEventsRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/admin/leads/$id': typeof AuthenticatedAdminLeadsIdRoute
   '/api/public/hooks/nurture': typeof ApiPublicHooksNurtureRoute
@@ -208,6 +216,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/leads': typeof AuthenticatedAdminLeadsRouteWithChildren
   '/_authenticated/admin/nurture': typeof AuthenticatedAdminNurtureRoute
   '/_authenticated/admin/team': typeof AuthenticatedAdminTeamRoute
+  '/lovable/email/events': typeof LovableEmailEventsRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/admin/leads/$id': typeof AuthenticatedAdminLeadsIdRoute
   '/api/public/hooks/nurture': typeof ApiPublicHooksNurtureRoute
@@ -233,6 +242,7 @@ export interface FileRouteTypes {
     | '/admin/leads'
     | '/admin/nurture'
     | '/admin/team'
+    | '/lovable/email/events'
     | '/admin/'
     | '/admin/leads/$id'
     | '/api/public/hooks/nurture'
@@ -255,6 +265,7 @@ export interface FileRouteTypes {
     | '/admin/leads'
     | '/admin/nurture'
     | '/admin/team'
+    | '/lovable/email/events'
     | '/admin'
     | '/admin/leads/$id'
     | '/api/public/hooks/nurture'
@@ -279,6 +290,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/leads'
     | '/_authenticated/admin/nurture'
     | '/_authenticated/admin/team'
+    | '/lovable/email/events'
     | '/_authenticated/admin/'
     | '/_authenticated/admin/leads/$id'
     | '/api/public/hooks/nurture'
@@ -299,6 +311,7 @@ export interface RootRouteChildren {
   RoiCalculatorRoute: typeof RoiCalculatorRoute
   VirtualTourRoute: typeof VirtualTourRoute
   WhyTrustUsRoute: typeof WhyTrustUsRoute
+  LovableEmailEventsRoute: typeof LovableEmailEventsRoute
   ApiPublicHooksNurtureRoute: typeof ApiPublicHooksNurtureRoute
   ApiPublicWhatsappWebhookRoute: typeof ApiPublicWhatsappWebhookRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
@@ -420,6 +433,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminTeamRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/lovable/email/events': {
+      id: '/lovable/email/events'
+      path: '/lovable/email/events'
+      fullPath: '/lovable/email/events'
+      preLoaderRoute: typeof LovableEmailEventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/admin/leads/$id': {
       id: '/_authenticated/admin/leads/$id'
       path: '/$id'
@@ -520,6 +540,7 @@ const rootRouteChildren: RootRouteChildren = {
   RoiCalculatorRoute: RoiCalculatorRoute,
   VirtualTourRoute: VirtualTourRoute,
   WhyTrustUsRoute: WhyTrustUsRoute,
+  LovableEmailEventsRoute: LovableEmailEventsRoute,
   ApiPublicHooksNurtureRoute: ApiPublicHooksNurtureRoute,
   ApiPublicWhatsappWebhookRoute: ApiPublicWhatsappWebhookRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
