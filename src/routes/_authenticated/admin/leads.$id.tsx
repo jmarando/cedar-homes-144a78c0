@@ -42,6 +42,7 @@ function LeadDetailPage() {
   const saveLead = useServerFn(updateLead);
   const logActivity = useServerFn(addActivity);
   const sendWa = useServerFn(sendWhatsApp);
+  const sendMail = useServerFn(sendEmail);
 
   const { data, isLoading } = useQuery({
     queryKey: ["lead", id],
@@ -88,6 +89,25 @@ function LeadDetailPage() {
     onSuccess: () => {
       setWaText("");
       toast.success("WhatsApp message sent");
+      invalidate();
+    },
+    onError: (e: Error) => toast.error(e.message),
+  });
+
+  const emailMutation = useMutation({
+    mutationFn: () =>
+      sendMail({
+        data: {
+          leadId: id,
+          to: ((data?.lead as any)?.email as string) ?? "",
+          subject: emailSubject,
+          body: emailBody,
+        },
+      }),
+    onSuccess: () => {
+      setEmailSubject("");
+      setEmailBody("");
+      toast.success("Email sent");
       invalidate();
     },
     onError: (e: Error) => toast.error(e.message),
