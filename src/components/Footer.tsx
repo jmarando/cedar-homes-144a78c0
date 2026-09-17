@@ -109,9 +109,19 @@ export default function Footer() {
           <p className="text-white/25 text-[11px]">
             &copy; {new Date().getFullYear()} GAP Developers. All rights reserved.
           </p>
-          <p className="text-white/25 text-[11px] font-medium tracking-wide">
-            Cedar Homes — Built for Life.
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="text-white/25 text-[11px] font-medium tracking-wide">
+              Cedar Homes — Built for Life.
+            </p>
+            <a
+              href="/auth"
+              rel="nofollow"
+              aria-label="Team sign in"
+              className="text-white/15 hover:text-cedar-gold transition-colors duration-200 text-[11px]"
+            >
+              Team
+            </a>
+          </div>
         </div>
       </div>
     </footer>
