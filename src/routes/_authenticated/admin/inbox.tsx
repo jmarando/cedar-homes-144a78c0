@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
+import { ArrowDown, ArrowUp, MessageSquare } from "lucide-react";
 import { useMemo, useState } from "react";
 
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Select,
@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/select";
 import { listInbox } from "@/lib/admin.functions";
 import { CHANNELS, channelLabel, fullName, timeAgo } from "@/lib/admin-ui";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/_authenticated/admin/inbox")({
   head: () => ({
@@ -47,6 +48,19 @@ type InboxRow = {
   } | null;
 };
 
+function channelBadgeClass(channel: string): string {
+  switch (channel) {
+    case "whatsapp":
+      return "bg-emerald-50 text-emerald-700";
+    case "form":
+      return "bg-primary text-primary-foreground";
+    case "email":
+      return "bg-cedar-gold/15 text-cedar-gold-dark";
+    default:
+      return "bg-muted text-muted-foreground";
+  }
+}
+
 function InboxPage() {
   const fetchInbox = useServerFn(listInbox);
   const { data, isLoading } = useQuery({
@@ -69,18 +83,20 @@ function InboxPage() {
   const unmatched = (data ?? []).filter((r) => !r.lead_id).length;
 
   return (
-    <div className="space-y-4">
-      <div className="flex flex-wrap items-end justify-between gap-3">
+    <div className="mx-auto max-w-5xl space-y-8 py-4">
+      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Unified inbox</h1>
-          <p className="text-sm text-muted-foreground">
+          <h1 className="font-serif text-4xl font-bold tracking-tight text-primary">
+            Unified inbox
+          </h1>
+          <p className="mt-2 max-w-md font-light text-muted-foreground">
             Every WhatsApp message, website enquiry and logged call in one feed. Refreshes
             automatically.
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <Select value={channel} onValueChange={setChannel}>
-            <SelectTrigger className="w-40">
+            <SelectTrigger className="w-44 rounded-full border-border bg-background px-5 shadow-sm transition-all focus:ring-2 focus:ring-cedar-gold/20">
               <SelectValue placeholder="All channels" />
             </SelectTrigger>
             <SelectContent>
@@ -93,7 +109,7 @@ function InboxPage() {
             </SelectContent>
           </Select>
           <Select value={direction} onValueChange={setDirection}>
-            <SelectTrigger className="w-36">
+            <SelectTrigger className="w-40 rounded-full border-border bg-background px-5 shadow-sm transition-all focus:ring-2 focus:ring-cedar-gold/20">
               <SelectValue placeholder="Any direction" />
             </SelectTrigger>
             <SelectContent>
@@ -117,31 +133,60 @@ function InboxPage() {
 
       {isLoading && <p className="text-sm text-muted-foreground">Loading conversations…</p>}
       {!isLoading && rows.length === 0 && (
-        <Card>
-          <CardContent className="py-10 text-center text-sm text-muted-foreground">
-            Nothing here yet.
+        <Card className="rounded-2xl">
+          <CardContent className="flex flex-col items-center gap-3 py-14 text-center">
+            <MessageSquare className="h-8 w-8 text-cedar-gold/60" />
+            <p className="font-serif text-lg text-primary">Nothing here yet</p>
+            <p className="text-sm text-muted-foreground">
+              New messages and enquiries will appear here as they arrive.
+            </p>
           </CardContent>
         </Card>
       )}
 
-      <div className="space-y-2">
+      <div className="space-y-4">
         {rows.map((row) => {
+          const isInbound = row.direction === "inbound";
+          const DirectionIcon = isInbound ? ArrowDown : ArrowUp;
           const body = (
-            <div className="rounded-lg border bg-background p-4 transition-colors hover:bg-muted/50">
-              <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                <Badge variant="outline">{channelLabel(row.channel)}</Badge>
-                <span>{row.direction}</span>
-                <span className="font-medium text-foreground">
-                  {row.leads
-                    ? fullName(row.leads.first_name, row.leads.last_name)
-                    : (row.contact_handle ?? "Unknown contact")}
+            <div className="group relative rounded-2xl border border-border/60 bg-background p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-cedar-gold/40 hover:shadow-[0_20px_50px_-12px_oklch(0.76_0.09_86/0.18)]">
+              <div className="mb-4 flex items-start justify-between gap-3">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span
+                    className={cn(
+                      "rounded-md px-2 py-1 text-[10px] font-bold uppercase tracking-widest",
+                      channelBadgeClass(row.channel),
+                    )}
+                  >
+                    {channelLabel(row.channel)}
+                  </span>
+                  <span className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+                    <DirectionIcon className="h-3 w-3 text-cedar-gold-dark" />
+                    {isInbound ? "Inbound" : row.direction === "outbound" ? "Outbound" : "Internal"}
+                  </span>
+                  <span className="h-1 w-1 rounded-full bg-border" />
+                  <span className="text-sm font-semibold text-primary">
+                    {row.leads
+                      ? fullName(row.leads.first_name, row.leads.last_name)
+                      : (row.contact_handle ?? "Unknown contact")}
+                  </span>
+                </div>
+                <span className="shrink-0 rounded bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">
+                  {timeAgo(row.occurred_at)}
                 </span>
-                <span className="ml-auto">{timeAgo(row.occurred_at)}</span>
               </div>
-              {row.subject && <p className="mt-2 text-sm font-medium">{row.subject}</p>}
-              {row.body && (
-                <p className="mt-1 line-clamp-3 whitespace-pre-wrap text-sm">{row.body}</p>
-              )}
+              <div className="pl-1">
+                {row.subject && (
+                  <h3 className="mb-1 text-lg font-semibold text-primary transition-colors group-hover:text-cedar-gold-dark">
+                    {row.subject}
+                  </h3>
+                )}
+                {row.body && (
+                  <p className="line-clamp-2 whitespace-pre-wrap leading-relaxed text-muted-foreground">
+                    {row.body}
+                  </p>
+                )}
+              </div>
             </div>
           );
 
