@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { lovable } from "@/integrations/lovable/index";
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/auth")({
@@ -50,6 +51,24 @@ function AuthPage() {
       if (data.session) navigate({ to: target, replace: true });
     });
   }, [navigate, target]);
+
+  async function handleGoogle() {
+    setBusy(true);
+    try {
+      if (target !== "/admin") sessionStorage.setItem("cedar-auth-redirect", target);
+      const result = await lovable.auth.signInWithOAuth("google", {
+        redirect_uri: `${window.location.origin}/auth`,
+      });
+      if (result.error) {
+        toast.error("Google sign-in failed. Try again or use your email and password.");
+        return;
+      }
+      if (result.redirected) return;
+      navigate({ to: target, replace: true });
+    } finally {
+      setBusy(false);
+    }
+  }
 
   async function handleSignIn(event: React.FormEvent) {
     event.preventDefault();
@@ -100,6 +119,20 @@ function AuthPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full"
+              disabled={busy}
+              onClick={handleGoogle}
+            >
+              Continue with Google
+            </Button>
+            <div className="my-5 flex items-center gap-3">
+              <span className="h-px flex-1 bg-border" />
+              <span className="text-xs uppercase tracking-wider text-muted-foreground">or</span>
+              <span className="h-px flex-1 bg-border" />
+            </div>
             <Tabs defaultValue="signin">
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="signin">Sign in</TabsTrigger>
