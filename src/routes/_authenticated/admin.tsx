@@ -62,11 +62,14 @@ function AdminLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-muted/20">
-      <header className="border-b bg-background">
+    <div className="min-h-screen bg-background">
+      <header className="border-b bg-background/80 backdrop-blur">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-4 px-4 py-3">
-          <Link to="/" className="text-sm font-semibold tracking-tight">
-            Cedar Homes <span className="text-muted-foreground">· Sales desk</span>
+          <Link to="/" className="font-serif text-lg font-bold tracking-tight">
+            Cedar Homes{" "}
+            <span className="font-sans text-xs font-medium uppercase tracking-widest text-cedar-gold-dark">
+              · Sales desk
+            </span>
           </Link>
           <nav className="flex flex-wrap items-center gap-1">
             {NAV.map((item) => {

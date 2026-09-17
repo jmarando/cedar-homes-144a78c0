@@ -65,7 +65,7 @@
   --color-cedar-warm-gray: oklch(0.55 0.02 80);
   --color-cedar-light-gray: oklch(0.75 0.01 80);
 
-  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
