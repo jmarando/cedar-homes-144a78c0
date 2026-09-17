@@ -147,6 +147,15 @@ async function processEvent(
               : new Date().toISOString(),
           });
           if (error) throw new Error(error.message);
+
+          // AI auto-reply. Never throws — it must not fail the delivery.
+          const { handleInboundMessage } = await import("@/lib/assistant.server");
+          await handleInboundMessage(db, {
+            leadId: lead?.id ?? null,
+            from,
+            profileName,
+            text: extractBody(message),
+          });
         }
       } else if (event === "whatsapp.status") {
         for (const status of value.statuses ?? []) {
