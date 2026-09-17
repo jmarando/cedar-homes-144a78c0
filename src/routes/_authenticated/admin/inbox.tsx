@@ -122,6 +122,9 @@ function InboxPage() {
         </div>
       </div>
 
+      <AssistantPanel />
+
+
       {unmatched > 0 && (
         <Card className="border-amber-500/40 bg-amber-500/5">
           <CardContent className="pt-6 text-sm">
