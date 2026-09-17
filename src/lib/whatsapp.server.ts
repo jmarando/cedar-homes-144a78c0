@@ -86,39 +86,11 @@ export async function sendWhatsAppText(
   to: string,
   body: string,
 ): Promise<{ id: string | null }> {
-  const config = getWhatsAppConfig();
-  if (!config) {
-    throw new Error(
-      "WhatsApp is not connected yet. Link the WhatsApp Business connector in Connectors settings.",
-    );
-  }
-
-  const response = await fetch(`${GATEWAY_URL}/messages`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${config.token}`,
-      "X-Connection-Api-Key": config.connectionKey,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      messaging_product: "whatsapp",
-      recipient_type: "individual",
-      to: normalizeMsisdn(to),
-      type: "text",
-      text: { preview_url: false, body },
-    }),
+  return postMessage({
+    messaging_product: "whatsapp",
+    recipient_type: "individual",
+    to: normalizeMsisdn(to),
+    type: "text",
+    text: { preview_url: false, body },
   });
-
-  const text = await response.text();
-  if (!response.ok) {
-    console.error(`[whatsapp] send failed [${response.status}]: ${text}`);
-    throw new Error(`WhatsApp send failed [${response.status}]: ${text}`);
-  }
-
-  try {
-    const json = JSON.parse(text) as { messages?: Array<{ id?: string }> };
-    return { id: json.messages?.[0]?.id ?? null };
-  } catch {
-    return { id: null };
-  }
 }
