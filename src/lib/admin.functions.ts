@@ -348,3 +348,110 @@ export const setAssistantAutoReply = createServerFn({ method: "POST" })
     if (error) throw new Error(error.message);
     return { ok: true as const };
   });
+
+/**
+ * Send a message from the inbox — reply or cold outreach. Finds or creates the
+ * matching lead so every conversation stays in the CRM.
+ */
+export const startConversation = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator(
+    (data: {
+      channel: "whatsapp" | "email";
+      to: string;
+      body: string;
+      subject?: string;
+      name?: string;
+      leadId?: string | null;
+    }) => data,
+  )
+  .handler(async ({ data, context }) => {
+    const { requireStaff } = await import("./admin.server");
+    await requireStaff(context.supabase, context.userId);
+
+    const to = data.to.trim();
+    if (!to) throw new Error("Enter a recipient.");
+    if (!data.body.trim()) throw new Error("Enter a message.");
+
+    const { normalizeMsisdn, msisdnTail } = await import("./whatsapp.server");
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+
+    // Find the lead this conversation belongs to, or create one.
+    let leadId = data.leadId ?? null;
+    if (!leadId) {
+      if (data.channel === "whatsapp") {
+        const { data: found } = await supabaseAdmin
+          .from("leads")
+          .select("id")
+          .like("phone", `%${msisdnTail(to)}`)
+          .order("created_at", { ascending: false })
+          .limit(1)
+          .maybeSingle();
+        leadId = found?.id ?? null;
+      } else {
+        const { data: found } = await supabaseAdmin
+          .from("leads")
+          .select("id")
+          .ilike("email", to)
+          .order("created_at", { ascending: false })
+          .limit(1)
+          .maybeSingle();
+        leadId = found?.id ?? null;
+      }
+    }
+
+    if (!leadId) {
+      const parts = (data.name ?? "").trim().split(" ").filter(Boolean);
+      const handle = data.channel === "whatsapp" ? normalizeMsisdn(to) : to.toLowerCase();
+      const { data: created, error: createError } = await supabaseAdmin
+        .from("leads")
+        .insert({
+          first_name: parts[0] ?? (data.channel === "whatsapp" ? "WhatsApp" : "Email"),
+          last_name: parts.length > 1 ? parts.slice(1).join(" ") : null,
+          phone: data.channel === "whatsapp" ? `+${handle}` : "",
+          email: data.channel === "email" ? handle : `${handle}@whatsapp.cedar`,
+          interest: "showhouse-visit",
+          source: "outbound",
+          preferred_contact: data.channel,
+          message: "Created from an outbound message sent in the sales desk.",
+        })
+        .select("id")
+        .maybeSingle();
+      if (createError) throw new Error(createError.message);
+      leadId = created?.id ?? null;
+    }
+
+    if (data.channel === "whatsapp") {
+      const { sendWhatsAppText } = await import("./whatsapp.server");
+      const result = await sendWhatsAppText(to, data.body);
+      const { error } = await context.supabase.from("lead_activities").insert({
+        lead_id: leadId,
+        channel: "whatsapp",
+        direction: "outbound",
+        subject: data.subject || null,
+        body: data.body,
+        contact_handle: normalizeMsisdn(to),
+        external_id: result.id,
+        status: "accepted",
+        created_by: context.userId,
+      });
+      if (error) throw new Error(error.message);
+      return { ok: true as const, leadId };
+    }
+
+    const subject = data.subject?.trim() || "A message from Cedar Homes";
+    const { sendLeadEmail } = await import("./email.server");
+    const result = await sendLeadEmail({
+      leadId,
+      to,
+      templateName: "agent-reply",
+      subject,
+      bodyForLog: data.body,
+      templateData: { subject, headline: subject, message: data.body },
+      createdBy: context.userId,
+    });
+    if (!result.sent) {
+      throw new Error(result.reason ?? "The email could not be sent.");
+    }
+    return { ok: true as const, leadId };
+  });

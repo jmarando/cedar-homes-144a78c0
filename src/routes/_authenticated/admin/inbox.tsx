@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { ArrowDown, ArrowUp, Bot, CalendarCheck, MessageSquare } from "lucide-react";
+import { ArrowDown, ArrowUp, Bot, CalendarCheck, MessageSquare, PenLine, Send, X } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,10 +13,16 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
 import {
   getAssistantSettings,
   listInbox,
   setAssistantAutoReply,
+  startConversation,
 } from "@/lib/admin.functions";
 import { CHANNELS, channelLabel, fullName, timeAgo } from "@/lib/admin-ui";
 import { cn } from "@/lib/utils";
@@ -171,6 +177,132 @@ function AssistantPanel() {
   );
 }
 
+
+type ComposerProps = {
+  defaultChannel?: "whatsapp" | "email";
+  defaultTo?: string;
+  defaultSubject?: string;
+  leadId?: string | null;
+  lockRecipient?: boolean;
+  onDone?: () => void;
+};
+
+function Composer({
+  defaultChannel = "whatsapp",
+  defaultTo = "",
+  defaultSubject = "",
+  leadId = null,
+  lockRecipient = false,
+  onDone,
+}: ComposerProps) {
+  const queryClient = useQueryClient();
+  const send = useServerFn(startConversation);
+  const [channel, setChannel] = useState<"whatsapp" | "email">(defaultChannel);
+  const [to, setTo] = useState(defaultTo);
+  const [name, setName] = useState("");
+  const [subject, setSubject] = useState(defaultSubject);
+  const [body, setBody] = useState("");
+
+  const mutation = useMutation({
+    mutationFn: () =>
+      send({
+        data: {
+          channel,
+          to,
+          body,
+          ...(channel === "email" && subject ? { subject } : {}),
+          ...(name ? { name } : {}),
+          leadId,
+        },
+      }),
+    onSuccess: () => {
+      setBody("");
+      toast.success(channel === "whatsapp" ? "WhatsApp message sent" : "Email sent");
+      queryClient.invalidateQueries({ queryKey: ["inbox"] });
+      onDone?.();
+    },
+    onError: (error: Error) => toast.error(error.message),
+  });
+
+  return (
+    <div className="space-y-4">
+      <div className="flex flex-wrap items-end gap-3">
+        <div className="w-40">
+          <Label className="mb-1.5 block text-xs text-muted-foreground">Channel</Label>
+          <Select value={channel} onValueChange={(v) => setChannel(v as "whatsapp" | "email")}>
+            <SelectTrigger className="rounded-full">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="whatsapp">WhatsApp</SelectItem>
+              <SelectItem value="email">Email</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="min-w-[220px] flex-1">
+          <Label className="mb-1.5 block text-xs text-muted-foreground">
+            {channel === "whatsapp" ? "Phone number" : "Email address"}
+          </Label>
+          <Input
+            value={to}
+            disabled={lockRecipient}
+            onChange={(e) => setTo(e.target.value)}
+            placeholder={channel === "whatsapp" ? "+254 7XX XXX XXX" : "name@example.com"}
+            className="rounded-full"
+          />
+        </div>
+        {!lockRecipient && (
+          <div className="min-w-[160px] flex-1">
+            <Label className="mb-1.5 block text-xs text-muted-foreground">Name (optional)</Label>
+            <Input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Jane Wanjiru"
+              className="rounded-full"
+            />
+          </div>
+        )}
+      </div>
+
+      {channel === "email" && (
+        <div>
+          <Label className="mb-1.5 block text-xs text-muted-foreground">Subject</Label>
+          <Input
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+            placeholder="Cedar Homes — your enquiry"
+            className="rounded-full"
+          />
+        </div>
+      )}
+
+      <Textarea
+        value={body}
+        onChange={(e) => setBody(e.target.value)}
+        rows={4}
+        placeholder="Write your message…"
+        className="rounded-2xl"
+      />
+
+      <div className="flex justify-end gap-2">
+        {onDone && (
+          <Button variant="ghost" onClick={onDone} className="rounded-full">
+            Cancel
+          </Button>
+        )}
+        <Button
+          onClick={() => mutation.mutate()}
+          disabled={mutation.isPending || !to.trim() || !body.trim()}
+          className="rounded-full"
+        >
+          <Send className="mr-2 h-4 w-4" />
+          {mutation.isPending ? "Sending…" : "Send"}
+        </Button>
+      </div>
+    </div>
+  );
+}
+
 function InboxPage() {
   const fetchInbox = useServerFn(listInbox);
   const { data, isLoading } = useQuery({
@@ -181,6 +313,8 @@ function InboxPage() {
 
   const [channel, setChannel] = useState("all");
   const [direction, setDirection] = useState("all");
+  const [composeOpen, setComposeOpen] = useState(false);
+  const [replyTo, setReplyTo] = useState<string | null>(null);
 
   const rows = useMemo(() => {
     return (data ?? []).filter((row) => {
@@ -229,8 +363,21 @@ function InboxPage() {
               <SelectItem value="internal">Internal</SelectItem>
             </SelectContent>
           </Select>
+          <Button onClick={() => setComposeOpen((v) => !v)} className="rounded-full">
+            {composeOpen ? <X className="mr-2 h-4 w-4" /> : <PenLine className="mr-2 h-4 w-4" />}
+            {composeOpen ? "Close" : "New message"}
+          </Button>
         </div>
       </div>
+
+      {composeOpen && (
+        <Card className="rounded-2xl border-cedar-gold/30">
+          <CardContent className="space-y-4 pt-6">
+            <p className="font-serif text-lg text-primary">New message</p>
+            <Composer onDone={() => setComposeOpen(false)} />
+          </CardContent>
+        </Card>
+      )}
 
       <AssistantPanel />
 
@@ -303,12 +450,50 @@ function InboxPage() {
             </div>
           );
 
-          return row.lead_id ? (
-            <Link key={row.id} to="/admin/leads/$id" params={{ id: row.lead_id }} className="block">
-              {body}
-            </Link>
-          ) : (
-            <div key={row.id}>{body}</div>
+          const open = replyTo === row.id;
+          const isEmail = row.channel === "email" || row.channel === "form";
+          const recipient = isEmail
+            ? (row.leads?.email ?? row.contact_handle ?? "")
+            : (row.contact_handle ?? row.leads?.phone ?? "");
+
+          return (
+            <div key={row.id} className="space-y-2">
+              <button
+                type="button"
+                onClick={() => setReplyTo(open ? null : row.id)}
+                className="block w-full text-left"
+              >
+                {body}
+              </button>
+              {open && (
+                <Card className="rounded-2xl border-cedar-gold/30">
+                  <CardContent className="space-y-4 pt-6">
+                    <div className="flex items-center justify-between">
+                      <p className="font-serif text-base text-primary">
+                        Reply to {row.leads ? fullName(row.leads.first_name, row.leads.last_name) : recipient}
+                      </p>
+                      {row.lead_id && (
+                        <Link
+                          to="/admin/leads/$id"
+                          params={{ id: row.lead_id }}
+                          className="text-xs text-cedar-gold hover:underline"
+                        >
+                          Open full lead
+                        </Link>
+                      )}
+                    </div>
+                    <Composer
+                      defaultChannel={isEmail ? "email" : "whatsapp"}
+                      defaultTo={recipient}
+                      defaultSubject={row.subject ? `Re: ${row.subject}` : ""}
+                      leadId={row.lead_id}
+                      lockRecipient={Boolean(recipient)}
+                      onDone={() => setReplyTo(null)}
+                    />
+                  </CardContent>
+                </Card>
+              )}
+            </div>
           );
         })}
       </div>
