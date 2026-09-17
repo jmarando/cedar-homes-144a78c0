@@ -229,7 +229,7 @@ export async function handleInboundMessage(db: Db, ctx: InboundContext): Promise
             if (leadId) {
               await db
                 .from("leads")
-                .update({ stage: "qualified", last_contacted_at: new Date().toISOString() })
+                .update({ stage: "visit_booked", last_contacted_at: new Date().toISOString() })
                 .eq("id", leadId);
             }
             await db.from("lead_activities").insert({
