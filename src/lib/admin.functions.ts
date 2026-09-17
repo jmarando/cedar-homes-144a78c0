@@ -147,7 +147,7 @@ export const sendWhatsApp = createServerFn({ method: "POST" })
       body: data.body,
       contact_handle: normalizeMsisdn(data.to),
       external_id: result.id,
-      status: "sent",
+      status: "accepted",
       created_by: context.userId,
     });
     if (error) throw new Error(error.message);

@@ -25,9 +25,9 @@ import { Route as AuthenticatedAdminInboxRouteImport } from './routes/_authentic
 import { Route as AuthenticatedAdminLeadsRouteImport } from './routes/_authenticated/admin/leads'
 import { Route as AuthenticatedAdminNurtureRouteImport } from './routes/_authenticated/admin/nurture'
 import { Route as AuthenticatedAdminTeamRouteImport } from './routes/_authenticated/admin/team'
-import { Route as ApiPublicWhatsappRouteImport } from './routes/api/public/whatsapp'
 import { Route as AuthenticatedAdminLeadsIdRouteImport } from './routes/_authenticated/admin/leads.$id'
 import { Route as ApiPublicHooksNurtureRouteImport } from './routes/api/public/hooks/nurture'
+import { Route as ApiPublicWhatsappWebhookRouteImport } from './routes/api/public/whatsapp/webhook'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
@@ -112,11 +112,6 @@ const AuthenticatedAdminTeamRoute = AuthenticatedAdminTeamRouteImport.update({
   path: '/team',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
-const ApiPublicWhatsappRoute = ApiPublicWhatsappRouteImport.update({
-  id: '/api/public/whatsapp',
-  path: '/api/public/whatsapp',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AuthenticatedAdminLeadsIdRoute =
   AuthenticatedAdminLeadsIdRouteImport.update({
     id: '/$id',
@@ -128,6 +123,12 @@ const ApiPublicHooksNurtureRoute = ApiPublicHooksNurtureRouteImport.update({
   path: '/api/public/hooks/nurture',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicWhatsappWebhookRoute =
+  ApiPublicWhatsappWebhookRouteImport.update({
+    id: '/api/public/whatsapp/webhook',
+    path: '/api/public/whatsapp/webhook',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const LovableEmailAuthPreviewRoute = LovableEmailAuthPreviewRouteImport.update({
   id: '/lovable/email/auth/preview',
   path: '/lovable/email/auth/preview',
@@ -160,10 +161,10 @@ export interface FileRoutesByFullPath {
   '/admin/leads': typeof AuthenticatedAdminLeadsRouteWithChildren
   '/admin/nurture': typeof AuthenticatedAdminNurtureRoute
   '/admin/team': typeof AuthenticatedAdminTeamRoute
-  '/api/public/whatsapp': typeof ApiPublicWhatsappRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/admin/leads/$id': typeof AuthenticatedAdminLeadsIdRoute
   '/api/public/hooks/nurture': typeof ApiPublicHooksNurtureRoute
+  '/api/public/whatsapp/webhook': typeof ApiPublicWhatsappWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -182,10 +183,10 @@ export interface FileRoutesByTo {
   '/admin/leads': typeof AuthenticatedAdminLeadsRouteWithChildren
   '/admin/nurture': typeof AuthenticatedAdminNurtureRoute
   '/admin/team': typeof AuthenticatedAdminTeamRoute
-  '/api/public/whatsapp': typeof ApiPublicWhatsappRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/admin/leads/$id': typeof AuthenticatedAdminLeadsIdRoute
   '/api/public/hooks/nurture': typeof ApiPublicHooksNurtureRoute
+  '/api/public/whatsapp/webhook': typeof ApiPublicWhatsappWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -207,10 +208,10 @@ export interface FileRoutesById {
   '/_authenticated/admin/leads': typeof AuthenticatedAdminLeadsRouteWithChildren
   '/_authenticated/admin/nurture': typeof AuthenticatedAdminNurtureRoute
   '/_authenticated/admin/team': typeof AuthenticatedAdminTeamRoute
-  '/api/public/whatsapp': typeof ApiPublicWhatsappRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/admin/leads/$id': typeof AuthenticatedAdminLeadsIdRoute
   '/api/public/hooks/nurture': typeof ApiPublicHooksNurtureRoute
+  '/api/public/whatsapp/webhook': typeof ApiPublicWhatsappWebhookRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -232,10 +233,10 @@ export interface FileRouteTypes {
     | '/admin/leads'
     | '/admin/nurture'
     | '/admin/team'
-    | '/api/public/whatsapp'
     | '/admin/'
     | '/admin/leads/$id'
     | '/api/public/hooks/nurture'
+    | '/api/public/whatsapp/webhook'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
@@ -254,10 +255,10 @@ export interface FileRouteTypes {
     | '/admin/leads'
     | '/admin/nurture'
     | '/admin/team'
-    | '/api/public/whatsapp'
     | '/admin'
     | '/admin/leads/$id'
     | '/api/public/hooks/nurture'
+    | '/api/public/whatsapp/webhook'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
@@ -278,10 +279,10 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/leads'
     | '/_authenticated/admin/nurture'
     | '/_authenticated/admin/team'
-    | '/api/public/whatsapp'
     | '/_authenticated/admin/'
     | '/_authenticated/admin/leads/$id'
     | '/api/public/hooks/nurture'
+    | '/api/public/whatsapp/webhook'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
@@ -298,8 +299,8 @@ export interface RootRouteChildren {
   RoiCalculatorRoute: typeof RoiCalculatorRoute
   VirtualTourRoute: typeof VirtualTourRoute
   WhyTrustUsRoute: typeof WhyTrustUsRoute
-  ApiPublicWhatsappRoute: typeof ApiPublicWhatsappRoute
   ApiPublicHooksNurtureRoute: typeof ApiPublicHooksNurtureRoute
+  ApiPublicWhatsappWebhookRoute: typeof ApiPublicWhatsappWebhookRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
   LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
   LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
@@ -419,13 +420,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminTeamRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
-    '/api/public/whatsapp': {
-      id: '/api/public/whatsapp'
-      path: '/api/public/whatsapp'
-      fullPath: '/api/public/whatsapp'
-      preLoaderRoute: typeof ApiPublicWhatsappRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/_authenticated/admin/leads/$id': {
       id: '/_authenticated/admin/leads/$id'
       path: '/$id'
@@ -438,6 +432,13 @@ declare module '@tanstack/react-router' {
       path: '/api/public/hooks/nurture'
       fullPath: '/api/public/hooks/nurture'
       preLoaderRoute: typeof ApiPublicHooksNurtureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/whatsapp/webhook': {
+      id: '/api/public/whatsapp/webhook'
+      path: '/api/public/whatsapp/webhook'
+      fullPath: '/api/public/whatsapp/webhook'
+      preLoaderRoute: typeof ApiPublicWhatsappWebhookRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lovable/email/auth/preview': {
@@ -519,8 +520,8 @@ const rootRouteChildren: RootRouteChildren = {
   RoiCalculatorRoute: RoiCalculatorRoute,
   VirtualTourRoute: VirtualTourRoute,
   WhyTrustUsRoute: WhyTrustUsRoute,
-  ApiPublicWhatsappRoute: ApiPublicWhatsappRoute,
   ApiPublicHooksNurtureRoute: ApiPublicHooksNurtureRoute,
+  ApiPublicWhatsappWebhookRoute: ApiPublicWhatsappWebhookRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
   LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,
   LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
