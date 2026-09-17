@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { ArrowDown, ArrowUp, MessageSquare } from "lucide-react";
+import { ArrowDown, ArrowUp, Bot, CalendarCheck, MessageSquare } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,7 +12,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { listInbox } from "@/lib/admin.functions";
+import { Switch } from "@/components/ui/switch";
+import {
+  getAssistantSettings,
+  listInbox,
+  setAssistantAutoReply,
+} from "@/lib/admin.functions";
 import { CHANNELS, channelLabel, fullName, timeAgo } from "@/lib/admin-ui";
 import { cn } from "@/lib/utils";
 
@@ -59,6 +64,111 @@ function channelBadgeClass(channel: string): string {
     default:
       return "bg-muted text-muted-foreground";
   }
+}
+
+
+type Booking = {
+  id: string;
+  lead_id: string | null;
+  full_name: string;
+  phone: string;
+  visit_type: string;
+  preferred_at: string | null;
+  notes: string | null;
+  status: string;
+  created_at: string;
+};
+
+function AssistantPanel() {
+  const queryClient = useQueryClient();
+  const fetchSettings = useServerFn(getAssistantSettings);
+  const saveAutoReply = useServerFn(setAssistantAutoReply);
+
+  const { data } = useQuery({
+    queryKey: ["assistant-settings"],
+    queryFn: () =>
+      fetchSettings() as Promise<{
+        autoReply: boolean;
+        handoffMinutes: number;
+        bookings: Booking[];
+      }>,
+    refetchInterval: 60_000,
+  });
+
+  const toggle = useMutation({
+    mutationFn: (autoReply: boolean) => saveAutoReply({ data: { autoReply } }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["assistant-settings"] }),
+  });
+
+  const bookings = data?.bookings ?? [];
+
+  return (
+    <Card className="rounded-2xl border-cedar-gold/30 bg-gradient-to-br from-cedar-gold/[0.06] to-transparent">
+      <CardContent className="space-y-5 pt-6">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-start gap-3">
+            <span className="rounded-xl bg-cedar-gold/15 p-2 text-cedar-gold-dark">
+              <Bot className="h-5 w-5" />
+            </span>
+            <div>
+              <p className="font-serif text-lg text-primary">AI assistant</p>
+              <p className="text-sm text-muted-foreground">
+                Replies to new WhatsApp messages, sends the brochure and books visits. It pauses
+                automatically for {data?.handoffMinutes ?? 60} minutes after you reply yourself.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="text-sm font-medium text-muted-foreground">
+              {data?.autoReply ? "Auto-replies on" : "Paused"}
+            </span>
+            <Switch
+              checked={data?.autoReply ?? false}
+              disabled={!data || toggle.isPending}
+              onCheckedChange={(v) => toggle.mutate(v)}
+            />
+          </div>
+        </div>
+
+        {bookings.length > 0 && (
+          <div className="space-y-2 border-t border-border/60 pt-4">
+            <p className="flex items-center gap-2 text-sm font-medium text-primary">
+              <CalendarCheck className="h-4 w-4 text-cedar-gold" /> Visit requests
+            </p>
+            <ul className="space-y-2">
+              {bookings.slice(0, 5).map((b) => (
+                <li
+                  key={b.id}
+                  className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-xl bg-background/70 px-4 py-2 text-sm"
+                >
+                  <span className="font-medium text-primary">{b.full_name}</span>
+                  <span className="text-muted-foreground">{b.phone}</span>
+                  <span className="text-muted-foreground">·</span>
+                  <span className="text-muted-foreground">
+                    {b.visit_type === "virtual" ? "Virtual tour" : "Show house visit"}
+                  </span>
+                  {b.preferred_at && (
+                    <span className="rounded-full bg-cedar-gold/15 px-2 py-0.5 text-xs text-cedar-gold-dark">
+                      {b.preferred_at}
+                    </span>
+                  )}
+                  {b.lead_id && (
+                    <Link
+                      to="/admin/leads/$id"
+                      params={{ id: b.lead_id }}
+                      className="ml-auto text-xs text-cedar-gold hover:underline"
+                    >
+                      Open lead
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
 }
 
 function InboxPage() {
@@ -121,6 +231,9 @@ function InboxPage() {
           </Select>
         </div>
       </div>
+
+      <AssistantPanel />
+
 
       {unmatched > 0 && (
         <Card className="border-amber-500/40 bg-amber-500/5">

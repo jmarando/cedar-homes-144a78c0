@@ -34,10 +34,7 @@ export function msisdnTail(raw: string): string {
   return normalizeMsisdn(raw).slice(-9);
 }
 
-export async function sendWhatsAppText(
-  to: string,
-  body: string,
-): Promise<{ id: string | null }> {
+async function postMessage(payload: Record<string, unknown>): Promise<{ id: string | null }> {
   const config = getWhatsAppConfig();
   if (!config) {
     throw new Error(
@@ -52,13 +49,7 @@ export async function sendWhatsAppText(
       "X-Connection-Api-Key": config.connectionKey,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      messaging_product: "whatsapp",
-      recipient_type: "individual",
-      to: normalizeMsisdn(to),
-      type: "text",
-      text: { preview_url: false, body },
-    }),
+    body: JSON.stringify(payload),
   });
 
   const text = await response.text();
@@ -73,4 +64,33 @@ export async function sendWhatsAppText(
   } catch {
     return { id: null };
   }
+}
+
+/** Send a document (e.g. the brochure PDF) by public link. */
+export async function sendWhatsAppDocument(
+  to: string,
+  link: string,
+  filename: string,
+  caption?: string,
+): Promise<{ id: string | null }> {
+  return postMessage({
+    messaging_product: "whatsapp",
+    recipient_type: "individual",
+    to: normalizeMsisdn(to),
+    type: "document",
+    document: { link, filename, ...(caption ? { caption } : {}) },
+  });
+}
+
+export async function sendWhatsAppText(
+  to: string,
+  body: string,
+): Promise<{ id: string | null }> {
+  return postMessage({
+    messaging_product: "whatsapp",
+    recipient_type: "individual",
+    to: normalizeMsisdn(to),
+    type: "text",
+    text: { preview_url: false, body },
+  });
 }
