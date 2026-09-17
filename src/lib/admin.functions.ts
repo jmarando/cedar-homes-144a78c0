@@ -310,3 +310,41 @@ export const runNurtureNow = createServerFn({ method: "POST" })
     const { runDueNurtureTasks } = await import("./nurture.server");
     return runDueNurtureTasks();
   });
+
+export const getAssistantSettings = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const { requireStaff } = await import("./admin.server");
+    await requireStaff(context.supabase, context.userId);
+    const [settings, bookings] = await Promise.all([
+      context.supabase
+        .from("ai_assistant_settings")
+        .select("auto_reply, handoff_minutes")
+        .maybeSingle(),
+      context.supabase
+        .from("viewing_bookings")
+        .select("id, lead_id, full_name, phone, visit_type, preferred_at, notes, status, created_at")
+        .order("created_at", { ascending: false })
+        .limit(50),
+    ]);
+    if (bookings.error) throw new Error(bookings.error.message);
+    return {
+      autoReply: settings.data?.auto_reply ?? true,
+      handoffMinutes: settings.data?.handoff_minutes ?? 60,
+      bookings: bookings.data ?? [],
+    };
+  });
+
+export const setAssistantAutoReply = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((data: { autoReply: boolean }) => data)
+  .handler(async ({ data, context }) => {
+    const { requireAdmin } = await import("./admin.server");
+    await requireAdmin(context.supabase, context.userId);
+    const { error } = await context.supabase
+      .from("ai_assistant_settings")
+      .update({ auto_reply: data.autoReply, updated_at: new Date().toISOString() } as never)
+      .eq("id", true);
+    if (error) throw new Error(error.message);
+    return { ok: true as const };
+  });
