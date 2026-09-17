@@ -1,22 +1,27 @@
 /*
- * Server-only WhatsApp Cloud API helpers.
+ * Server-only WhatsApp helpers via the Lovable connector gateway.
  * Never imported by browser code (*.server.ts is blocked from client bundles).
+ *
+ * The gateway injects the connected account's identifiers — paths carry no
+ * phone-number or account ID. Credentials stay server-side.
  */
-const GRAPH_VERSION = "v21.0";
+const GATEWAY_URL = "https://connector-gateway.lovable.dev/whatsapp";
 
 export interface WhatsAppConfig {
+  /** Lovable gateway key (Authorization: Bearer). */
   token: string;
-  phoneNumberId: string;
+  /** Connector connection key (X-Connection-Api-Key). */
+  connectionKey: string;
 }
 
 export function getWhatsAppConfig(): WhatsAppConfig | null {
-  const token = process.env["WHATSAPP_ACCESS_TOKEN"];
-  const phoneNumberId = process.env["WHATSAPP_PHONE_NUMBER_ID"];
-  if (!token || !phoneNumberId) return null;
-  return { token, phoneNumberId };
+  const token = process.env["LOVABLE_API_KEY"];
+  const connectionKey = process.env["WHATSAPP_API_KEY"];
+  if (!token || !connectionKey) return null;
+  return { token, connectionKey };
 }
 
-/** Digits only, no leading + or zeros — Cloud API wants E.164 without '+'. */
+/** Digits only, no leading + or zeros — E.164 without '+'. */
 export function normalizeMsisdn(raw: string): string {
   let digits = raw.replace(/\D/g, "");
   if (digits.startsWith("00")) digits = digits.slice(2);
@@ -36,27 +41,25 @@ export async function sendWhatsAppText(
   const config = getWhatsAppConfig();
   if (!config) {
     throw new Error(
-      "WhatsApp is not connected yet. Add your WhatsApp Business access token and phone number ID.",
+      "WhatsApp is not connected yet. Link the WhatsApp Business connector in Connectors settings.",
     );
   }
 
-  const response = await fetch(
-    `https://graph.facebook.com/${GRAPH_VERSION}/${config.phoneNumberId}/messages`,
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${config.token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        messaging_product: "whatsapp",
-        recipient_type: "individual",
-        to: normalizeMsisdn(to),
-        type: "text",
-        text: { preview_url: false, body },
-      }),
+  const response = await fetch(`${GATEWAY_URL}/messages`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${config.token}`,
+      "X-Connection-Api-Key": config.connectionKey,
+      "Content-Type": "application/json",
     },
-  );
+    body: JSON.stringify({
+      messaging_product: "whatsapp",
+      recipient_type: "individual",
+      to: normalizeMsisdn(to),
+      type: "text",
+      text: { preview_url: false, body },
+    }),
+  });
 
   const text = await response.text();
   if (!response.ok) {

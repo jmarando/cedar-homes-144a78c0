@@ -25,6 +25,7 @@ export type Database = {
           external_id: string | null
           id: string
           lead_id: string | null
+          metadata: Json | null
           occurred_at: string
           status: string | null
           subject: string | null
@@ -39,6 +40,7 @@ export type Database = {
           external_id?: string | null
           id?: string
           lead_id?: string | null
+          metadata?: Json | null
           occurred_at?: string
           status?: string | null
           subject?: string | null
@@ -53,6 +55,7 @@ export type Database = {
           external_id?: string | null
           id?: string
           lead_id?: string | null
+          metadata?: Json | null
           occurred_at?: string
           status?: string | null
           subject?: string | null
@@ -304,6 +307,39 @@ export type Database = {
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
           user_id?: string
+        }
+        Relationships: []
+      }
+      whatsapp_webhook_events: {
+        Row: {
+          delivery_id: string
+          event: string
+          id: string
+          payload: Json
+          pending_reconciliation: Json | null
+          processed_at: string | null
+          processing_error: string | null
+          received_at: string
+        }
+        Insert: {
+          delivery_id: string
+          event: string
+          id?: string
+          payload: Json
+          pending_reconciliation?: Json | null
+          processed_at?: string | null
+          processing_error?: string | null
+          received_at?: string
+        }
+        Update: {
+          delivery_id?: string
+          event?: string
+          id?: string
+          payload?: Json
+          pending_reconciliation?: Json | null
+          processed_at?: string | null
+          processing_error?: string | null
+          received_at?: string
         }
         Relationships: []
       }
