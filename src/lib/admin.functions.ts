@@ -154,6 +154,38 @@ export const sendWhatsApp = createServerFn({ method: "POST" })
     return { ok: true as const };
   });
 
+export const sendEmail = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator(
+    (data: { leadId: string; to: string; subject: string; body: string }) => data,
+  )
+  .handler(async ({ data, context }) => {
+    const { requireStaff } = await import("./admin.server");
+    await requireStaff(context.supabase, context.userId);
+    const { sendLeadEmail } = await import("./email.server");
+    const result = await sendLeadEmail({
+      leadId: data.leadId,
+      to: data.to,
+      templateName: "agent-reply",
+      subject: data.subject || "A message from Cedar Homes",
+      bodyForLog: data.body,
+      templateData: {
+        subject: data.subject || "A message from Cedar Homes",
+        headline: data.subject || "Cedar Homes",
+        message: data.body,
+      },
+      createdBy: context.userId,
+    });
+    if (!result.sent) {
+      throw new Error(
+        result.reason === "recipient_suppressed"
+          ? "This address has unsubscribed or bounced, so email cannot be delivered."
+          : (result.reason ?? "The email could not be sent."),
+      );
+    }
+    return { ok: true as const };
+  });
+
 export const listInbox = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {

@@ -45,5 +45,24 @@ export async function saveLead(lead: LeadParsed): Promise<SaveLeadResult> {
     throw new Error("Could not save your enquiry. Please try again.");
   }
 
+  try {
+    const { notifyNewLead } = await import("./email.server");
+    await notifyNewLead({
+      id: data.id,
+      firstName: lead.firstName,
+      lastName: emptyToNull(lead.lastName),
+      email: lead.email.toLowerCase(),
+      phone: lead.phone,
+      interest: lead.interest,
+      persona: emptyToNull(lead.persona),
+      message: emptyToNull(lead.message),
+      source: lead.source,
+      score: data.lead_score,
+    });
+  } catch (notifyError) {
+    // Never fail the enquiry because email is down.
+    console.error("[leads] notification failed", notifyError);
+  }
+
   return { id: data.id, score: data.lead_score };
 }
