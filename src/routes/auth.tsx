@@ -52,6 +52,24 @@ function AuthPage() {
     });
   }, [navigate, target]);
 
+  async function handleGoogle() {
+    setBusy(true);
+    try {
+      if (target !== "/admin") sessionStorage.setItem("cedar-auth-redirect", target);
+      const result = await lovable.auth.signInWithOAuth("google", {
+        redirect_uri: window.location.origin,
+      });
+      if (result.error) {
+        toast.error("Google sign-in failed. Try again or use your email and password.");
+        return;
+      }
+      if (result.redirected) return;
+      navigate({ to: target, replace: true });
+    } finally {
+      setBusy(false);
+    }
+  }
+
   async function handleSignIn(event: React.FormEvent) {
     event.preventDefault();
     setBusy(true);
